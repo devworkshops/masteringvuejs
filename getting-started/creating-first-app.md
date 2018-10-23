@@ -10,4 +10,4 @@ $ npm run serve
 
 Once we do that, our brand new app should be running on [http://localhost:8080](http://localhost:8080)
 
-![](.gitbook/assets/first-app.png)
+![](../.gitbook/assets/first-app.png)

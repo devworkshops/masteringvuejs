@@ -4,18 +4,20 @@
 * [Who we are](who-we-are.md)
 
 ## Getting Started
+
 * [Installing CLI](getting-started/installing-cli.md)
 * [Creating First App](getting-started/creating-first-app.md)
 
 ## Basics
-* [Forms](forms.md)
-* [Routing](routing.md)
-* [Services](services.md)
-* [Testing](testing.md)
+
+* [Forms](basics/forms.md)
+* [Routing](basics/routing.md)
+* [Services](basics/services.md)
+* [Testing](basics/testing.md)
 
 ## Level Up
-* [Code Generation](code-generation.md)
-* [Tools](tools.md)
-* [Deployment](deployment.md)
 
+* [Code Generation](level-up/code-generation.md)
+* [Tools](level-up/tools.md)
+* [Deployment](level-up/deployment.md)
 

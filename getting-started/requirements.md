@@ -10,3 +10,9 @@ Before we get started there are a few things we need to install in our developme
 * [Chrome](https://www.google.com/chrome/)
 * [Vue.js devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 * [json-server](https://www.npmjs.com/package/json-server)
+
+### Recommended VS Code Extensions
+
+*[Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+*[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+*[ESLint](https://eslint.org/)

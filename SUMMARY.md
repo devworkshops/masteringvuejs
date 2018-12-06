@@ -3,14 +3,18 @@
 * [Introduction](README.md)
 * [Who we are](who-we-are.md)
 
-## Getting Started
+## Before we start
 
 * [Requirements](getting-started/requirements.md)
+
+## Intro
+
 * [Creating First App](getting-started/creating-first-app.md)
-* [Using CLI](getting-started/cli.md)
+* [Introduction](basics/intro.md)
 
 ## Basics
 
+* [Using CLI](getting-started/cli.md)
 * [Forms](basics/forms.md)
 * [Routing](basics/routing.md)
 * [Services](basics/services.md)

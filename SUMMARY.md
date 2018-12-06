@@ -6,8 +6,8 @@
 ## Getting Started
 
 * [Requirements](getting-started/requirements.md)
-* [Installing CLI](getting-started/installing-cli.md)
 * [Creating First App](getting-started/creating-first-app.md)
+* [Using CLI](getting-started/cli.md)
 
 ## Basics
 

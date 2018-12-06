@@ -1,6 +1,6 @@
 # Introduction to Vue.js
 
-## Hello-world
+## Hello world
 
 To get started we're going to use sample application created in the previous step. 
 
@@ -24,7 +24,7 @@ That's is our `index.html`
 </html>
 ```
 
-The main difference here is that now we're keeping the Vue.js instnance into an `app` variable which we can use from the console.
+The main difference here is that now we're keeping the Vue.js instance into an `app` variable which we can use from the console.
 
 The first sort of binding we're seeing here is the interpolation `{{}}` which is binding the variable `title` coming from the `data` section of our app. If any change is made in this variable, this will reflect automatically where the variable is bound.
 

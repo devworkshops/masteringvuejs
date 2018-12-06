@@ -13,6 +13,6 @@ Before we get started there are a few things we need to install in our developme
 
 ### Recommended VS Code Extensions
 
-*[Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
-*[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-*[ESLint](https://eslint.org/)
+* [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* [ESLint](https://eslint.org/)

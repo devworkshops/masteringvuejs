@@ -25,3 +25,5 @@ Our **hello world** application will look like this:
   </body>
 </html>
 ```
+
+> Try updating any variable using the console

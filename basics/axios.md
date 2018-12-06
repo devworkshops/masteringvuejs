@@ -14,7 +14,7 @@ There's also a package that will be extremelly useful here named `json-server`. 
 npm install -g json-server
 ```
 
-We just need to point to an existing `json` file. You can download a copy of the `db.json` file [here](sample/db.json). Now we can just run it
+We just need to point to an existing `json` file. You can download a copy of the `db.json` file [here](../sample/db.json). Now we can just run it
 
 ```
 json-server --watch db.json

@@ -5,6 +5,7 @@
 
 ## Getting Started
 
+* [Requirements](getting-started/requirements.md)
 * [Installing CLI](getting-started/installing-cli.md)
 * [Creating First App](getting-started/creating-first-app.md)
 
@@ -22,3 +23,6 @@
 * [Deployment](level-up/deployment.md)
 * [NativeScript](level-up/nativescript.md)
 
+## Random Notes
+
+* [Thiago](notes/thiago.md)

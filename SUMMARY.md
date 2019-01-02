@@ -8,16 +8,16 @@
 * [Overview](beyond-basics/overview.md)
 
 
-## Styling the UI
-* [Overview](styling-ui/overview.md)
+## Dynamic Forms and Validation
+* [Overview](forms-validation/overview.md)
 
 
 ## Unit Testing
 * [Overview](unit-testing/overview.md)
 
 
-## Dynamic Forms and Validation
-* [Overview](forms-validation/overview.md)
+## Styling the UI
+* [Overview](styling-ui/overview.md)
 
 
 ## Consuming APIs

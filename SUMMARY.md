@@ -1,41 +1,39 @@
 # Table of contents
 
 ## Getting Started
-* [Overview][getting-started/overview.md]
+* [Overview](getting-started/overview.md)
 
 
 ## Beyond the Basics
-* [Overview][beyond-basics/overview.md]
+* [Overview](beyond-basics/overview.md)
 
 
 ## Styling the UI
-* [Overview][styling-ui/overview.md]
+* [Overview](styling-ui/overview.md)
 
 
 ## Unit Testing
-* [Overview][unit-testing/overview.md]
+* [Overview](unit-testing/overview.md)
 
 
 ## Dynamic Forms and Validation
-* [Overview][forms-validation/overview.md]
+* [Overview](forms-validation/overview.md)
 
 
 ## Consuming APIs
-* [Overview][consuming-apis/overview.md]
+* [Overview](consuming-apis/overview.md)
 
 
 ## State Management
-* [Overview][state-management/overview.md]
+* [Overview](state-management/overview.md)
 
 
 ## Packaging and Deploying
-* [Overview][deploying/overview.md]
+* [Overview](deploying/overview.md)
 
 
 ## Old Contents
 
-* [Overview][forms-validation/overview.md]
-* [Overview][unit-testing/overview.md]
 * [Introduction](README.md)
 * [Who we are](who-we-are.md)
 * [To dos](todo.md)

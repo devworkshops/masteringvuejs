@@ -8,7 +8,7 @@
 
 * [Requirements](getting-started/requirements.md)
 
-## Intro
+## Intro1
 
 * [Creating First App](getting-started/creating-first-app.md)
 * [Introduction](basics/intro.md)

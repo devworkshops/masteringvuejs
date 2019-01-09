@@ -124,7 +124,7 @@ In this section you will update the application with a new notifications feature
    </b-collapse>
    ```
    The first navbar list contains the standard nav items. The second list contains the notifications icon. Clicking this icon will toggle the notifications panel on and off.
-   ![](.gitbook/assets/changing-state-figure-1.png)
+   ![](../.gitbook/assets/changing-state-figure-1.png)
    Take a moment to explore the feature to ensure that you understand the basic functionality.
 
 Currently, the notifications are stored within the NotificationPanel component:
@@ -192,7 +192,7 @@ Since these notifications will only be accessible to this component, you will ne
 10. Save changes and verify that the feature is working correctly.
 
 There is a error! If you attempt to dismiss a notification you will see the following error in the developer console:
-![](.gitbook/assets/changing-state-figure-2.png)
+![](../.gitbook/assets/changing-state-figure-2.png)
 
 This is becuase the dismiss notification feature attempts to change state within the Vuex store. In order to change the list of notifications you will need to add a **mutation** to the store.
 
@@ -219,7 +219,7 @@ This is becuase the dismiss notification feature attempts to change state within
 13. Save all changes and verify that you can now dismiss notifications without error.
 
 Another error! The number of notifications within the navbar is not updating correctly:
-![](.gitbook/assets/changing-state-figure-3.png)
+![](../.gitbook/assets/changing-state-figure-3.png)
 
 14. To fix this error you can add a new getter to return the number of notifications. Open `store.js` and update as follows:
 

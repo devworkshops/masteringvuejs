@@ -28,7 +28,7 @@
 
 ## State Management
 
-* [Overview](state-management/overview.md)
+* [Installing Vuex](state-management/installing-vuex.md)
 
 ## Packaging and Deploying
 

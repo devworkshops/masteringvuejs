@@ -1,4 +1,4 @@
-# Overview
+# Installing Vuex
 
 The first step is to install Vuex.
 

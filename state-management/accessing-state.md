@@ -35,7 +35,7 @@ Let's begin now.
    ```
 
 3. Review the changes in your browser. The footer should now contain the release and health check details:
-   ![](.gitbook/assets/accessing-state-figure-1.png)
+   ![](../.gitbook/assets/accessing-state-figure-1.png) 
 
 The `$store` is injected into all child components from the root component. This is enable by configuring the store option within the root instance:
 

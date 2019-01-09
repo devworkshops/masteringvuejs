@@ -36,7 +36,7 @@
 
 ## Old Contents
 
-* [Introduction](old-contents/readme.md)
+* [Introduction](old-contents/old-contents.md)
 * [Who we are](old-contents/who-we-are.md)
 * [To dos](old-contents/todo.md)
 

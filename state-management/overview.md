@@ -1,4 +1,4 @@
-# Installing Vuex
+# Overview
 
 The first step is to install Vuex.
 
@@ -9,23 +9,33 @@ There are numerous methods to install Vuex including direct download, CDN, NPM a
 The following steps outline the procedure to add Vuex to an existing applciation with the Vue UI.
 
 1. Launch **Vue UI** from the command-line by running the command
-   ```
+
+   ```text
    vue ui
    ```
+
    Vue UI will open automatically after a few moments:
-   ![](assets/installing-vuex-figure-1.png)
+
+   ![](https://github.com/devworkshops/masteringvuejs/tree/ec29a2555ac5af6664fcd9f64880669ebb69f7fe/state-management/assets/installing-vuex-figure-1.png)
+
 2. Navigate to the **Northwind Traders** project
 3. Select **Plugins** from the side navigation bar
 4. Click **Add vuex** at the top of the **Project plugins** page
-   ![](assets/installing-vuex-figure-2.png)
+
+   ![](https://github.com/devworkshops/masteringvuejs/tree/ec29a2555ac5af6664fcd9f64880669ebb69f7fe/state-management/assets/installing-vuex-figure-2.png)
+
 5. When prompted, click **Continue** and wait for the installation process to complete
-   ![](assets/installing-vuex-figure-3.png)
+
+   ![](https://github.com/devworkshops/masteringvuejs/tree/ec29a2555ac5af6664fcd9f64880669ebb69f7fe/state-management/assets/installing-vuex-figure-3.png)
 
 Once complete, the Vuex plugin will have added / updated the following files:
 
-    src/store.js
-    package-lock.json
-    package.json
-    src/main.js
+```text
+src/store.js
+package-lock.json
+package.json
+src/main.js
+```
 
 Before continuing, take the time to review these changes and ensure that you understand the Vuex configuration.
+

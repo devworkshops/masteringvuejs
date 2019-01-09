@@ -1,55 +1,57 @@
 # Table of contents
 
+* [Introduction](README.md)
+
 ## Getting Started
+
 * [Overview](getting-started/overview.md)
 
-
 ## Beyond the Basics
-* [Overview](beyond-basics/overview.md)
 
+* [Overview](beyond-the-basics/overview.md)
 
 ## Dynamic Forms and Validation
-* [Overview](forms-validation/overview.md)
 
+* [Overview](dynamic-forms-and-validation/overview.md)
 
 ## Unit Testing
+
 * [Overview](unit-testing/overview.md)
 
-
 ## Styling the UI
-* [Overview](styling-ui/overview.md)
 
+* [Overview](styling-the-ui/overview.md)
 
 ## Consuming APIs
+
 * [Overview](consuming-apis/overview.md)
 
-
 ## State Management
+
 * [Overview](state-management/overview.md)
 
-
 ## Packaging and Deploying
-* [Overview](deploying/overview.md)
 
+* [Overview](packaging-and-deploying/overview.md)
 
 ## Old Contents
 
-* [Introduction](README.md)
-* [Who we are](who-we-are.md)
-* [To dos](todo.md)
+* [Introduction](old-contents/readme.md)
+* [Who we are](old-contents/who-we-are.md)
+* [To dos](old-contents/todo.md)
 
 ## Before we start
 
-* [Requirements](getting-started/requirements.md)
+* [Requirements](before-we-start/requirements.md)
 
 ## Intro
 
-* [Creating First App](getting-started/creating-first-app.md)
-* [Introduction](basics/intro.md)
+* [Creating First App](intro/creating-first-app.md)
+* [Introduction](intro/intro.md)
 
 ## Basics
 
-* [Using CLI](getting-started/cli.md)
+* [Using CLI](basics/cli.md)
 * [Components](basics/components.md)
 * [Talking to API](basics/axios.md)
 * [Forms](basics/forms.md)
@@ -58,7 +60,7 @@
 
 ## Redux with Vuex
 
-* [Concept](vuex/concept.md)
+* [Concept](redux-with-vuex/concept.md)
 
 ## Level Up
 
@@ -70,4 +72,5 @@
 
 ## Random Notes
 
-* [Thiago](notes/thiago.md)
+* [Thiago](random-notes/thiago.md)
+

@@ -7,7 +7,8 @@ There are a few way to create your very first Vue.js app, but this would potenti
 3. Now it's time to kick off the application with `<script>new Vue({el:"#app"})</script>`
 
 Our **hello world** application will look like this:
-```html
+
+```markup
 <html>
   <body>
     <div id="app">
@@ -27,3 +28,4 @@ Our **hello world** application will look like this:
 ```
 
 > Try updating any variable using the console
+

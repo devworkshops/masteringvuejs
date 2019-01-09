@@ -1,11 +1,12 @@
-# Introduction to Vue.js
+# Introduction
 
 ## Hello world
 
-To get started we're going to use sample application created in the previous step. 
+To get started we're going to use sample application created in the previous step.
 
 That's is our `index.html`
-```html
+
+```markup
 <html>
   <body>
     <div id="app">
@@ -37,7 +38,8 @@ To bind a html attribute to a Vue.js variable, you can use the prefix `v-bind:`.
 Using `v-bind` is amazing, but it's quite verbose and that's something you're going to use all the time, the Vue team knew that and made our lives way simpler and you can just use `:` when doing attribute binding, so to set the `href` dynamically you can simple use `:href='link'`.
 
 Let's test it out with the sample below:
-```html
+
+```markup
 <html>
   <body>
     <div id="app">
@@ -62,7 +64,6 @@ Let's test it out with the sample below:
     </style>
   </body>
 </html>
-
 ```
 
 ## Conditional rendering
@@ -78,3 +79,4 @@ Let's test it out with the sample below:
 ## Components
 
 ## Communicating events ??
+

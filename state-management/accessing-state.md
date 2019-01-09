@@ -1,12 +1,12 @@
 # Accessing State
 
-Now that Vuex is up and running we can get started. The steps in this section describe the procedure to access state from a component. In this example you will add release information (such as build number and environment name) to the store. You will then display the release information within the site footer.
+Now that Vuex is up and running we can get started. The steps in this section describe the procedure to access state from a component. In this example you will add release information \(such as build number and environment name\) to the store. You will then display the release information within the site footer.
 
 Let's begin now.
 
 1. In Visual Studio Code, open `store.js` and update the store as follows:
 
-   ```
+   ```text
    state: {
         release: {
             build: '1.0.0',
@@ -21,7 +21,7 @@ Let's begin now.
 
 2. Next open `App.vue` and update the footer as follows:
 
-   ```
+   ```text
     <footer class="footer mt-auto py-3">
         <div class="container">
             <span class="text-muted">
@@ -34,21 +34,20 @@ Let's begin now.
     </footer>
    ```
 
-3. Review the changes in your browser. The footer should now contain the release and health check details:
-   ![](../.gitbook/assets/accessing-state-figure-1.png) 
+3. Review the changes in your browser. The footer should now contain the release and health check details: ![](../.gitbook/assets/accessing-state-figure-1.png)
 
 The `$store` is injected into all child components from the root component. This is enable by configuring the store option within the root instance:
 
-```
+```text
 const app = new Vue({
     el: '#app',
     store
 })
 ```
 
-4. Using a computed property enables a reusable and concise approach. Update the following computed properties to the component:
+1. Using a computed property enables a reusable and concise approach. Update the following computed properties to the component:
 
-   ```
+   ```text
    computed: {
        release() {
            return this.$store.state.release
@@ -59,8 +58,9 @@ const app = new Vue({
    }
    ```
 
-5. Next update the footer with these changes:
-   ```
+2. Next update the footer with these changes:
+
+   ```text
     <footer class="footer mt-auto py-3">
         <div class="container">
             <span class="text-muted">
@@ -77,14 +77,15 @@ When a component needs to make use of numerous state, declaring many computed pr
 
 > The `mapState` helper simply generates computed getter functions saving keystrokes.
 
-6. First import the `mapState` helper from Vuex:
+1. First import the `mapState` helper from Vuex:
 
-   ```
+   ```text
    import { mapState } from 'vuex'
    ```
 
-7. Update the components computed properties as follows:
-   ```
+2. Update the components computed properties as follows:
+
+   ```text
    computed: {
        ...mapState(['release', 'healthChecks']),
        failedHealthCheckCount() {
@@ -95,9 +96,9 @@ When a component needs to make use of numerous state, declaring many computed pr
 
 In the case of the `failedHealthCheckCount` computed property, this approach works well within the context of this component. However, what if the same derived state was required in other components? You can achieve this flexibility by moving the computed property to the store. Using Getters,
 
-6. Open `store.js` and add a new **getters** property:
+1. Open `store.js` and add a new **getters** property:
 
-   ```
+   ```text
    getters: {
        failedHealthCheckCount: state => {
            return state.healthChecks.filter(hc => !hc.passed).length
@@ -105,9 +106,9 @@ In the case of the `failedHealthCheckCount` computed property, this approach wor
    }
    ```
 
-7. Back within `App.vue`, update `failedHealthCheckCount` to reference the new getter:
+2. Back within `App.vue`, update `failedHealthCheckCount` to reference the new getter:
 
-   ```
+   ```text
     failedHealthCheckCount() {
         return this.$store.getters.failedHealthCheckCount
     }
@@ -117,19 +118,20 @@ When a component needs to make use of numerous getters, we can leverage the `map
 
 > The `mapGetters` helper simply maps store getters to local computed properties.
 
-8. Import the `mapGetters` helper from Vuex:
+1. Import the `mapGetters` helper from Vuex:
 
-   ```
+   ```text
    import { mapState, mapGetters } from 'vuex'
    ```
 
-9. Update the components computed properties as follows:
+2. Update the components computed properties as follows:
 
-   ```
+   ```text
    computed: {
        ...mapState(['release', 'healthChecks']),
        ...mapGetters(['failedHealthCheckCount'])
    }
    ```
 
-10. Save all changes and verify that the footer is still displaying the correct information.
+3. Save all changes and verify that the footer is still displaying the correct information.
+

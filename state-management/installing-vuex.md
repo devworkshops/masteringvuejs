@@ -10,7 +10,7 @@ The following steps outline the procedure to add Vuex to an existing applciation
 
 1. Launch **Vue UI** from the command-line by running the command
 
-   ```text
+   ```bash
    vue ui
    ```
 

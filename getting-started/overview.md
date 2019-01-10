@@ -1,6 +1,6 @@
 # Hello, World!
 
-Hello and welcome! In this section we will get started, where we should always get started, with any new framework - Hello, World!
+Hello and welcome! In this section we will get started, where we should always get started with any new framework - Hello, World!
 
 Follow these steps to start your journey towards Mastering Vue.js:
 

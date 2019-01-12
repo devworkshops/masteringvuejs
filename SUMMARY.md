@@ -6,6 +6,7 @@
 
 * [Hello, World!](getting-started/overview.md)
 * [Your First App](getting-started/your-first-app.md)
+* [Challenges](getting-started/challenges.md)
 
 ## Beyond the Basics
 

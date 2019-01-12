@@ -4,7 +4,7 @@ Hello and welcome! In this section we will get started, where we should always g
 
 Follow these steps to start your journey towards Mastering Vue.js:
 
-1. Create a new project folder named `VueTodo` folder
+1. Create a new project folder named `getting-started` folder
 2. Launch Visual Studio Code, and open the newly created folder
 3. Create a new file named `index.html` this will be the home page
 4. Update the file with the following template:

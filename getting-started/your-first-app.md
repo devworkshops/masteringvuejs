@@ -69,10 +69,10 @@ In this section you will build your first app. I know what you're thinking, but 
    {% endcode-tabs-item %}
    {% endcode-tabs %}
 
-5. Add a new style sheet file **style.css** and complete as follows:
+5. Add a new style sheet file **main.css** and complete as follows:
 
    {% code-tabs %}
-   {% code-tabs-item title="style.css" %}
+   {% code-tabs-item title="main.css" %}
    ```css
    .done {
        text-decoration: line-through;
@@ -81,17 +81,157 @@ In this section you will build your first app. I know what you're thinking, but 
    {% endcode-tabs-item %}
    {% endcode-tabs %}
 
-6. Add a reference to the new style sheet:
+6. Save all changes and view **index.html** in your browser. Your app should display the following:
+
+![](../.gitbook/assets/your-first-app-figure-1.png)
+
+1. Update the root Vue instance with the todo list data:
 
    {% code-tabs %}
-   {% code-tabs-item title="index.html" %}
-   ```markup
-   <link rel="stylesheet" href="style.css">
+   {% code-tabs-item title="main.js" %}
+   ```javascript
+     data: {
+       todos: [
+         { id: 1, title: "Do this thing.", done: false },
+         { id: 2, title: "Do another thing.", done: false },
+         { id: 3, title: "Do many, many things!", done: false },
+         { id: 4, title: "This thing is done.", done: true }
+       ]
+     }
    ```
    {% endcode-tabs-item %}
    {% endcode-tabs %}
 
-7. Save all changes and view index.html in your browser. Your app should display the following:
+2. Update the template. First remove the existing todo list items, then add a dynamic list item to display the todos from data:
 
-![](../.gitbook/assets/your-first-app-figure-1.png)
+   {% code-tabs %}
+   {% code-tabs-item title="index.html" %}
+   ```markup
+   <li class="list-group-item" v-for="(todo, index) in todos" :key="todo.id">
+     <div class="form-check">
+       <input class="form-check-input" type="checkbox" :id="'todo' + index" v-model="todo.done" />
+       <label class="form-check-label" :for="'todo' + index" :class="{ done: todo.done }">{{ todo.title }}</label>
+     </div>
+   </li>
+   ```
+   {% endcode-tabs-item %}
+   {% endcode-tabs %}
+
+3. Save changes and verify expected behaviour.
+4. Next, update to support adding new todos. First add two new data properties:
+
+   {% code-tabs %}
+   {% code-tabs-item title="main.js" %}
+   ```javascript
+   nextId: 5,
+   newTodoTitle: null
+   ```
+   {% endcode-tabs-item %}
+   {% endcode-tabs %}
+
+5. Then, create a method for adding todos:
+
+   {% code-tabs %}
+   {% code-tabs-item title="main.js" %}
+   ```javascript
+   methods: {
+     addTodo() {
+       this.todos.push({
+         id: this.nextId++,
+         title: this.newTodoTitle,
+         done: false
+       });
+     }
+   }
+   ```
+   {% endcode-tabs-item %}
+   {% endcode-tabs %}
+
+6. Finally, update to submit to the new `addTodo` method:
+
+   {% code-tabs %}
+   {% code-tabs-item title="index.html" %}
+   ```markup
+   <form class="mb-2" v-on:submit.prevent="addTodo">
+     <input class="form-control" placeholder="Add todo..." v-model="newTodoTitle" />
+   </form>
+   ```
+   {% endcode-tabs-item %}
+   {% endcode-tabs %}
+
+7. Save all changes and verify that you can now add new todos.
+8. Now add support for filtering the todo list. The supported filters are All, Todo, and Done. Add them to data as follows:
+
+   {% code-tabs %}
+   {% code-tabs-item title="main.js" %}
+   ```javascript
+   filters: ["All", "Todo", "Done"],
+   activeFilter: 'All',
+   ```
+   {% endcode-tabs-item %}
+   {% endcode-tabs %}
+
+9. Next update **main.js** and add a new computed property to filter the todos:
+
+   {% code-tabs %}
+   {% code-tabs-item title="main.js" %}
+   ```javascript
+   computed: {
+     filteredTodos() {
+       if (this.activeFilter === "All") {
+         return this.todos;
+       }
+
+       if (this.activeFilter === "Todo") {
+         return this.todos.filter(t => !t.done);
+       }
+
+       if (this.activeFilter === "Done") {
+         return this.todos.filter(t => t.done);
+       }
+     }
+   }
+   ```
+   {% endcode-tabs-item %}
+   {% endcode-tabs %}
+
+10. Next, update the template to use the filters within data:
+
+    {% code-tabs %}
+    {% code-tabs-item title="index.html" %}
+    ```markup
+    <a class="nav-link" href="#" 
+        v-for="filter in filters" 
+        :key="filter" 
+        :class="{ active: filter === activeFilter }" 
+        @click="activeFilter = filter">
+      {{ filter }}
+    </a>
+    ```
+    {% endcode-tabs-item %}
+    {% endcode-tabs %}
+
+11. Then update the template to use the `filteredTodos` computed property:
+
+    {% code-tabs %}
+    {% code-tabs-item title="index.html" %}
+    ```markup
+    <li class="list-group-item" v-for="(todo, index) in filteredTodos" :key="todo.id">
+    ```
+    {% endcode-tabs-item %}
+    {% endcode-tabs %}
+
+12. Finally, update the template to display the correct number of remaining items:
+
+    {% code-tabs %}
+    {% code-tabs-item title="index.html" %}
+    ```markup
+    <p>{{ todos.filter(t => !t.done).length }} item(s) remaining.</p>
+    ```
+    {% endcode-tabs-item %}
+    {% endcode-tabs %}
+
+13. Save changes and verify that the behaviour is as expected.
+
+
 

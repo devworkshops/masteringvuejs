@@ -2,9 +2,9 @@
 
 ### Todo
 
-* [ ] Working with forms, i.e. v-model
-* [ ] Managing complexity actions dispatching actions
-* [ ] Working with modules
+* [ ] Form Handling - expand on [https://vuex.vuejs.org/guide/forms.html](https://vuex.vuejs.org/guide/forms.html)
+* [ ] Modules
+* [ ] Managing complexity, e.g. actions dispatching actions
 
 
 

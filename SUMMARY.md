@@ -22,9 +22,9 @@
 
 * [Overview](dynamic-forms-and-validation/overview.md)
 
-## Unit Testing
+## Testing
 
-* [Overview](unit-testing/overview.md)
+* [Overview](testing/overview.md)
 
 ## Styling the UI
 

@@ -25,6 +25,8 @@
 ## Testing
 
 * [Overview](testing/overview.md)
+* [Unit Testing](testing/unit-testing.md)
+* [Integration/E2E Testing](testing/integration-e2e-testing.md)
 
 ## Styling the UI
 

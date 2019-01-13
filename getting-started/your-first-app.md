@@ -1,6 +1,6 @@
 # Your First App
 
-In this section you will build your first app. I know what you're thinking, but Hello, World doesn't count - even if it was particularly glorious! Besides, it's the starter for this application. Let's begin now.
+In this section you will build your first app. I know what you're thinking, but Hello, World doesn't count - even if it wasn't particularly glorious! Besides, it's the starter for this application. Let's begin now.
 
 1.  Create a new file named **main.js** and move the contents of the script block into that file:
 

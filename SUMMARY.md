@@ -11,6 +11,12 @@
 ## Beyond the Basics
 
 * [Overview](beyond-the-basics/overview.md)
+* [Your First CLI App](beyond-the-basics/creating-our-first-cli-application.md)
+* [Project Structure](beyond-the-basics/project-structure-and-components.md)
+* [Routing](beyond-the-basics/routing.md)
+* [Components: Suppliers](beyond-the-basics/components-suppliers.md)
+* [Services](beyond-the-basics/services.md)
+* [Challenges](beyond-the-basics/challenges.md)
 
 ## Dynamic Forms and Validation
 

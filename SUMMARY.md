@@ -20,7 +20,9 @@
 
 ## Dynamic Forms and Validation
 
-* [Basic Forms](dynamic-forms-and-validation/overview.md)
+* [Inline Forms](dynamic-forms-and-validation/overview.md)
+* [Simple Validation](dynamic-forms-and-validation/simple-validation.md)
+* [Challenges](dynamic-forms-and-validation/challenges.md)
 
 ## Testing
 

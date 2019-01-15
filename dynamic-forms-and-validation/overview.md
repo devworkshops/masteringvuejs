@@ -5,7 +5,7 @@ description: >-
   form will improve the user experience.
 ---
 
-# Basic Forms
+# Inline Forms
 
 ### Creating the list component
 

@@ -95,7 +95,7 @@ export const CategoriesService = {
         return apiClient.get('/categories/' + id)
     },
     create(category) {
-        return apiClient.post('/categories/' + category.id, category)
+        return apiClient.post('/categories/', category)
     },
     update(category) {
         return apiClient.put('/categories/' + category.id, category)

@@ -23,6 +23,8 @@
 
 * [Inline Forms](dynamic-forms-and-validation/overview.md)
 * [Simple Validation](dynamic-forms-and-validation/simple-validation.md)
+* [Standard Forms](dynamic-forms-and-validation/standard-forms.md)
+* [Advanced Validation](dynamic-forms-and-validation/advanced-validation.md)
 * [Challenges](dynamic-forms-and-validation/challenges.md)
 
 ## Testing

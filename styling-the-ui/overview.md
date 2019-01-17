@@ -143,17 +143,167 @@ Finally, add the missing Edit and Delete actions:
 
 All done. Once again, these small changes have resulted in less code and more features.
 
+### Adding paging to tables
+
+In this section you add support for paging to the products list. First update the `ProductsService` to include a new method that supports paging:
+
+{% code-tabs %}
+{% code-tabs-item title="NorthwindService.js" %}
+```javascript
+...
+getAllPaged(page) {
+    return apiClient.get(`/products?_page=${page}`)
+},
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Then, within the **ProductList.vue** file update the `fetchAll` method to use the new `getAllPaged` method:
+
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```javascript
+...
+fetchAll() {
+    ProductsService.getAllPaged(this.page)
+        .then(result => {
+            this.productCount = parseInt(result.headers['x-total-count'])
+            this.products = result.data
+        })
+        .catch(error => console.error(error))
+},
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Next, update the `data` property to store the new`page` and `productCount` values:
+
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```javascript
+...
+productCount: 0,
+page: 1,
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Finally, add the Bootstrap-Vue `Pagination` component to the template \(immediately following the table\):
+
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```markup
+...
+<b-pagination 
+    :total-rows="productCount" 
+    :per-page="10" 
+    v-model="page" 
+    @input="fetchAll()"/>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+That's all. You've added complete support for paging with some very basic steps.
+
 ### Adding confirmation modals
 
+In this section you will add a confirm deletion modal before deleting a product. Begin by adding a method to request deletion:
+
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```javascript
 ...
+deleteRequested(product) {
+    this.productToDelete = product
+    this.$refs.deleteModal.show()
+},
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
+The above method is fired when the user clicks delete on a specific product. The relevant product is stored within `productToDelete` and then the `deleteModal` is displayed. Add the new `productToDelete` property within the components `data` property:
 
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```javascript
+...
+data: {
+    ...
+    productToDelete: {},
+    ...
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
+Next, update the existing `remove` method as follows:
 
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```javascript
+...
+deleteConfirmed() {
+    ProductsService.delete(this.productToDelete.id)
+        .then(() => {
+            this.products = this.products.filter(
+                p => p.id !== this.productToDelete.id
+            )
+        })
+        .catch(error => console.error(error))
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
+The `remove` method has been renamed to `deleteConfirmed`. This method will be invoked when the user confirms product deletion. 
 
+Now, add the delete modal directly after the pagination controls:
 
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```markup
+...
+<b-modal
+    id="deleteModal"
+    ref="deleteModal"
+    title="Delete Product?"
+    centered
+    ok-title="Delete"
+    ok-variant="danger"
+    @ok="deleteConfirmed">
+    <p class="my-4">Are you sure you want to delete '{{ productToDelete.name }}'?</p>
+</b-modal>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
+And finally, wire up the delete method to invoke `deleteRequested` as follows:
+
+{% code-tabs %}
+{% code-tabs-item title="ProductList.vue" %}
+```markup
+...
+<button
+    type="button"
+    class="btn btn-danger"
+    @click="deleteRequested(row.item)">
+    Delete</button>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Before continuing to the next topic, save all changes and verify the behaviour is as expected:
+
+![](../.gitbook/assets/bootstrap-vue-animation-1.gif)
 
 
 

@@ -85,11 +85,67 @@ The site navigation looks good, but the active page is not highlight. For exampl
 
 Now save the changes and verify that the correct page is highlighted when you navigate. This small change resulted in reduced code and improved functionality.
 
-### Adding pagination to tables
+### Adding sorting to tables
 
+In this section you will add the capability to sort the products list using the  component using the Bootstrap-Vue `Table` component. Open the **ProductsList.vue** file and replace the existing table with the following:
 
+{% code-tabs %}
+{% code-tabs-item title="ProductsList.vue" %}
+```markup
+<b-table striped hover :items="products"></b-table>
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
+The above code is very concise, however now a number of features have been lost. For example, editing or deleting products, selecting columns to be displayed, and controlling the order of the columns. Also, you still cannot sort the table. You can fix the last three issues using fields \(column definitions\). Add a fields attribute to the table:
 
+{% code-tabs %}
+{% code-tabs-item title="ProductsList.vue" %}
+```markup
+<b-table striped hover :items="products" :fields="fields"></b-table>
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Then add the column definitions to the `data` property:
+
+{% code-tabs %}
+{% code-tabs-item title="ProductsList.vue" %}
+```javascript
+fields: [
+    { key: 'id', sortable: true },
+    { key: 'name', sortable: true },
+    { key: 'unitPrice', sortable: true, label: 'Price' },
+    { key: 'unitsInStock', sortable: true, label: 'Stock' },
+    { key: 'actions' }
+]
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Finally, add the missing Edit and Delete actions:
+
+{% code-tabs %}
+{% code-tabs-item title="ProductsList.vue" %}
+```markup
+<b-table striped hover :items="products" :fields="fields">
+    <template slot="actions" slot-scope="row">
+        <div class="btn-group" role="group">
+            <router-link tag="button" 
+                :to="{name:'products-edit', params: { id: row.item.id }}" class="btn btn-secondary">Edit</router-link>
+            <button type="button" class="btn btn-danger" @click="remove(row.item.id)">Delete</button>
+        </div>
+    </template>
+</b-table>
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+All done. Once again, these small changes have resulted in less code and more features.
+
+### Adding confirmation modals
+
+...
 
 
 

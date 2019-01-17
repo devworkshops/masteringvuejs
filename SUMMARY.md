@@ -36,7 +36,7 @@
 
 ## Styling the UI
 
-* [Overview](styling-the-ui/overview.md)
+* [Bootstrap + Vue](styling-the-ui/overview.md)
 
 ## Consuming APIs
 

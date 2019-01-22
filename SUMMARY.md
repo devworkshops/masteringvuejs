@@ -14,9 +14,11 @@
 * [Overview](beyond-the-basics/overview.md)
 * [Your First CLI App](beyond-the-basics/creating-our-first-cli-application.md)
 * [Project Structure](beyond-the-basics/project-structure-and-components.md)
+* [Filters: Date](beyond-the-basics/filters-date.md)
 * [Routing](beyond-the-basics/routing.md)
 * [Components: Suppliers](beyond-the-basics/components-suppliers.md)
 * [Services](beyond-the-basics/services.md)
+* [Globally registering components and filters](beyond-the-basics/globally-registering-components-and-filters.md)
 * [Challenges](beyond-the-basics/challenges.md)
 
 ## Dynamic Forms and Validation
@@ -44,6 +46,11 @@
 ## Consuming APIs
 
 * [Overview](consuming-apis/overview.md)
+* [Secured Mock API](consuming-apis/security-mock-api.md)
+* [Login](consuming-apis/login.md)
+* [Intercetors](consuming-apis/intercetors.md)
+* [Server side validation](consuming-apis/server-side-validation.md)
+* [Challenges](consuming-apis/challenges.md)
 
 ## State Management
 
@@ -55,5 +62,7 @@
 
 ## Packaging and Deploying
 
-* [Overview](packaging-and-deploying/overview.md)
+* [Environment variables](packaging-and-deploying/environment-variables.md)
+* [Continuous Integration](packaging-and-deploying/overview.md)
+* [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
 

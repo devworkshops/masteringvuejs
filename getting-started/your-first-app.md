@@ -233,5 +233,3 @@ In this section you will build your first app. I know what you're thinking, but 
 
 13. Save changes and verify that the behaviour is as expected.
 
-
-

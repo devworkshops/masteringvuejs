@@ -11,7 +11,7 @@ In this section, we're going to start building a more complex application levera
 
 ### Installing Vue CLI
 
-```text
+```bash
 npm install -g @vue/cli
 ```
 

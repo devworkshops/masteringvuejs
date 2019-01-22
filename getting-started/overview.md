@@ -77,9 +77,3 @@ Follow these steps to start your journey towards Mastering Vue.js:
 
 This simple application has a single purpose, to display the 'Hello, World!' message. However what you have accomplished is quite significant! You have created a modern web application without any special tools, such as npm or webpack. No build step was required! This is the same approach you might take if you wanted to upgrade an existing application or enhance a single page. Just add a reference to Vue and get started!
 
-
-
-
-
-
-

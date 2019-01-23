@@ -65,4 +65,5 @@
 * [Environment variables](packaging-and-deploying/environment-variables.md)
 * [Continuous Integration](packaging-and-deploying/overview.md)
 * [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
+* [URL Rewrite](packaging-and-deploying/url-rewrite.md)
 

@@ -1,4 +1,4 @@
-# Intercetors
+# Interceptors
 
 Now that we have the token, it's time to inject to every single API call by creating interceptors. Interceptors can do a bunch of cool stuff, but to start with we're going to inject the token to the requests.
 

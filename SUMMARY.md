@@ -48,7 +48,7 @@
 * [Overview](consuming-apis/overview.md)
 * [Secured Mock API](consuming-apis/security-mock-api.md)
 * [Login](consuming-apis/login.md)
-* [Intercetors](consuming-apis/intercetors.md)
+* [Interceptors](consuming-apis/intercetors.md)
 * [Server side validation](consuming-apis/server-side-validation.md)
 * [Challenges](consuming-apis/challenges.md)
 

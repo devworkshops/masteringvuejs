@@ -56,7 +56,7 @@ Save all changes and verify that the site appears normally before continuing to 
 
 ### Styling the site navigation
 
-The site navigation looks good, but the active page is not highlight. For example, if you navigate to the **Products** page, the **Home** page is still highlighted in the nav menu. This is an easy fix with the Bootstrap-Vue `Navbar` component. Open the **NavBar.vue** component and replace the existing navbar with the following Bootstrap-Vue navbar:
+The site navigation looks good, but the active page is not highlighted. For example, if you navigate to the **Products** page, the **Home** page is still highlighted in the nav menu. This is an easy fix with the Bootstrap-Vue `Navbar` component. Open the **NavBar.vue** file and replace the existing navbar with the following Bootstrap-Vue navbar:
 
 {% code-tabs %}
 {% code-tabs-item title="NavBar.vue" %}

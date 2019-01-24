@@ -39,9 +39,10 @@
 ## Styling the UI
 
 * [Bootstrap + Vue](styling-the-ui/overview.md)
-* [Themes](styling-the-ui/themes.md)
 * [Icons](styling-the-ui/icons.md)
 * [Challenges](styling-the-ui/challenges.md)
+* [Themes](styling-the-ui/themes.md)
+* [Resources](styling-the-ui/resources.md)
 
 ## Consuming APIs
 

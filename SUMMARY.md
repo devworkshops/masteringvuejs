@@ -40,8 +40,8 @@
 
 * [Bootstrap + Vue](styling-the-ui/overview.md)
 * [Icons](styling-the-ui/icons.md)
-* [Challenges](styling-the-ui/challenges.md)
 * [Themes](styling-the-ui/themes.md)
+* [Challenges](styling-the-ui/challenges.md)
 * [Resources](styling-the-ui/resources.md)
 
 ## Consuming APIs

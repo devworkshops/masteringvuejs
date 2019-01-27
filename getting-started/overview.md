@@ -78,7 +78,7 @@ Finally, add a script block to contain the root **Vue** instance. It's important
 
 ### Run the app
 
-Launch the application by opening the index.html file in a browser. You will see the following message:
+Launch the application by opening the **index.html** file in a browser. You will see the following message:
 
 > Hello, World!
 

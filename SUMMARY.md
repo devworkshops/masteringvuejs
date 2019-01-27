@@ -13,6 +13,7 @@
 ## Beyond the Basics
 
 * [Overview](beyond-the-basics/overview.md)
+* [Components](beyond-the-basics/components.md)
 * [Your First CLI App](beyond-the-basics/creating-our-first-cli-application.md)
 * [Project Structure](beyond-the-basics/project-structure-and-components.md)
 * [Filters: Date](beyond-the-basics/filters-date.md)

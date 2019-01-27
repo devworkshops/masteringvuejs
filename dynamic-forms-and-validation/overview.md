@@ -37,43 +37,29 @@ Next update the **NavBar.vue** component to include a new **Categories** menu it
 {% code-tabs %}
 {% code-tabs-item title="NavBar.vue" %}
 ```markup
+...
 <li class="nav-item">
     <router-link to="/categories" :exact="true" class="nav-link">
-        <list-icon></list-icon>Categories
+        Categories
     </router-link>
 </li>
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-You might have noticed that the route does not exist and that the list icon has not been imported. Start by importing the `ListIcon` icon:
+You might have noticed that the route does not exist, add the missing route within **router.js**:
 
 {% code-tabs %}
-{% code-tabs-item title="NavBar.vue" %}
+{% code-tabs-item title="router.js" %}
 ```javascript
-import { HomeIcon, PackageIcon, ListIcon } from 'vue-feather-icons'
-
-export default {
-    components: {
-        HomeIcon,
-        PackageIcon,
-        ListIcon
-    }
-}
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
-
-Finally, add the missing route within **route.js**:
-
-{% code-tabs %}
-{% code-tabs-item title="route.js" %}
-```javascript
+...
 {
     path: '/categories',
     name: 'categories',
     component: () => import('./views/Categories/CategoryList.vue')
 },
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -87,6 +73,7 @@ In order to support creating, updating and deleting categories, add a new `Categ
 {% code-tabs %}
 {% code-tabs-item title="NorthwindService.js" %}
 ```javascript
+...
 export const CategoriesService = {
     getAll() {
         return apiClient.get('/categories')
@@ -104,6 +91,7 @@ export const CategoriesService = {
         return apiClient.delete('/categories/' + id)
     }
 }
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -117,6 +105,7 @@ The next step is to update the `CategoryList` component to display the list of c
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
+...
 import { CategoriesService } from '@/services/NorthwindService.js'
 
 export default {
@@ -136,6 +125,7 @@ export default {
         }
     }
 }
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -145,6 +135,7 @@ Then update the template as follows:
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```markup
+...
 <template>
     <div>
         <h1>Categories</h1>
@@ -169,13 +160,14 @@ Then update the template as follows:
         </table>
     </div>
 </template>
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
 Save all changes and refresh the site. Ensure that you can view a list of categories:
 
-![](../.gitbook/assets/basic-forms-figure-1.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 ### Add support for inline editing and deleting
 
@@ -186,6 +178,7 @@ Start by modifying the table to support the two states as follows:
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```markup
+...
 <table class="table">
     <tr>
         <th>Id</th>
@@ -222,6 +215,7 @@ Start by modifying the table to support the two states as follows:
         </tr>
     </template>
 </table>
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -231,8 +225,10 @@ The first table row supports the edit state and the second supports the display 
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
+...
 editingCategory: {},
 editingIndex: null,
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -242,6 +238,7 @@ Next, add the following methods:
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
+...
 edit(category, index) {
     this.editingCategory = { ...category }
     this.editingIndex = index
@@ -257,6 +254,7 @@ update() {
 cancelUpdate() {
     this.editingCategory = {}
 }
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -266,11 +264,13 @@ Now add support for deleting categories. First add the following method:
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
+...
 remove(id) {
     CategoriesService.delete(id)
         .then(() => this.fetchAll())
         .catch(error => console.error(error))
 }
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -284,6 +284,7 @@ This component would not be complete without the ability to add new categories. 
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```markup
+...
 <tr>
     <td>New</td>
     <td>
@@ -299,6 +300,7 @@ This component would not be complete without the ability to add new categories. 
         </div>
     </td>
 </tr>
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -326,7 +328,7 @@ Next, add the following methods:
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
 add() {
-    CategoriesService.add(this.addingCategory)
+    CategoriesService.create(this.addingCategory)
         .then(result => {
             this.categories.push(result.data)
             this.resetAdd()

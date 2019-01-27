@@ -57,7 +57,7 @@ Next update the **NavBar.vue** component to include a new **Categories** menu it
 
 Now if you navigate to **/suppliers**, that's what you're going to see the below which is not much, but a very good start.
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%287%29.png)
 
 ### Displaying list of suppliers
 

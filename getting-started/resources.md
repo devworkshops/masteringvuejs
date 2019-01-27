@@ -1,5 +1,5 @@
 ---
-description: The recommended resources for this module.
+description: The relevant resources for this module.
 ---
 
 # Resources
@@ -9,4 +9,10 @@ description: The recommended resources for this module.
 {% embed url="https://vuejs.org/" %}
 
 {% embed url="https://getbootstrap.com/" %}
+
+{% embed url="https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets" %}
+
+{% embed url="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en" %}
+
+
 

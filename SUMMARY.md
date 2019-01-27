@@ -30,6 +30,7 @@
 * [Complex Forms](dynamic-forms-and-validation/standard-forms.md)
 * [Advanced Validation](dynamic-forms-and-validation/advanced-validation.md)
 * [Challenges](dynamic-forms-and-validation/challenges.md)
+* [Resources](dynamic-forms-and-validation/resources.md)
 
 ## Testing
 

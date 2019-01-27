@@ -8,7 +8,7 @@ description: >-
 
 ### Getting started
 
-Create a new file named **main.js** and move the contents of the script block into that file:
+Create a new file named **main.js** and move the contents of the script block into the new file:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -23,7 +23,7 @@ var app = new Vue({
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Within **index.html**, remove the script block \(if you haven't already\) and add a reference to the **main.js**.
+Within **index.html**, remove the script block \(if you haven't already\) and then add a reference to the newly created **main.js** file:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -35,7 +35,9 @@ Within **index.html**, remove the script block \(if you haven't already\) and ad
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next, add a reference to Bootstrap from the CDN:
+The above reference should appear just before the closing `body` tag. 
+
+Next, inside the `head` element, add a reference to Bootstrap from the CDN:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -47,7 +49,7 @@ Next, add a reference to Bootstrap from the CDN:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Replace the root element with the following content:
+Replace the existing root element \(has an id equal to 'app'\) with the following content:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -90,7 +92,7 @@ Replace the root element with the following content:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Add a new style sheet file **main.css** and complete as follows:
+Create a new file named **main.css** and add the following style:
 
 {% code-tabs %}
 {% code-tabs-item title="main.css" %}
@@ -106,28 +108,28 @@ Save all changes and view **index.html** in your browser. Your app should displa
 
 ![](../.gitbook/assets/your-first-app-figure-1.png)
 
-### Store and display data
+### Store and display todo items
 
-Store the todo list data. Update the root Vue instance as follows:
+Store the todo items data in the root Vue instances local state. The local state is stored within the data property. Update **main.js** as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
 ```javascript
-  ...
-  data: {
-    todos: [
-      { id: 1, title: "Do this thing.", done: false },
-      { id: 2, title: "Do another thing.", done: false },
-      { id: 3, title: "Do many, many things!", done: false },
-      { id: 4, title: "This thing is done.", done: true }
-    ]
-  }
-  ...
+...
+data: {
+  todos: [
+    { id: 1, title: "Do this thing.", done: false },
+    { id: 2, title: "Do another thing.", done: false },
+    { id: 3, title: "Do many, many things!", done: false },
+    { id: 4, title: "This thing is done.", done: true }
+  ]
+}
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Update the template. First remove the existing todo list items, then add a dynamic list item to display the todos from data:
+Update the template. First remove the existing static todo items, then add a dynamic list item to display the todo items:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -144,11 +146,11 @@ Update the template. First remove the existing todo list items, then add a dynam
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Save changes and verify expected behaviour.
+Save all changes and verify that the todo items display correctly.
 
-### Add new todos
+### Create new todo items
 
-Next, you will add support for creating todos. First add two new data properties:
+Next, you will add support for creating todo items. First add two new properties to local state:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -161,7 +163,7 @@ newTodoTitle: null
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Then, create a method for adding todos:
+Then, to support adding new todo items, create an `addTodo` method within the root instance:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -174,6 +176,8 @@ methods: {
       title: this.newTodoTitle,
       done: false
     });
+    
+    this.newTodoTitle = ''
   }
 }
 ...
@@ -181,7 +185,7 @@ methods: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Finally, update to submit to the new `addTodo` method:
+Finally, update the form to invoke the new `addTodo` method:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -195,11 +199,11 @@ Finally, update to submit to the new `addTodo` method:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Save all changes and verify that you can now add new todos.
+Save all changes and verify that you can now add new todo items.
 
-### Filter todos
+### Filter todo items
 
-Now add support for filtering the todo list. The supported filters are **All**, **Todo**, and **Done**. Add them to data as follows:
+Next you will add support for filtering todo items. The supported filters are **All**, **Todo**, and **Done**. Add the list of valid filters and active filter to local state as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -212,7 +216,7 @@ activeFilter: 'All',
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next update **main.js** and add a new computed property to filter the todos:
+In order to filter the todo items based on the active filter you will use a computed property. Update **main.js** to include a new `filteredTodos` computed property:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -238,25 +242,27 @@ computed: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next, update the template by replacing the links inside the **nav** block with the one below to use the filters within data:
+Next, replace the existing static filter links with dynamic links based on local state. Update **index.html** as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
 ```markup
 ...
-<a class="nav-link" href="#" 
-    v-for="filter in filters" 
-    :key="filter" 
-    :class="{ active: filter === activeFilter }" 
-    @click="activeFilter = filter">
+<nav class="nav nav-pills mb-2">
+  <a class="nav-link" href="#" 
+      v-for="filter in filters" 
+      :key="filter" 
+      :class="{ active: filter === activeFilter }" 
+      @click="activeFilter = filter">
   {{ filter }}
-</a>
+  </a>
+</nav>
 ...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Then update the template to use the `filteredTodos` computed property:
+Finally, update the template to use the `filteredTodos` computed property rather than access the todo items directly:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -268,9 +274,11 @@ Then update the template to use the `filteredTodos` computed property:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Display remaining todos
+Save all changes and verify that the todo items are filtered correctly.
 
-Finally, update the template to display the correct number of remaining items:
+### Display number of remaining todo items
+
+The last step is to update the template to display the correct number of remaining items:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -282,5 +290,7 @@ Finally, update the template to display the correct number of remaining items:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Save changes and verify that the behaviour is as expected.
+Save the change and verify that number of remaining todo items is correct, and updates when items are added or marked as done.
+
+
 

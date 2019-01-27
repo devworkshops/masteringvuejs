@@ -94,9 +94,40 @@ created(){
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-We can see how the data goes from the parent to the child, we need to see now how the data goes from the child to the parent and for that we're going to introduce custom events. 
+We can see how the data goes from the parent to the child, we need to see now how the data goes from the child to the parent and for that we're going to introduce custom events. In the **index.html**, that's how the event is hooked up.
 
-```text
-
+{% code-tabs %}
+{% code-tabs-item title="index.html" %}
+```markup
+...
+<todo-filter :default-filter="activeFilter" @change="activeFilter = $event">
+</todo-filter>
+...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Now it's time to emit the event from the component:
+
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
+```javascript
+...
+<a class="nav-link" href="#" v-for="filter in filters" 
+    :key="filter" 
+    :class="{ active: filter === activeFilter }"
+    @click="changeFilter(filter)"> {{ filter }} </a>
+...
+methods: {
+  changeFilter(filter) {
+    this.activeFilter = filter;
+    this.$emit("change", filter);
+  }
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+The cycle is now closed :D
 

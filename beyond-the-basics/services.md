@@ -20,7 +20,7 @@ npm i -g json-server
 
 Second we're going to create a **db.json** in the root folder of our application to host our whole mock database content. You can copy the content of our highly confidential database here
 
-{% file src="../.gitbook/assets/db.json" caption="db.json" %}
+{% file src="../.gitbook/assets/db \(1\).json" caption="db.json" %}
 
 And to run you can
 
@@ -50,17 +50,17 @@ const apiClient = axios.create({
   }
 });
 
-export const SupplierService = {
-  getSuppliers() {
+export const SuppliersService = {
+  getAll() {
     return apiClient.get("/suppliers");
   },
-  getSupplier(id) {
+  get(id) {
     return apiClient.get("/suppliers/" + id);
   },
-  updateSupplier(supplier) {
+  update(supplier) {
     return apiClient.put("/suppliers/" + supplier.id, supplier);
   },
-  createSupplier(supplier) {
+  create(supplier) {
     return apiClient.post("/suppliers", supplier);
   }
 };
@@ -78,7 +78,7 @@ Let's update the **SupplierList.vue** to get the suppliers from the API instead 
 ```markup
 <script>
 // importing the newly created service
-import { SupplierService } from "@/services/NorthwindService.js";
+import { SuppliersService } from "@/services/NorthwindService.js";
 
 export default {
   data() {
@@ -90,7 +90,7 @@ export default {
   // this is one of the component's lifecycle hooks
   // that's going to trigger as soon as the component is created
   created() {
-    SupplierService.getSuppliers()
+    SuppliersService.getAll()
       .then(r => (this.suppliers = r.data))
       .catch(err => console.error(err));
   }
@@ -102,16 +102,16 @@ export default {
 
 The list of suppliers looks way more realistic now.
 
-![](../.gitbook/assets/suppliers-step-2.jpg)
+![](../.gitbook/assets/image%20%283%29.png)
 
 ### Updating SupplierEdit.vue
 
-We now have the SupplierService, so let's update the **SupplierEdit.vue** file to use the update method and save any update from the user. First we're going to create a **save** button to invoke a **save** method.
+We now have the SuppliersService, so let's update the **SupplierEdit.vue** file to use the update method and save any update from the user. First we're going to create a **save** button to invoke a **save** method.
 
 {% code-tabs %}
 {% code-tabs-item title="SupplierEdit.vue" %}
 ```markup
-<button @click.prevent="save()" class="btn btn-primary" id="saveButton">Save</button>
+<button @click="save()" class="btn btn-primary" id="saveButton">Save</button>
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -122,7 +122,7 @@ In our **SupplierEdit** component, we're going to make a few changes. We're goin
 {% code-tabs-item title="SupplierEdit.vue" %}
 ```markup
 <script>
-import { SupplierService } from "@/services/NorthwindService.js";
+import { SuppliersService } from "@/services/NorthwindService.js";
 
 export default {
   name: "SupplierEdit",
@@ -137,7 +137,7 @@ export default {
   },
   created() {
     if (this.id) {
-      SupplierService.getSupplier(this.id).then(r => (this.model = r.data));
+      SuppliersService.get(this.id).then(r => (this.model = r.data));
     }
   },
   mounted() {
@@ -147,7 +147,7 @@ export default {
   },
   methods: {
     save() {
-        SupplierService.updateSupplier(this.model)
+        SuppliersService.update(this.model)
           .then(r => this.navigateBack())
           .catch(err => console.error(err));
     },

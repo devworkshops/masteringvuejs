@@ -9,7 +9,7 @@ description: >-
 
 ### Creating list component
 
-We're going to create now a new folder under **views** called **Suppliers** and this will contain any view related to suppliers, in our case what we're looking to build is the list and edit views. So let's start by creating a new **SupplierList.vue** file which is not going to contain much to start with, just a header.
+Within **views,** create a new folder called **Suppliers**. This will contain any view related to suppliers, in our case what we're looking to build is the list and edit views. So let's start by creating a new **SupplierList.vue** file which is not going to contain much to start with, just a header.
 
 {% code-tabs %}
 {% code-tabs-item title="SupplierList.vue" %}
@@ -30,42 +30,34 @@ We're going to update the **router.js** to include this view as a route.
 {% code-tabs %}
 {% code-tabs-item title="router.js" %}
 ```javascript
-/*...*/
+...
 {
   path: "/suppliers",
   name: "suppliers",
   component: () => import("./views/Suppliers/SupplierList.vue")
 }
-/*...*/
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
 ### Updating navigation
 
-In the previous section you might have noticed that in the **App.vue** file there are a few router links, so we're going to update it to also include the link to the suppliers route just created
+Next update the **NavBar.vue** component to include a new **Categories** menu item:
 
 {% code-tabs %}
-{% code-tabs-item title="App.vue" %}
+{% code-tabs-item title="NavBar.vue" %}
 ```markup
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <!--Just created-->
-      <router-link to="/suppliers">Suppliers</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
-</template>
+<li class="nav-item">
+    <router-link to="/suppliers" :exact="true" class="nav-link">Suppliers</router-link>
+</li>
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
 Now if you navigate to **/suppliers**, that's what you're going to see the below which is not much, but a very good start.
 
-![](../.gitbook/assets/suppliers-step-0.jpg)
+![](../.gitbook/assets/image%20%286%29.png)
 
 ### Displaying list of suppliers
 
@@ -125,36 +117,36 @@ We're going to then update our template so we can display it. It doesn't look aw
 <template>
   <div>
     <h1>Suppliers</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Title</th>
-          <th>City</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="sup in suppliers" :key="sup.id">
-          <td>{{sup.companyName}}</td>
-          <td>{{sup.contactName}}</td>
-          <td>{{sup.contactTitle}}</td>
-          <td>{{sup.address.city}}</td>
-          <td>
-            <router-link :to="{name:'suppliers-edit',params:{id:sup.id, supplier:sup}}">Edit</router-link>
-          </td>
-        </tr>
-      </tbody>
+    <table class="table" v-if="suppliers.length > 0">
+      <tr>
+        <th>Company Name</th>
+        <th>Contact Name</th>
+        <th>Contact Title</th>
+        <th>Address City</th>
+        <th>Actions</th>
+      </tr>
+      <tr v-for="supplier in suppliers" :key="supplier.id">
+        <td>{{ supplier.companyName }}</td>
+        <td>{{ supplier.contactName }}</td>
+        <td>{{ supplier.contactTitle }}</td>
+        <td>{{ supplier.address.city }}</td>
+        <td>
+          <router-link
+            tag="button"
+            :to="{ name: 'suppliers-edit', params: { id: supplier.id } }"
+            class="btn btn-primary"
+            >Edit</router-link
+          >
+        </td>
+      </tr>
     </table>
   </div>
 </template>
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-![That&apos;s how it should be looking at this stage](../.gitbook/assets/suppliers-step-1.jpg)
+![](../.gitbook/assets/image%20%284%29.png)
 
 ### Creating edit route
 
@@ -183,7 +175,7 @@ You should know the drill at this point, so simply create a **SupplierEdit.vue**
 <script>
 export default {
   props: {
-    id: String | Number,
+    id: Number,
     supplier: Object
   }
 };
@@ -224,5 +216,6 @@ The template at this point will be super simple, just to display the data.
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-In the next section we're going to update this component so we can update a supplier, but for that we're going to introduce the concept of service and api calls.
+  
+In the next section we're going to update this component so we can update a supplier, but for that we're going to introduce the concept of service and API calls.
 

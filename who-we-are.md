@@ -10,7 +10,7 @@ Jason Taylor is a solution architect, trainer, mentor, and full stack developer 
 
 ## Thiago Passos
 
-![](.gitbook/assets/image%20%284%29.png)
+![](.gitbook/assets/image%20%289%29.png)
 
 Twitter: [@thiagospassos](https://twitter.com/thiagospassos)
 

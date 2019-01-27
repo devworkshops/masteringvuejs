@@ -23,7 +23,17 @@ var app = new Vue({
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Within **index.html**, remove the script block \(if you haven't already\)
+Within **index.html**, remove the script block \(if you haven't already\) and add a reference to the **main.js**.
+
+{% code-tabs %}
+{% code-tabs-item title="index.html" %}
+```markup
+...
+<script src="main.js"></script>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 Next, add a reference to Bootstrap from the CDN:
 
@@ -228,7 +238,7 @@ computed: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next, update the template to use the filters within data:
+Next, update the template by replacing the links inside the **nav** block with the one below to use the filters within data:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}

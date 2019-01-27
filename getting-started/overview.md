@@ -22,7 +22,6 @@ Start by creating a new project folder named **getting-started**. Open the newly
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
 <body>
     
@@ -32,7 +31,7 @@ Start by creating a new project folder named **getting-started**. Open the newly
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next, reference Vue within the application using the following script reference:
+Next, reference **Vue** within the head tag using the following script reference:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -58,7 +57,7 @@ Then, add a `div` element to contain a simple message:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Finally, add a script block to contain the root Vue instance:
+Finally, add a script block to contain the root **Vue** instance. It's important to mention here that this script block needs to come after everything else.
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}

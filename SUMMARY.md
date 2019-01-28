@@ -10,7 +10,7 @@
 * [Challenges](getting-started/challenges.md)
 * [Resources](getting-started/resources.md)
 
-## Beyond the Basics
+<!-- ## Beyond the Basics
 
 * [Overview](beyond-the-basics/overview.md)
 * [Components](beyond-the-basics/components.md)
@@ -75,4 +75,4 @@
 * [Continuous Integration](packaging-and-deploying/overview.md)
 * [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
 * [URL Rewrite](packaging-and-deploying/url-rewrite.md)
-
+ -->

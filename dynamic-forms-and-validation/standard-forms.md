@@ -174,7 +174,7 @@ Then update the template as follows:
         <div class="clearfix">
             <h1 class="float-left">Products</h1>
             <router-link tag="button" class="btn btn-primary float-right"
-                :to="{ name: 'product-edit', params: { id: 0 } }">Add</router-link>
+                :to="{ name: 'products-edit', params: { id: 0 } }">Add</router-link>
         </div>
         <table class="table">
             <tr>
@@ -192,7 +192,7 @@ Then update the template as follows:
                 <td>
                     <div class="btn-group" role="group">
                         <router-link tag="button" 
-                            :to="{name:'product-edit',params:{id:product.id}}" class="btn btn-secondary">Edit</router-link>
+                            :to="{name:'products-edit',params:{id:product.id}}" class="btn btn-secondary">Edit</router-link>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                 </td>

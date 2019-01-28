@@ -136,7 +136,7 @@ Save all changes and ensure that you can now navigate to the new products page.
 The next step is to update the `ProductList` component to display the list of products. Start by retrieving the products using the newly created `ProductService`. Within the script block, add the following code:
 
 {% code-tabs %}
-{% code-tabs-item title="CategoryList.vue" %}
+{% code-tabs-item title="ProductList.vue" %}
 ```javascript
 ...
 import { ProductsService } from '@/services/NorthwindService.js'
@@ -166,7 +166,7 @@ export default {
 Then update the template as follows:
 
 {% code-tabs %}
-{% code-tabs-item title="CategoryList.vue" %}
+{% code-tabs-item title="ProductList.vue" %}
 ```markup
 ...
 <template>

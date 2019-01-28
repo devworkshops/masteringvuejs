@@ -26,13 +26,3 @@
 * [Globally registering components and filters](beyond-the-basics/globally-registering-components-and-filters.md)
 * [Challenges](beyond-the-basics/challenges.md)
 * [Resources](beyond-the-basics/resources.md)
-
-## Dynamic Forms and Validation
-
-* [Inline Forms](dynamic-forms-and-validation/overview.md)
-* [Simple Validation](dynamic-forms-and-validation/simple-validation.md)
-* [Complex Forms](dynamic-forms-and-validation/standard-forms.md)
-* [Advanced Validation](dynamic-forms-and-validation/advanced-validation.md)
-* [Challenges](dynamic-forms-and-validation/challenges.md)
-* [Resources](dynamic-forms-and-validation/resources.md)
-

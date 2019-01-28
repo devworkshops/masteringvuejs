@@ -1,9 +1,3 @@
----
-description: >-
-  In this section you will build your first non-trivial application, a simple
-  todo list.
----
-
 # Your First App
 
 ### Getting started

@@ -1,10 +1,3 @@
----
-description: >-
-  Hello and welcome! In this section we will get started, where we should always
-  get started with any new framework - Hello, World! Follow the steps below to
-  start your journey towards Mastering Vue.js.
----
-
 # Hello, World!
 
 ### Creating a new app

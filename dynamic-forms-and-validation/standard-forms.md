@@ -6,7 +6,7 @@ description: >-
 
 # Complex Forms
 
-### Create the Products service
+## Create the Products service
 
 In order to support creating, updating and deleting products, add a new `ProductsService`within the **NorthwindService.js** file:
 
@@ -38,7 +38,7 @@ export const ProductsService = {
 
 Like the previously created `CategoriesService`, this service simply utilises [Axios](https://github.com/axios/axios) to make HTTP requests against the backend API.
 
-### Creating new components
+## Creating new components
 
 Start by creating a component to display a list of categories. Within the **views** folder, create a folder named **Products**. Within the new folder, create a file named **ProductList.vue** and implement as follows:
 
@@ -89,7 +89,7 @@ export default {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Update the site navigation
+## Update the site navigation
 
 Add a Products menu item to the site navigation bar. Open **NavBar.vue** and update as follows:
 
@@ -131,7 +131,7 @@ Next add routes to support the new components within **router.js**:
 
 Save all changes and ensure that you can now navigate to the new products page.
 
-### Displaying the list of products
+## Displaying the list of products
 
 The next step is to update the `ProductList` component to display the list of products. Start by retrieving the products using the newly created `ProductService`. Within the script block, add the following code:
 
@@ -209,9 +209,9 @@ Save all changes and refresh the site. Ensure that you can view a list of catego
 
 ![](../.gitbook/assets/standard-forms-animation-1.gif)
 
-### Adding and editing products
+## Adding and editing products
 
-Support for adding and editing products will be implemented within the `ProductEdit` component. When navigating to the component, an `id` property will be included in the query string. If `id` is zero, then the form will be in add  mode. If not, the form will be in edit mode. 
+Support for adding and editing products will be implemented within the `ProductEdit` component. When navigating to the component, an `id` property will be included in the query string. If `id` is zero, then the form will be in add mode. If not, the form will be in edit mode.
 
 This component will require a list of categories and suppliers, and access to a specific product \(if editing\). Start by updating **ProductEdit.vue** to import the required services:
 
@@ -397,7 +397,7 @@ That completes adding and editing products. Ensure that this feature is behaving
 
 ![](../.gitbook/assets/standard-forms-animation-2%20%281%29.gif)
 
-### Deleting products
+## Deleting products
 
 The delete button is not working. You can fix that now. Update **ProductList.vue** as follows.  
 First add a click event on the delete button:

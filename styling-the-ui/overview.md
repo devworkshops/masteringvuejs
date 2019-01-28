@@ -6,7 +6,7 @@ description: >-
 
 # Bootstrap + Vue
 
-### Install and configure
+## Install and configure
 
 Bootstrap-Vue provides one of the most comprehensive implementations of Bootstrap. To get started, use npm to install the package:
 
@@ -54,7 +54,7 @@ Finally, within the **public** folder, completely remove the reference to Bootst
 
 Save all changes and verify that the site appears normally before continuing to the next section.
 
-### Styling the site navigation
+## Styling the site navigation
 
 The site navigation looks good, but the active page is not highlighted. For example, if you navigate to the **Products** page, the **Home** page is still highlighted in the nav menu. This is an easy fix with the Bootstrap-Vue `Navbar` component. Open the **NavBar.vue** file and replace the existing navbar with the following Bootstrap-Vue navbar:
 
@@ -85,9 +85,9 @@ The site navigation looks good, but the active page is not highlighted. For exam
 
 Now save the changes and verify that the correct page is highlighted when you navigate. This small change resulted in reduced code and improved functionality.
 
-### Adding sorting to tables
+## Adding sorting to tables
 
-In this section you will add the capability to sort the products list using the  component using the Bootstrap-Vue `Table` component. Open the **ProductsList.vue** file and replace the existing table with the following:
+In this section you will add the capability to sort the products list using the component using the Bootstrap-Vue `Table` component. Open the **ProductsList.vue** file and replace the existing table with the following:
 
 {% code-tabs %}
 {% code-tabs-item title="ProductsList.vue" %}
@@ -143,7 +143,7 @@ Finally, add the missing Edit and Delete actions:
 
 All done. Once again, these small changes have resulted in less code and more features.
 
-### Adding paging to tables
+## Adding paging to tables
 
 In this section you add support for paging to the products list. First update the `ProductsService` to include a new method that supports paging:
 
@@ -209,7 +209,7 @@ Finally, add the Bootstrap-Vue `Pagination` component to the template \(immediat
 
 That's all. You've added complete support for paging with some very basic steps.
 
-### Adding confirmation modals
+## Adding confirmation modals
 
 In this section you will add a confirm deletion modal before deleting a product. Begin by adding a method to request deletion:
 
@@ -262,7 +262,7 @@ deleteConfirmed() {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-The `remove` method has been renamed to `deleteConfirmed`. This method will be invoked when the user confirms product deletion. 
+The `remove` method has been renamed to `deleteConfirmed`. This method will be invoked when the user confirms product deletion.
 
 Now, add the delete modal directly after the pagination controls:
 
@@ -304,22 +304,4 @@ And finally, wire up the delete method to invoke `deleteRequested` as follows:
 Before continuing to the next topic, save all changes and verify the behaviour is as expected:
 
 ![](../.gitbook/assets/bootstrap-vue-animation-1.gif)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

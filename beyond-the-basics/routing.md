@@ -1,6 +1,6 @@
 # Routing
 
-### Installation
+## Installation
 
 The easiest way by far is going to the `vue ui` and add it as a plugin. This will not only install the dependencies but also wire up all you need for you route to work.
 
@@ -40,8 +40,6 @@ export default new Router({
     }
   ]
 });
-
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -84,5 +82,5 @@ There's only one thing left, where do the components will be rendered when a rou
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-For more information about routing, check the [official documentation](https://router.vuejs.org/), it's pretty comprehensive. 
+For more information about routing, check the [official documentation](https://router.vuejs.org/), it's pretty comprehensive.
 

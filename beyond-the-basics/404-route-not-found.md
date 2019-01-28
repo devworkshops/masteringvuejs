@@ -6,7 +6,7 @@ description: >-
 
 # 404: Route Not Found?
 
-Let's try going to the **/products** route and see what happens. Obviously, the system is not going to render anything, but it also doesn't fail. 
+Let's try going to the **/products** route and see what happens. Obviously, the system is not going to render anything, but it also doesn't fail.
 
 ![](../.gitbook/assets/not-found-not-implemented.png)
 

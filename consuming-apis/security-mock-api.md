@@ -111,8 +111,6 @@ server.use(router)
 server.listen(3000, () => {
     console.log('Run Auth API Server')
 })
-
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

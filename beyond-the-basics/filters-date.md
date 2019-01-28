@@ -67,7 +67,7 @@ Vue.filter('date', dateFilter)
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Now in our **App.vue** we're going to use this filter to include the year of the copyright. 
+Now in our **App.vue** we're going to use this filter to include the year of the copyright.
 
 {% code-tabs %}
 {% code-tabs-item title="App.vue" %}

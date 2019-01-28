@@ -6,7 +6,7 @@ description: >-
 
 # Advanced Validation
 
-### Install and Configure Vuelidate
+## Install and Configure Vuelidate
 
 [Vuelidate](https://monterail.github.io/vuelidate) provides simple, lightweight model-based validation for Vue.js. The package is installed using npm:
 
@@ -30,7 +30,7 @@ Vue.use(Vuelidate)
 
 With that in place, you are ready to start using Vuelidate.
 
-### Basic validation checks
+## Basic validation checks
 
 Update **ProductEdit.vue** to include validation checks for product name. Product name is required and has a minimum length of 4 characters and a maximum length of 40 characters. First import the required built-in validators:
 
@@ -117,9 +117,9 @@ Then, add the necessary validations:
 ...
 validations: {
     product: {
-    
+
         ...
-        
+
         unitPrice: {
             decimal,
             minValue: minValue(0)
@@ -225,7 +225,7 @@ Save all changes and verify that the validation behaves as expected:
 
 ![](../.gitbook/assets/advanced-validation-animation-1.gif)
 
-### Conditional validation checks
+## Conditional validation checks
 
 In this section you will add an conditional validation check. **Units On Order** must be greater than zero when **Units In Stock** is zero and **Status** is not discontinued.
 
@@ -274,7 +274,7 @@ Finally, add a new invalid feedback element to the units on order form group:
 
 Save all changes and verify that the new validation check works as expected.
 
-### Asynchronous validation checks
+## Asynchronous validation checks
 
 In this final section you will add an asynchronous validation check to ensure that a product name is unique. The implementation will call the backend API to perform the check. Start by adding a new method to the `ProductsService`:
 

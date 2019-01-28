@@ -6,11 +6,11 @@ description: >-
 
 # Services
 
-### Mock API
+## Mock API
 
-Before we can even start talking about services and how to talk to APIs, we need to have an API up and running. There are several places and ways for you to create and host an API, but this is definitely not the focus of this workshop and because of that we're going to use a very cool method to mock our API and a full Restful API to our disposal running locally based on a JSON file. I've recorded a video on how to use, but I'll run through the steps here anyway. 
+Before we can even start talking about services and how to talk to APIs, we need to have an API up and running. There are several places and ways for you to create and host an API, but this is definitely not the focus of this workshop and because of that we're going to use a very cool method to mock our API and a full Restful API to our disposal running locally based on a JSON file. I've recorded a video on how to use, but I'll run through the steps here anyway.
 
-{% embed url="https://www.youtube.com/watch?v=nwtGhyomKCY" %}
+{% embed url="https://www.youtube.com/watch?v=nwtGhyomKCY" caption="" %}
 
 First we need to install **json-server**
 
@@ -40,7 +40,7 @@ And to run you can
 npm run mock-api
 ```
 
-### Creating service
+## Creating service
 
 Now that we have our mock API up and running, we need to create a service to talk to it, and for this service, we're going to need to install a dependency called **axios**. You can either install it using the command line `npm i axios --save` or you use the UI for it.
 
@@ -76,12 +76,11 @@ export const SuppliersService = {
     return apiClient.post("/suppliers", supplier);
   }
 };
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Updating SupplierList.vue
+## Updating SupplierList.vue
 
 Let's update the **SupplierList.vue** to get the suppliers from the API instead of going through a static list.
 
@@ -116,7 +115,7 @@ The list of suppliers looks way more realistic now.
 
 ![](../.gitbook/assets/suppliers-list-axios.png)
 
-### Updating SupplierEdit.vue
+## Updating SupplierEdit.vue
 
 We now have the SuppliersService, so let's update the **SupplierEdit.vue** file to use the update method and save any update from the user. First we're going to create a **save** button to invoke a **save** method.
 
@@ -128,7 +127,7 @@ We now have the SuppliersService, so let's update the **SupplierEdit.vue** file 
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-In our **SupplierEdit** component, we're going to make a few changes. We're going to add a model to data. We're going to hook up the **created** life-cycle hook to get the full details from the API and finally create a **save** method to update the supplier and navigate back to the supplier list. 
+In our **SupplierEdit** component, we're going to make a few changes. We're going to add a model to data. We're going to hook up the **created** life-cycle hook to get the full details from the API and finally create a **save** method to update the supplier and navigate back to the supplier list.
 
 {% code-tabs %}
 {% code-tabs-item title="SupplierEdit.vue" %}

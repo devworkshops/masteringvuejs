@@ -7,7 +7,7 @@ description: >-
 
 # Inline Forms
 
-### Creating the list component
+## Creating the list component
 
 Start by creating a component to display a list of categories. Within the **views** folder, create a new folder named **Categories**. Then, within the new folder, create a new component named **CategoryList.vue** as follows:
 
@@ -30,7 +30,7 @@ export default {}
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Updating the site navigation bar
+## Updating the site navigation bar
 
 Next update the **NavBar.vue** component to include a new **Categories** menu item:
 
@@ -66,7 +66,7 @@ You might have noticed that the route does not exist, add the missing route with
 
 Save all changes and refresh the site. Ensure that you can navigate to the new categories page.
 
-### Create the Categories service
+## Create the Categories service
 
 In order to support creating, updating and deleting categories, add a new `CategoriesService`within the **NorthwindService.js** file:
 
@@ -98,7 +98,7 @@ export const CategoriesService = {
 
 Like the previously created `SuppliersService`, this service simply utilises [Axios](https://github.com/axios/axios) to make HTTP requests against the backend API.
 
-### Displaying the list of categories
+## Displaying the list of categories
 
 The next step is to update the `CategoryList` component to display the list of categories. Start by retrieving the categories using the newly created `CategoryService`. Within the script block, add the following code:
 
@@ -169,7 +169,7 @@ Save all changes and refresh the site. Ensure that you can view a list of catego
 
 ![](../.gitbook/assets/image%20%285%29.png)
 
-### Add support for inline editing and deleting
+## Add support for inline editing and deleting
 
 Adding support for inline editing is straight-forward. For each table row you will add support for two states; display and edit. In the display state, the row will appear as read-only with the edit and delete actions visible. In the edit state, the row will appear as editable with the update and cancel actions visible.
 
@@ -277,7 +277,7 @@ remove(id) {
 
 Save changes and verify that you can now edit, update, and delete categories. In addition, check that you can cancel changes to a category that you are editing.
 
-### Include support for inline adding
+## Include support for inline adding
 
 This component would not be complete without the ability to add new categories. Start by updating the template, add the following table row just before the table's closing tag:
 

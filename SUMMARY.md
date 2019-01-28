@@ -42,6 +42,7 @@
 * [Unit Testing](testing/unit-testing.md)
 * [Integration/E2E Testing](testing/integration-e2e-testing.md)
 * [Challenges](testing/challenges.md)
+* [Resources](testing/resources.md)
 
 ## Styling the UI
 
@@ -74,3 +75,4 @@
 * [Continuous Integration](packaging-and-deploying/overview.md)
 * [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
 * [URL Rewrite](packaging-and-deploying/url-rewrite.md)
+

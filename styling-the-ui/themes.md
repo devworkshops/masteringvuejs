@@ -6,7 +6,7 @@ description: >-
 
 # Themes
 
-### Working with Sass
+## Working with Sass
 
 Vue CLI projects come with support for pre-processors including Sass, Less, and Stylus. Since a CSS pre-processor was not selected when creating this project, you will need to manually install the corresponding webpack loaders:
 
@@ -54,7 +54,7 @@ Then, add a new style block to **App.vue** as follows:
 
 Save all changes and ensure the site loads appears normally. In the following topics, you will optionally choose a new theme and customise the sites appearance.
 
-### Choosing a new theme \(optional\)
+## Choosing a new theme \(optional\)
 
 When building prototypes or line of business applications often choosing a new theme is a good way to get started. Fortunately, there are a number of free themes available at [bootswatch.com](https://bootswatch.com/). In this section you will choose a new theme to apply to your application. Start by installing bootswatch:
 
@@ -83,7 +83,7 @@ Save all changes and ensure that the site is using the chosen theme:
 
 ![](../.gitbook/assets/themes-figure-1.png)
 
-### Customising the theme
+## Customising the theme
 
 In order to customise the theme of the application, you will create a new .scss file that contains the required customisations. Within the **assets** folder, create a new file named **custom.scss**. Then update **App.vue** to reference the new file:
 
@@ -114,8 +114,4 @@ $primary: #c0ff33;
 {% endcode-tabs %}
 
 A good way to get started is to review the \_variables.scss file from your chosen theme. It contains just over one-hundred lines of SCSS that would allow you to customise the entire appearance of your site.
-
-
-
-
 

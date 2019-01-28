@@ -7,15 +7,15 @@ description: >-
 
 # Prettier: Code Style
 
-Even though this topic is not mandatory, it's highly recommended so we keep the code consistent across multiple developers. This might be a discussion to have in the beginning of a project to agree on standards. 
+Even though this topic is not mandatory, it's highly recommended so we keep the code consistent across multiple developers. This might be a discussion to have in the beginning of a project to agree on standards.
 
-### Installing Prettier
+## Installing Prettier
 
 If you haven't do so yet, follow this to have it installed
 
 ![](../.gitbook/assets/prettier.png)
 
-### Configuring Prettier
+## Configuring Prettier
 
 In the root folder of our project, we're going to create a file called **.prettierrc.js** and we're paste this code
 

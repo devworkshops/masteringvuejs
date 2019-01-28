@@ -4,7 +4,7 @@ In the presentation, we've mentioned a lot CI and CD tools available, but for th
 
 They have a great UI for you to create your pipelines, but we're going use YAML because it's super simple to make change to it and to share with other people instead of relying on specific people with enough privileges to make changes.
 
-To start with, we're going to create an **azure-pipelines.yml** file in the root of your repository and we're going to paste this script to it. 
+To start with, we're going to create an **azure-pipelines.yml** file in the root of your repository and we're going to paste this script to it.
 
 {% code-tabs %}
 {% code-tabs-item title="azure-pipelines.yml" %}
@@ -48,7 +48,6 @@ steps:
     inputs:
       PathtoPublish: "dist"
       ArtifactName: frontend
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

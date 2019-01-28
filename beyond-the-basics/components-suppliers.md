@@ -6,7 +6,7 @@ description: >-
 
 # Components: Suppliers
 
-### Creating list component
+## Creating list component
 
 Within **views,** create a new folder called **Suppliers**. This will contain any view related to suppliers, in our case what we're looking to build is the list and edit views. So let's start by creating a new **SupplierList.vue** file which is not going to contain much to start with, just a header.
 
@@ -22,7 +22,7 @@ Within **views,** create a new folder called **Suppliers**. This will contain an
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Creating a route
+## Creating a route
 
 We're going to update the **router.js** to include this view as a route.
 
@@ -40,7 +40,7 @@ We're going to update the **router.js** to include this view as a route.
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Updating navigation
+## Updating navigation
 
 Next update the **NavBar.vue** component to include a new **Categories** menu item:
 
@@ -58,7 +58,7 @@ Now if you navigate to **/suppliers**, that's what you're going to see the below
 
 ![](../.gitbook/assets/suppliers.png)
 
-### Displaying list of suppliers
+## Displaying list of suppliers
 
 Okay, back to the **SupplierList.vue**, we're going to make some meaningful changes so we can actually show a list of suppliers. We're going to start by creating a suppliers property in our data.
 
@@ -103,7 +103,6 @@ export default {
   }
 };
 </script>
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -147,7 +146,7 @@ We're going to then update our template so we can display it. It doesn't look aw
 
 ![](../.gitbook/assets/suppliers-list.png)
 
-### Creating edit route
+## Creating edit route
 
 The main differences to the other route are first we're going to pass an **id** in the path, second we need to set **props** to true otherwise the component won't be able to read the data coming from the query string.
 
@@ -164,7 +163,7 @@ The main differences to the other route are first we're going to pass an **id** 
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Creating edit component
+## Creating edit component
 
 You should know the drill at this point, so simply create a **SupplierEdit.vue** and let's update it. In the script section, the main thing we need to set is the **props** property to allow us receiving the data. In this case we'll be able to get both the **id** or the whole **supplier** model.
 
@@ -219,11 +218,9 @@ The template at this point will be super simple, just to display the data.
     </p>
   </div>
 </template>
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-  
 In the next section we're going to update this component so we can update a supplier, but for that we're going to introduce the concept of service and API calls.
 

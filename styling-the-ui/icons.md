@@ -6,15 +6,15 @@ description: >-
 
 # Icons
 
-### Installing icons
+## Installing icons
 
-Unlike previous versions, Bootstrap does not include an icon library by default. There are many great choices for Vue, a popular one being [Feather](https://feathericons.com/). [Vue-Feather](https://fengyuanchen.github.io/vue-feather/) is a great option when working with Feather icons. To get started, use npm to install the required packages: 
+Unlike previous versions, Bootstrap does not include an icon library by default. There are many great choices for Vue, a popular one being [Feather](https://feathericons.com/). [Vue-Feather](https://fengyuanchen.github.io/vue-feather/) is a great option when working with Feather icons. To get started, use npm to install the required packages:
 
 ```text
 npm install vue-feather feather-icons --save
 ```
 
-### Add icons to the site navigation
+## Add icons to the site navigation
 
 The site navigation will look great if we add some eye catching icons. Open the **NavBar.vue** file, and start by importing Vue-Feather as follows:
 
@@ -76,7 +76,7 @@ Finally, add some additional styles to adjust the layout:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Add icons to action buttons
+## Add icons to action buttons
 
 Adding icons to action buttons will quickly convey the intent, improve the visual appeal, as well as saving screen real estate. Open **CategoryList.vue** and update as follows:
 
@@ -151,20 +151,4 @@ Finally, update the action buttons to add or cancel adding a new category:
 Fantastic. Save your changes and ensure that icons appear as expected:
 
 ![](../.gitbook/assets/icons-animation-1.gif)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

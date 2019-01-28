@@ -1,6 +1,6 @@
 # Globally registering components and filters
 
-The idea for this section is for you not to worry anymore about registering components and filters that are going to be shared across the system.  
+The idea for this section is for you not to worry anymore about registering components and filters that are going to be shared across the system.
 
 You can find more details about the steps below in the [Vue.js documentation](https://vuejs.org/v2/guide/components-registration.html).
 
@@ -57,7 +57,6 @@ requireFilters.keys().forEach(fileName => {
     )
     Vue.filter(componentName, componentConfig.default)
 })
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

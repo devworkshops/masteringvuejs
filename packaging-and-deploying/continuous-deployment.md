@@ -1,6 +1,6 @@
 # Continuous Deployment
 
-It's time to create our release pipeline, but before that we should create a new web app in Azure. 
+It's time to create our release pipeline, but before that we should create a new web app in Azure.
 
 ![Just follow the wizard and you&apos;ll be fine.](../.gitbook/assets/creating-app.jpg)
 

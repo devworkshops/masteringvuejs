@@ -6,7 +6,7 @@ description: >-
 
 # Components
 
-### Creating our first reusable component
+## Creating our first reusable component
 
 Continuing with the **Getting Started** code example, we're going to turn the filter section into a component and we'll see how everything fit together. First let's copy the nav block into the template property of our new component:
 
@@ -49,7 +49,7 @@ data() {
 
 The component now is self contained and it works well on its own, but over application is not fully functional yet. We need to the default value of the `activeFilter` to come through from the parent component and when the filter changes, we need to notify the parent component about the change.
 
-### Communicating between components
+## Communicating between components
 
 The way we send data across from a parent to a child component is via `props`. We're going to define a new parameter this way
 
@@ -79,7 +79,7 @@ Now in the **index.html**, we're going to pass the parameter this way
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-We're going to introduce now the `created` life cycle hooks to set the `activeFilter`. As soon as the `todo-filter`, the parent component is going to send the value of its `activeFilter` to it. 
+We're going to introduce now the `created` life cycle hooks to set the `activeFilter`. As soon as the `todo-filter`, the parent component is going to send the value of its `activeFilter` to it.
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -89,7 +89,6 @@ created(){
     this.activeFilter = this.defaultFilter
 }
 ...
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

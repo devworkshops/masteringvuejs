@@ -4,7 +4,7 @@
 {% code-tabs-item title="web.config" %}
 ```markup
 <?xml version="1.0"?>
- 
+
 <configuration>
     <system.webServer>
         <staticContent>
@@ -29,7 +29,7 @@
         </rules>
     </rewrite>
   </system.webServer>
-</configuration> 
+</configuration>
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

@@ -15,7 +15,7 @@ The following steps outline the procedure to add Vuex to an existing applciation
    ```
 
    Vue UI will open automatically after a few moments:  
-    ![](../.gitbook/assets/installing-vuex-figure-1.png) 
+   ![](../.gitbook/assets/installing-vuex-figure-1.png)
 
 2. Navigate to the **Northwind Traders** project
 3. Select **Plugins** from the side navigation bar

@@ -1,16 +1,20 @@
+---
+description: 'In this topic, we''re going to cover how to unit test and also practice TDD'
+---
+
 # Unit Testing
 
 If you were brave enough to run `npm run test:unit` in the previous section, that's what you were expecting to see:
 
 ![By default Jest automatically creates a sample test and it does pass :\)](../.gitbook/assets/unit-test-run.jpg)
 
-### Creating test case
+## Creating test case
 
 What about practicing a bit of TDD \(test-driven development\)? Let's create a new test spec file called **counter.spec.js** which is going to be the test cases for a component that still doesn't exist.
 
 We basically want to test a counter component which counts the number of times the user clicks on the button, if the user clicks with the right button it should then decrease the value. We also want different CSS classes for when the count is positive and negative.
 
-The spec below will test all those things, but it's not that readable. There's a lot of room for improvement. 
+The spec below will test all those things, but it's not that readable. There's a lot of room for improvement.
 
 {% code-tabs %}
 {% code-tabs-item title="counter.spec.js" %}
@@ -93,14 +97,13 @@ describe("Counter.vue", () => {
     expect(wrapper.find("button").classes("negative")).toBeTruthy();
   });
 });
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
 Try running the tests now with `npm run test:unit`, you should get a bunch of errors, but as you implement your components, the errors will go away.
 
-### Implementing component
+## Implementing component
 
 Let's now create the component to meet all the requirements from the unit test. We're going to create a **Counter.vue** under the components folder.
 

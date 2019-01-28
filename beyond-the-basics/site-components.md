@@ -6,7 +6,7 @@ description: >-
 
 # Site Components
 
-### Update the site layout
+## Update the site layout
 
 Set the site's title to _Northwind Traders_. Within the **public** folder, open **index.html** and update the site title:
 
@@ -32,7 +32,7 @@ This site will use the Bootstrap UI framework, so add the following style sheet 
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### Adding a site navbar
+## Adding a site navbar
 
 Every site needs a navbar. Within the **components** folder, create a new file **NavBar.vue** and update as follows:
 
@@ -149,7 +149,7 @@ Save all changes and verify that the site appears correctly:
 
 ![](../.gitbook/assets/image%20%282%29.png)
 
-### Adding a site footer
+## Adding a site footer
 
 Adding a site footer is easy. Open **App.vue** and include the following footer before the final closing `div` tag:
 

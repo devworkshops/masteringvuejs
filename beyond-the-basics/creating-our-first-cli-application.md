@@ -6,7 +6,7 @@ description: >-
 
 # Your First CLI App
 
-### Using the CLI
+## Using the CLI
 
 ```text
 vue create northwind-traders
@@ -25,7 +25,7 @@ npm run serve
 
 ![Horay!!!](../.gitbook/assets/npm-run-serve%20%281%29.jpg)
 
-### Using the UI
+## Using the UI
 
 We can achieve the very same thing using the Vue UI. Let's give it a try
 

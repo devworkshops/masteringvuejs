@@ -1,3 +1,7 @@
+---
+description: This topic includes the steps to set up state management.
+---
+
 # Installing Vuex
 
 The first step is to install Vuex.
@@ -6,21 +10,21 @@ The first step is to install Vuex.
 
 There are numerous methods to install Vuex including direct download, CDN, NPM and Yarn. Using one of these options you also need to configure Vuex after installation. However the quickest approach is to use the Vue UI, as it completely automates the installation and configuration for you.
 
-The following steps outline the procedure to add Vuex to an existing applciation with the Vue UI.
+The following steps outline the procedure to add Vuex to an existing application with the Vue UI. First, launch **Vue UI** from the command-line by running the command:
 
-1. Launch **Vue UI** from the command-line by running the command
+```bash
+vue ui
+```
 
-   ```bash
-   vue ui
-   ```
+Navigate to the **Northwind Traders** project and select **Plugins** from the side navigation bar.
 
-   Vue UI will open automatically after a few moments:  
-   ![](../.gitbook/assets/installing-vuex-figure-1.png)
+Click **Add vuex** at the top of the **Project plugins** page:
 
-2. Navigate to the **Northwind Traders** project
-3. Select **Plugins** from the side navigation bar
-4. Click **Add vuex** at the top of the **Project plugins** page:  ![](../.gitbook/assets/installing-vuex-figure-2.png) 
-5. When prompted, click **Continue** and wait for the installation process to complete:  ![](../.gitbook/assets/installing-vuex-figure-3.png) 
+![](../.gitbook/assets/image%20%285%29.png)
+
+When prompted, click **Continue** and wait for the installation process to complete:  
+
+![](../.gitbook/assets/image%20%286%29.png)
 
 Once complete, the Vuex plugin will have added / updated the following files:
 

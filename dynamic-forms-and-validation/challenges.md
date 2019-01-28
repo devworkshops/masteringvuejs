@@ -1,3 +1,7 @@
+---
+description: Use the following challenges to test and build your skills.
+---
+
 # Challenges
 
 1. Add validation checks when updating an existing category.

@@ -1,144 +1,182 @@
+---
+description: >-
+  In this section you will update the application with a new notifications
+  feature.
+---
+
 # Changing State
 
-In this section you will update the application with a new notifications feature. This feature will allow notifications, such as success and error messages, to be raised from anywhere within the application. This feature will leverage the Vuex store in order to provide a centralised location to keep, raise, and dismiss notifications.
+This feature will allow notifications, such as success and error messages, to be raised from anywhere within the application. This feature will leverage the Vuex store in order to provide a centralised location to keep, raise, and dismiss notifications.
 
-1. In Visual Studio Code, create a new `/components/NotificationsPanel.vue` file
-2. Implement the new component as follows:
+In Visual Studio Code, create a new **/components/NotificationPanel.vue** file
 
-   ```text
-   <template>
-       <div>
-           <div class="clearfix">
-               <h4 class="float-left pt-1">Notifications</h4>
-               <b-button variant="link" v-b-toggle.collapseNotifications class="float-right">
-                   <x-icon></x-icon>
-               </b-button>
-           </div>
+Implement the new component as follows:
 
-           <p v-if="notifications.length === 0">No notifications for this session.</p>
+{% code-tabs %}
+{% code-tabs-item title="NotificationPanel.vue" %}
+```markup
+<template>
+    <div>
+        <div class="clearfix">
+            <h4 class="float-left pt-1">Notifications</h4>
+            <b-button variant="link" v-b-toggle.collapseNotifications class="float-right">
+                &times;
+            </b-button>
+        </div>
 
-           <b-alert show dismissible
-               v-for="notification in notifications"
-               :key="notification.id"
-               :variant="notification.context"
-               @dismissed="dismissNotification(notification.id)">
-               <strong>{{ notification.context === 'success' ? 'Success' : 'Error' }}</strong>
-               <br>
-               {{ notification.message }}
-           </b-alert>
-       </div>
-   </template>
+        <p v-if="notifications.length === 0">No notifications for this session.</p>
 
-   <script>
-   import { XIcon } from 'vue-feather-icons'
+        <b-alert show dismissible
+            v-for="notification in notifications"
+            :key="notification.id"
+            :variant="notification.context"
+            @dismissed="dismissNotification(notification.id)">
+            <strong>{{ notification.context === 'success' ? 'Success' : 'Error' }}</strong>
+            <br>
+            {{ notification.message }}
+        </b-alert>
+    </div>
+</template>
 
-   export default {
-       components: {
-           XIcon
-       },
-       data() {
-           return {
-               notifications: [
-                   {
-                       id: 1,
-                       context: 'success',
-                       message: 'A new product has been created.'
-                   },
-                   {
-                       id: 2,
-                       context: 'danger',
-                       message: 'A product has failed to update.'
-                   }
-               ]
-           }
-       },
-       methods: {
-           dismissNotification(id) {
-               this.notifications = this.notifications.filter(n => n.id !== id)
-           }
-       }
-   }
-   </script>
+<script>
+export default {
+    data() {
+        return {
+            notifications: [
+                {
+                    id: 1,
+                    context: 'success',
+                    message: 'A new product has been created.'
+                },
+                {
+                    id: 2,
+                    context: 'danger',
+                    message: 'A product has failed to update.'
+                }
+            ]
+        }
+    },
+    methods: {
+        dismissNotification(id) {
+            this.notifications = this.notifications.filter(n => n.id !== id)
+        }
+    }
+}
+</script>
 
-   <style scoped>
-   .feather {
-       height: 28px;
-       width: 28px;
-       color: #999;
-   }
-   </style>
-   ```
+<style scoped>
+.feather {
+    height: 28px;
+    width: 28px;
+    color: #999;
+}
+</style>
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   Take a moment to review the new component, and ensure you are familar with the concepts used within.
+Take a moment to review the new component, and ensure you are familiar with the concepts used within.
 
-3. Open `App.vue` and import the new `NotificationPanel` component:
+Open **App.vue** and import the new `NotificationPanel` component:
 
-   ```text
-   import NotificationPanel from '@/components/NotificationPanel.vue'
-   ```
+{% code-tabs %}
+{% code-tabs-item title="App.vue" %}
+```javascript
+...
+import NotificationPanel from '@/components/NotificationPanel.vue'
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-4. Update the template within `App.vue` as follows:
+Update the template within **App.vue** as follows:
 
-   ```text
-   <b-container>
-       <b-row>
-           <b-col>
-               <main role="main" class="flex-shrink-0">
-                   <div class="container">
-                       <router-view/>
-                   </div>
-               </main>
-           </b-col>
-           <b-collapse id="collapseNotifications" class="border-left pl-2">
-               <b-col>
-                   <notification-panel></notification-panel>
-               </b-col>
-           </b-collapse>
-       </b-row>
-   </b-container>
-   ```
+{% code-tabs %}
+{% code-tabs-item title="App.vue" %}
+```markup
+...
+<b-container>
+    <b-row>
+        <b-col>
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <router-view/>
+                </div>
+            </main>
+        </b-col>
+        <b-collapse id="collapseNotifications" class="border-left pl-2">
+            <b-col>
+                <notification-panel></notification-panel>
+            </b-col>
+        </b-collapse>
+    </b-row>
+</b-container>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   In the above code, the container contains two columns. The first for the main content and the second for the notification panel.
+In the above code, the container contains two columns. The first for the main content and the second for the notification panel.
 
-5. Open `NavBar.vue` and update the template as follows:
+Add the following style to control the size of the notifications panel:
 
-   ```text
-   <b-collapse is-nav id="navbarCollapse">
-       <b-navbar-nav class="mr-auto">
-           <b-nav-item to="/" :exact="true">
-               <home-icon></home-icon>Home
-           </b-nav-item>
-           <b-nav-item to="/categories">
-               <list-icon></list-icon>Categories
-           </b-nav-item>
-           <b-nav-item to="/products">
-               <shopping-cart-icon></shopping-cart-icon>Products
-           </b-nav-item>
-           <b-nav-item to="/suppliers">
-               <package-icon></package-icon>Suppliers
-           </b-nav-item>
-           <b-nav-item to="/about">
-               <info-icon></info-icon>About
-           </b-nav-item>
-       </b-navbar-nav>
-       <b-navbar-nav>
-           <b-nav-item v-b-toggle.collapseNotifications>
-               <bell-icon></bell-icon>Notifications
-               <b-badge>2</b-badge>
-           </b-nav-item>
-       </b-navbar-nav>
-   </b-collapse>
-   ```
+{% code-tabs %}
+{% code-tabs-item title="App.vue" %}
+```css
+...
+#collapseNotifications {
+    width: 30%;
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   The first navbar list contains the standard nav items. The second list contains the notifications icon. Clicking this icon will toggle the notifications panel on and off.
+Open **NavBar.vue** and update the template as follows:
 
-   ![](../.gitbook/assets/changing-state-figure-1.png)
+{% code-tabs %}
+{% code-tabs-item title="NavBar.vue" %}
+```markup
+...
+<b-collapse is-nav id="navbarCollapse">
+    <b-navbar-nav class="mr-auto">
+        <b-nav-item to="/" :exact="true">
+            <vue-feather type="home"></vue-feather>Home
+        </b-nav-item>
+        <b-nav-item to="/suppliers">
+            <vue-feather type="shopping-cart"></vue-feather>Suppliers
+        </b-nav-item>
+        <b-nav-item to="/categories">
+            <vue-feather type="list"></vue-feather>Categories
+        </b-nav-item>
+        <b-nav-item to="/products">
+            <vue-feather type="package"></vue-feather>Products
+        </b-nav-item>
+    </b-navbar-nav>
+    <b-navbar-nav>
+        <b-nav-item v-b-toggle.collapseNotifications>
+            <vue-feather type="bell"></vue-feather>Notifications
+            <b-badge>2</b-badge>
+        </b-nav-item>
+    </b-navbar-nav>
+</b-collapse>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   Take a moment to explore the feature to ensure that you understand the basic functionality.
+The first navbar list contains the standard nav items. The second list contains the notifications icon. Clicking this icon will toggle the notifications panel on and off.
 
-Currently, the notifications are stored within the NotificationPanel component:
+![](../.gitbook/assets/image%20%2810%29.png)
 
-```text
+Take a moment to explore the feature to ensure that you understand the basic functionality.
+
+Currently, the notifications are stored within the `NotificationPanel` component:
+
+{% code-tabs %}
+{% code-tabs-item title="NotificationPanel.vie" %}
+```javascript
+...
 data() {
     return {
         notifications: [
@@ -155,215 +193,321 @@ data() {
         ]
     }
 },
+...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 Since these notifications will only be accessible to this component, you will need to move them into the store.
 
-1. Open `store.js` for editing and add the sample notifications into state:
+Open **store.js** for editing and add the sample notifications into state:
 
-   ```text
-   state: {
-       release: {
-           build: '1.0.0',
-           environment: 'Development'
-       },
-       healthChecks: [
-           { title: 'SMTP check', passed: true },
-           { title: 'Database check', passed: true }
-       ],
-       notifications: [
-           {
-               id: 1,
-               context: 'success',
-               message: 'A new product has been created.'
-           },
-           {
-               id: 2,
-               context: 'danger',
-               message: 'A product has failed to update.'
-           }
-       ]
-   }
-   ```
+{% code-tabs %}
+{% code-tabs-item title="store.js" %}
+```text
+...
+state: {
+    release: {
+        build: '1.0.0',
+        environment: 'Development'
+    },
+    healthChecks: [
+        { title: 'SMTP check', passed: true },
+        { title: 'Database check', passed: true }
+    ],
+    notifications: [
+        {
+            id: 1,
+            context: 'success',
+            message: 'A new product has been created.'
+        },
+        {
+            id: 2,
+            context: 'danger',
+            message: 'A product has failed to update.'
+        }
+    ]
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-2. Back within `NotificationPanel.vue`, delete the `data` property altogether as the component will no longer have local state.
-3. In order to reference the notifications within the store you can use `mapState`. First import `mapState` from Vuex:
+Back within **NotificationPanel.vue**, delete the `data` property altogether as the component will no longer have local state.
 
-   ```text
-   import { mapState } from 'vuex'
-   ```
+In order to reference the notifications within the store you can use `mapState`. First import `mapState` from Vuex:
 
-4. Then add a new computed property as follows:
+{% code-tabs %}
+{% code-tabs-item title="NotificationPanel.vue" %}
+```javascript
+...
+import { mapState } from 'vuex'
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   ```text
-   computed: mapState(['notifications']),
-   ```
+Then add a new computed property as follows:
 
-5. Save changes and verify that the feature is working correctly.
+{% code-tabs %}
+{% code-tabs-item title="NotificationPanel.vue" %}
+```javascript
+...
+computed: mapState(['notifications']),
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-There is a error! If you attempt to dismiss a notification you will see the following error in the developer console: ![](../.gitbook/assets/changing-state-figure-2.png)
+Save changes and verify that the feature is working correctly.
 
-This is becuase the dismiss notification feature attempts to change state within the Vuex store. In order to change the list of notifications you will need to add a **mutation** to the store.
+There is a error when attempting to dismiss a notification. Try, and you will see the following error in the developer console:
+
+![](../.gitbook/assets/image%20%288%29.png)
+
+This is because the dismiss notification feature attempts to change state within the Vuex store. In order to change the list of notifications you will need to add a **mutation** to the store.
 
 > Mutations are used to commit and track changes to state.
 
-1. Open `store.js` and add a new mutation to dismiss a notification:
+Open **store.js** and add a new mutation to dismiss a notification:
 
-   ```text
-   mutations: {
-       dismissNotification(state, payload) {
-           state.notifications = state.notifications.filter(n => n.id !== payload)
-       }
-   }
-   ```
+{% code-tabs %}
+{% code-tabs-item title="store.js" %}
+```javascript
+...
+mutations: {
+    dismissNotification(state, payload) {
+        state.notifications = state.notifications.filter(n => n.id !== payload)
+    }
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-2. Back within `NotificationPanel.vue` update the `dismissNotification` method to use the new mutation:
+Back within **NotificationPanel.vue** update the `dismissNotification` method to use the new mutation:
 
-   ```text
-   dismissNotification(id) {
-       this.$store.commit('dismissNotification', id)
-   }
-   ```
+{% code-tabs %}
+{% code-tabs-item title="NotificationPanel.vue" %}
+```javascript
+...
+dismissNotification(id) {
+    this.$store.commit('dismissNotification', id)
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-3. Save all changes and verify that you can now dismiss notifications without error.
+Save all changes and verify that you can now dismiss notifications without error.
 
-Another error! The number of notifications within the navbar is not updating correctly: ![](../.gitbook/assets/changing-state-figure-3.png)
+The is another error. The number of notifications within the navbar is not updating correctly: ![](../.gitbook/assets/changing-state-figure-3.png)
 
-1. To fix this error you can add a new getter to return the number of notifications. Open `store.js` and update as follows:
+To fix this error simply add a new getter to return the number of notifications. Open **store.js** and update as follows:
 
-   ```text
-   notificationCount: state => {
-       return state.notifications.length;
-   }
-   ```
+{% code-tabs %}
+{% code-tabs-item title="store.js" %}
+```javascript
+...
+notificationCount: state => {
+    return state.notifications.length;
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-2. Next, open `NavBar.vue` and use the new getter to return the correct notification count:
+Next, open **NavBar.vue** and use the new getter to return the correct notification count:
 
-   ```text
-   <b-nav-item v-b-toggle.collapseNotifications>
-       <bell-icon></bell-icon>Notifications
-       <b-badge>
-           {{ $store.getters.notificationCount }}
-       </b-badge>
-   </b-nav-item>
-   ```
+{% code-tabs %}
+{% code-tabs-item title="NavBar.vue" %}
+```markup
+...
+<b-nav-item v-b-toggle.collapseNotifications>
+    <vue-feather type="bell"></vue-feather>Notifications
+    <b-badge>
+        {{ $store.getters.notificationCount }}
+    </b-badge>
+</b-nav-item>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-Much better! While playing with sample notification is good fun, it's time for the real thing. Let's update the store with a mutation to raise notifications.
+Much better! While playing with sample notification is good fun, it's time for the real thing. 
 
-1. Open `store.js` and add a new mutation named `raiseNotification`:
+First, remove the sample notifications from **store.js:**
 
-   ```text
-   raiseNotification(state, payload) {
-       state.notifications.push({
-           id: nextNotificationId++,
-           context: payload.context,
-           message: payload.message
-       })
-   }
-   ```
+{% code-tabs %}
+{% code-tabs-item title="store.js" %}
+```javascript
+...
+state: {
+    release: {
+        build: '1.0.0',
+        environment: 'Development'
+    },
+    healthChecks: [
+        { title: 'SMTP check', passed: true },
+        { title: 'Database check', passed: true }
+    ],
+    notifications: []
+},
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-2. The above mutation requires a local variable named `nextNotificationId` that will provide a unique identifier to new notifications. Add the variable just before Vuex store is defined:
+Next add a mutation to the store to raise notifications. Open **store.js** and add a new mutation named `raiseNotification`:
 
-   ```text
-   let nextNotificationId = 0
-   ```
+{% code-tabs %}
+{% code-tabs-item title="store.js" %}
+```javascript
+...
+raiseNotification(state, payload) {
+    state.notifications.push({
+        id: nextNotificationId++,
+        context: payload.context,
+        message: payload.message
+    })
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-With this mutation in place you could start raising new notification from any component within the application. However, best practice states that you should call mutations from within a Vuex action.
+The above mutation requires a local variable named `nextNotificationId` that will provide a unique identifier to new notifications. Add the variable just before Vuex store is defined:
 
-> Actions are similar to mutations. However, instead of mutating state, actions commit mutations. Actions can contain business logic and arbitary asychronous operations.
+```text
+let nextNotificationId = 0
+```
 
-1. Update the store with two new actions. One for raising success notifications and another for raising error notifications:
+With this mutation in place you could start raising new notifications from any component within the application. However, best practice states that you should call mutations from within a Vuex action.
 
-   ```text
-   actions: {
-       raiseSuccessNotification({ commit }, payload) {
-           commit('raiseNotification', {
-               context: 'success',
-               message: payload
-           })
-       },
-       raiseErrorNotification({ commit }, payload) {
-           commit('raiseNotification', {
-               context: 'danger',
-               message: payload
-           })
-       }
-   }
-   ```
+> Actions are similar to mutations. However, instead of mutating state, actions commit mutations. Actions can contain business logic and arbitrary asynchronous operations.
 
-2. Now you are ready to start raising notifications. First, you need to map the new actions so that they are available to the component. Open `CategoryList.vue` and update as follows:
+Update the store with two new actions. One for raising success notifications and another for raising error notifications:
 
-   ```text
-   import { mapActions } from 'vuex'
-   ```
+{% code-tabs %}
+{% code-tabs-item title="store.js" %}
+```javascript
+...
+actions: {
+    raiseSuccessNotification({ commit }, payload) {
+        commit('raiseNotification', {
+            context: 'success',
+            message: payload
+        })
+    },
+    raiseErrorNotification({ commit }, payload) {
+        commit('raiseNotification', {
+            context: 'danger',
+            message: payload
+        })
+    }
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   Then within methods:
+Now you are ready to start raising notifications. First, you need to map the new actions so that they are available to the component. Open **CategoryList.vue** and update as follows:
 
-   ```text
-   ...mapActions(['raiseSuccessNotification', 'raiseErrorNotification'])
-   ```
+{% code-tabs %}
+{% code-tabs-item title="CategoryList.vue" %}
+```javascript
+...
+import { mapActions } from 'vuex'
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-3. Next, raise an error notification if the categories list fails to load:
+Then within methods:
 
-   ```text
-   CategoriesService.getAll()
-       .then(result => (this.categories = result.data))
-       .catch(() => {
-           this.raiseErrorNotification('A server error occurred attempting to get all categories.')
-       })
-   ```
+{% code-tabs %}
+{% code-tabs-item title="CategoryList.vue" %}
+```javascript
+...
+...mapActions(['raiseSuccessNotification', 'raiseErrorNotification'])
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-4. Next, return a success notification when the category is deleted and an error notification if the category fails to delete:
+Next, raise an error notification if the categories list fails to load:
 
-   ```text
-   CategoriesService.delete(this.categoryToDelete.id)
-       .then(() => {
-           this.categories = this.categories.filter(c => c.id !== this.categoryToDelete.id)
-           this.raiseSuccessNotification(`The category '${this.categoryToDelete.name}' was successfully deleted.`)
-       })
-       .catch(() => {
-           this.raiseErrorNotification(`A server error occurred attempting to delete the category '${this.categoryToDelete.name}'.`)
-       })
-   ```
+{% code-tabs %}
+{% code-tabs-item title="CategoryList.vue" %}
+```javascript
+...
+CategoriesService.getAll()
+    .then(result => (this.categories = result.data))
+    .catch(() => {
+        this.raiseErrorNotification('A server error occurred attempting to get all categories.')
+    })
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-5. Now update `CategoryEdit.vue` to include relevant success and error notifications. First map the notification actions:
+When a category is deleted return a success notification, or an error notification if the category fails to delete:
 
-   ```text
-   import { mapActions } from 'vuex'
-   ```
+{% code-tabs %}
+{% code-tabs-item title="CategoryList.vue" %}
+```javascript
+...
+CategoriesService.delete(this.categoryToDelete.id)
+    .then(() => {
+        this.categories = this.categories.filter(c => c.id !== this.categoryToDelete.id)
+        this.raiseSuccessNotification(`The category '${this.categoryToDelete.name}' was successfully deleted.`)
+    })
+    .catch(() => {
+        this.raiseErrorNotification(`A server error occurred attempting to delete the category '${this.categoryToDelete.name}'.`)
+    })
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-   Then within methods:
+Add success and error notifications when creating a new category:
 
-   ```text
-   ...mapActions(['raiseSuccessNotification', 'raiseErrorNotification'])
-   ```
+{% code-tabs %}
+{% code-tabs-item title="CategoryList.vue" %}
+```javascript
+...
+CategoriesService.create(this.addingCategory)
+    .then(() => {
+        this.raiseSuccessNotification(`The category '${this.addingCategory.name}' was successfully created.`)
+        this.resetAdd()
+    })
+    .catch(() => {
+        this.raiseErrorNotification(`A server error occurred attempting to create the category '${this.addingCategory.name}'.`)
+    })
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-6. Then add success and error notifications when creating a new category:
+And finally, add notifications when updating an existing category:
 
-   ```text
-   CategoriesService.create(this.category)
-       .then(() => {
-           this.raiseSuccessNotification(`The category '${this.category.name}' was successfully created.`)
-           this.navigateBack()
-       })
-       .catch(() => {
-           this.raiseErrorNotification(`A server error occurred attempting to create the category '${this.category.name}'.`)
-       })
-   ```
+{% code-tabs %}
+{% code-tabs-item title="CategoryList.vue" %}
+```javascript
+...
+CategoriesService.update(this.editingCategory)
+    .then(() => {
+        this.raiseSuccessNotification(`The category '${this.editingCategory.name}' was successfully updated.`)
+        this.categories[this.editingIndex] = this.editingCategory
+        this.editingCategory = {}
+    })
+    .catch(() => {
+        this.raiseErrorNotification(`A server error occurred attempting to update the category '${this.editingCategory.name}'.`)
+    })
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-7. And finally, add notifications when updating an existing category:
-
-   ```text
-   CategoriesService.update(this.category)
-       .then(() => {
-           this.raiseSuccessNotification(`The category '${this.category.name}' was successfully updated.`)
-           this.navigateBack()
-       })
-       .catch(() => {
-           this.raiseErrorNotification(`A server error occurred attempting to update the category '${this.category.name}'.`)
-       })
-   ```
-
-8. Repeat steps 19 to 24 to add relevant notifications for products and suppliers.
-9. Save all changes and verify correct behaviour. Stopping json-server is an easy way to cause API errors.
+Save all changes and verify correct behaviour. Stopping the json-server is an easy way to cause API errors so that you can test the error notifications.
 

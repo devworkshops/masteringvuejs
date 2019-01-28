@@ -60,14 +60,15 @@
 * [Interceptors](consuming-apis/intercetors.md)
 * [Server side validation](consuming-apis/server-side-validation.md)
 * [Challenges](consuming-apis/challenges.md)
+* [Resources](consuming-apis/resources.md)
 
 ## State Management
 
 * [Installing Vuex](state-management/installing-vuex.md)
 * [Accessing State](state-management/accessing-state.md)
 * [Changing State](state-management/changing-state.md)
-* [\* Advanced Vuex](state-management/advanced-vuex.md)
 * [Challenges](state-management/challenges.md)
+* [Resources](state-management/resources.md)
 
 ## Packaging and Deploying
 
@@ -75,3 +76,6 @@
 * [Continuous Integration](packaging-and-deploying/overview.md)
 * [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
 * [URL Rewrite](packaging-and-deploying/url-rewrite.md)
+* [Challenges](packaging-and-deploying/challenges.md)
+* [Resources](packaging-and-deploying/resources.md)
+

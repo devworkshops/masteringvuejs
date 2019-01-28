@@ -72,7 +72,7 @@ The site navigation looks good, but the active page is not highlighted. For exam
                     <b-nav-item to="/" :exact="true">Home</b-nav-item>
                     <b-nav-item to="/suppliers">Suppliers</b-nav-item>
                     <b-nav-item to="/categories">Categories</b-nav-item>
-                    <b-nav-item to="/products">>Products</b-nav-item>
+                    <b-nav-item to="/products">Products</b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </div>
@@ -87,7 +87,7 @@ Now save the changes and verify that the correct page is highlighted when you na
 
 ## Adding sorting to tables
 
-In this section you will add the capability to sort the products list using the component using the Bootstrap-Vue `Table` component. Open the **ProductsList.vue** file and replace the existing table with the following:
+In this section you will add the capability to sort the products list using the Bootstrap-Vue `Table` component. Open the **ProductsList.vue** file and replace the existing table with the following:
 
 {% code-tabs %}
 {% code-tabs-item title="ProductsList.vue" %}

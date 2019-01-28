@@ -167,7 +167,7 @@ Then update the template as follows:
 
 Save all changes and refresh the site. Ensure that you can view a list of categories:
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](../.gitbook/assets/image%20%289%29.png)
 
 ## Add support for inline editing and deleting
 

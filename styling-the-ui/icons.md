@@ -76,6 +76,19 @@ Finally, add some additional styles to adjust the layout:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+{% code-tabs %}
+{% code-tabs-item title="App.vue" %}
+```css
+...
+.feather {
+    width: 16px;
+    height: 16px;
+}
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 ## Add icons to action buttons
 
 Adding icons to action buttons will quickly convey the intent, improve the visual appeal, as well as saving screen real estate. Open **CategoryList.vue** and update as follows:

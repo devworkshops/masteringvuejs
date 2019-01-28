@@ -51,7 +51,6 @@ export default function(value, format) {
         return moment(value).format(format)
     }
 }
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -84,5 +83,7 @@ Now in our **App.vue** we're going to use this filter to include the year of the
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+After these changes are applied, we should see the current year in the footer
 
+![](../.gitbook/assets/copyright.png)
 

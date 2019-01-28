@@ -15,17 +15,29 @@ Before we can even start talking about services and how to talk to APIs, we need
 First we need to install **json-server**
 
 ```bash
-npm i -g json-server
+npm install json-server
 ```
 
 Second we're going to create a **db.json** in the root folder of our application to host our whole mock database content. You can copy the content of our highly confidential database here
 
 {% file src="../.gitbook/assets/db \(1\).json" caption="db.json" %}
 
+We're going to update the **project.json** file to include a new script
+
+{% code-tabs %}
+{% code-tabs-item title="project.json" %}
+```javascript
+...
+"mock-api": "json-server db.json --watch"
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 And to run you can
 
 ```bash
-json-server db.json --watch
+npm run mock-api
 ```
 
 ### Creating service
@@ -102,7 +114,7 @@ export default {
 
 The list of suppliers looks way more realistic now.
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/suppliers-list-axios.png)
 
 ### Updating SupplierEdit.vue
 

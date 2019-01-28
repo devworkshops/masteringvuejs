@@ -1,8 +1,7 @@
 ---
 description: >-
-  In this section we're going to start building up our app and we're going to
-  create components and routes maintain the list of Suppliers that our company
-  (Northwind Traders) has.
+  In this topic, we're going to create components and routes to maintain the
+  list of Suppliers that our company (Northwind Traders) has.
 ---
 
 # Components: Suppliers
@@ -32,9 +31,9 @@ We're going to update the **router.js** to include this view as a route.
 ```javascript
 ...
 {
-  path: "/suppliers",
-  name: "suppliers",
-  component: () => import("./views/Suppliers/SupplierList.vue")
+    path: '/suppliers',
+    name: 'suppliers',
+    component: () => import('./views/Suppliers/SupplierList.vue')
 }
 ...
 ```
@@ -57,7 +56,7 @@ Next update the **NavBar.vue** component to include a new **Categories** menu it
 
 Now if you navigate to **/suppliers**, that's what you're going to see the below which is not much, but a very good start.
 
-![](../.gitbook/assets/image%20%287%29.png)
+![](../.gitbook/assets/suppliers.png)
 
 ### Displaying list of suppliers
 
@@ -146,7 +145,7 @@ We're going to then update our template so we can display it. It doesn't look aw
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-![](../.gitbook/assets/image%20%284%29.png)
+![](../.gitbook/assets/suppliers-list.png)
 
 ### Creating edit route
 
@@ -156,10 +155,10 @@ The main differences to the other route are first we're going to pass an **id** 
 {% code-tabs-item title="router.js" %}
 ```javascript
 {
-  path: "/suppliers/:id",
-  name: "suppliers-edit",
-  component: () => import("./views/Suppliers/SupplierEdit.vue"),
-  props: true
+    path: '/suppliers/:id',
+    name: 'suppliers-edit',
+    component: () => import('./views/Suppliers/SupplierEdit.vue'),
+    props: true
 }
 ```
 {% endcode-tabs-item %}
@@ -174,11 +173,19 @@ You should know the drill at this point, so simply create a **SupplierEdit.vue**
 ```markup
 <script>
 export default {
-  props: {
-    id: Number,
-    supplier: Object
-  }
-};
+    props: {
+        id: Number | String,
+        supplier: Object
+    },
+    data() {
+        return {
+            model: Object
+        }
+    },
+    created() {
+        this.model = this.supplier || {}
+    }
+}
 </script>
 ```
 {% endcode-tabs-item %}
@@ -192,22 +199,23 @@ The template at this point will be super simple, just to display the data.
 <template>
   <div>
     <h1>{{id?`Supplier #${id}`:'New Supplier'}}</h1>
-    <form>
-      <div>
-        <label>Company Name</label>
-        <input type="text" v-model="supplier.companyName">
+    <form class="form">
+      <div class="form-group">
+        <label class="form-label">Company Name</label>
+        <input class="form-control" type="text" v-model="model.companyName">
       </div>
-      <div>
-        <label>Contact Name</label>
-        <input type="text" v-model="supplier.contactName">
+      <div class="form-group">
+        <label class="form-label">Contact Name</label>
+        <input class="form-control" type="text" v-model="model.contactName">
       </div>
-      <div>
-        <label>Contact Title</label>
-        <input type="text" v-model="supplier.contactTitle">
+      <div class="form-group">
+        <label class="form-label">Contact Title</label>
+        <input class="form-control" type="text" v-model="model.contactTitle">
       </div>
     </form>
     <p>
-      <router-link to="/suppliers">Cancel</router-link>
+      <router-link class="btn btn-primary" to="/suppliers">Save</router-link>
+      <router-link class="btn" to="/suppliers">Cancel</router-link>
     </p>
   </div>
 </template>

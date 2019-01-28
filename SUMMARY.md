@@ -35,3 +35,11 @@
 * [Advanced Validation](dynamic-forms-and-validation/advanced-validation.md)
 * [Challenges](dynamic-forms-and-validation/challenges.md)
 * [Resources](dynamic-forms-and-validation/resources.md)
+
+## Testing
+
+* [Overview](testing/overview.md)
+* [Unit Testing](testing/unit-testing.md)
+* [Integration/E2E Testing](testing/integration-e2e-testing.md)
+* [Challenges](testing/challenges.md)
+* [Resources](testing/resources.md)

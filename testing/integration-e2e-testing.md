@@ -114,10 +114,9 @@ For that we're going to leverage an npm package called **npm-run-all** which wil
 "json-server": "json-server db.json --port 3000",
 "test:e2e:ci": "npm-run-all -p -r json-server test:e2e:headless"
 ...
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
- Now if we run `npm run test:e2e:ci` it should start both **json-server** and the e2e tests. 
+Now if we run `npm run test:e2e:ci` it should start both **json-server** and the e2e tests.
 

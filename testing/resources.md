@@ -4,9 +4,9 @@ description: The relevant resources for this module.
 
 # Resources
 
-{% embed url="https://jestjs.io/" %}
+{% embed url="https://jestjs.io/" caption="" %}
 
-{% embed url="https://www.cypress.io/" %}
+{% embed url="https://www.cypress.io/" caption="" %}
 
-{% embed url="https://www.npmjs.com/package/npm-run-all" %}
+{% embed url="https://www.npmjs.com/package/npm-run-all" caption="" %}
 

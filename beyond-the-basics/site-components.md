@@ -56,6 +56,9 @@ Every site needs a navbar. Within the **components** folder, create a new file *
           <li class="nav-item active">
             <router-link to="/" :exact="true" class="nav-link">Home</router-link>
           </li>
+          <li class="nav-item">              
+            <router-link to="/about" :exact="true" class="nav-link">About</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -165,10 +168,4 @@ Adding a site footer is easy. Open **App.vue** and include the following footer 
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
-
-
-
-
-
-
 

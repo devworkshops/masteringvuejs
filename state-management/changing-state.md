@@ -8,7 +8,7 @@ description: >-
 
 This feature will allow notifications, such as success and error messages, to be raised from anywhere within the application. This feature will leverage the Vuex store in order to provide a centralised location to keep, raise, and dismiss notifications.
 
-In Visual Studio Code, create a new **/components/NotificationPanel.vue** file
+In Visual Studio Code, create a new **NotificationPanel.vue** file within the **components** folder.
 
 Implement the new component as follows:
 
@@ -84,6 +84,14 @@ Open **App.vue** and import the new `NotificationPanel` component:
 ```javascript
 ...
 import NotificationPanel from '@/components/NotificationPanel.vue'
+
+...
+
+export default {
+    name: 'app',
+    components: {
+        NotificationPanel
+    },
 ...
 ```
 {% endcode-tabs-item %}
@@ -139,7 +147,7 @@ Open **NavBar.vue** and update the template as follows:
 ```markup
 ...
 <b-collapse is-nav id="navbarCollapse">
-    <b-navbar-nav class="mr-auto">
+    <b-navbar-nav class="mr-auto" v-if="isLoggedIn">
         <b-nav-item to="/" :exact="true">
             <vue-feather type="home"></vue-feather>Home
         </b-nav-item>
@@ -154,7 +162,15 @@ Open **NavBar.vue** and update the template as follows:
         </b-nav-item>
     </b-navbar-nav>
     <b-navbar-nav>
-        <b-nav-item v-b-toggle.collapseNotifications>
+        <b-nav-item to="/login" v-if="!isLoggedIn">
+            <vue-feather type="log-in"></vue-feather>Login
+        </b-nav-item>
+        <b-nav-item @click="logout()" v-if="isLoggedIn">
+            <vue-feather type="log-out"></vue-feather>Logout
+        </b-nav-item>
+        <b-nav-item
+            v-if="isLoggedIn"
+            v-b-toggle.collapseNotifications>
             <vue-feather type="bell"></vue-feather>Notifications
             <b-badge>2</b-badge>
         </b-nav-item>

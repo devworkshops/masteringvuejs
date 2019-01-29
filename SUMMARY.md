@@ -61,7 +61,7 @@
 * [Update Navigation Based On Authentication](consuming-apis/update-navigation-based-on-authentication.md)
 * [Server side validation](consuming-apis/server-side-validation.md)
 * [Challenges](consuming-apis/challenges.md)
-* [Resources](packaging-and-deploying/resources.md)
+* [Resources](consuming-apis/resources.md)
 
 ## State Management
 
@@ -78,5 +78,4 @@
 * [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
 * [URL Rewrite](packaging-and-deploying/url-rewrite.md)
 * [Challenges](packaging-and-deploying/challenges.md)
-* [Resources](packaging-and-deploying/resources.md)
 

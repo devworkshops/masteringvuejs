@@ -94,5 +94,42 @@ export default {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Once we add the new route to this component, we're done. In the section, we'll see how to inject the token to every single request.
+Now that we have the token, it's time to inject to every single API call by updating the interceptors. 
 
+{% code-tabs %}
+{% code-tabs-item title="NorthwindService.js" %}
+```javascript
+...
+apiClient.interceptors.request.use(config => {
+    ...
+    if (AuthService.token()) {
+        config.headers.authorization = 'Bearer ' + AuthService.token()
+    }
+    return config
+})
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+We're also going to use the interceptor to redirect users to an unauthenticated view if we get back a HTTP response code of 401. 
+
+{% code-tabs %}
+{% code-tabs-item title="Northwind.js" %}
+```javascript
+...
+apiClient.interceptors.response.use(
+    config => {
+        NProgress.done()
+        return config
+    },
+    err => {
+        NProgress.done()
+        if (err.response.status == 401) router.push('/unauthorized')
+        throw err
+    }
+)
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}

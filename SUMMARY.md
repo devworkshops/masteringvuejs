@@ -58,9 +58,10 @@
 * [Interceptors](consuming-apis/intercetors.md)
 * [Secured Mock API](consuming-apis/security-mock-api.md)
 * [Login](consuming-apis/login.md)
+* [Update Navigation Based On Authentication](consuming-apis/update-navigation-based-on-authentication.md)
 * [Server side validation](consuming-apis/server-side-validation.md)
 * [Challenges](consuming-apis/challenges.md)
-* [Resources](consuming-apis/resources.md)
+* [Resources](packaging-and-deploying/resources.md)
 
 ## State Management
 

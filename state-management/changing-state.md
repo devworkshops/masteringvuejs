@@ -334,7 +334,7 @@ Next, open **NavBar.vue** and use the new getter to return the correct notificat
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Much better! While playing with sample notification is good fun, it's time for the real thing. 
+Much better! While playing with sample notification is good fun, it's time for the real thing.
 
 First, remove the sample notifications from **store.js:**
 

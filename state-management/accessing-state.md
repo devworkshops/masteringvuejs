@@ -50,7 +50,7 @@ Next open **App.vue** and update the footer as follows:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Review the changes in your browser. The footer should now contain the release and health check details: 
+Review the changes in your browser. The footer should now contain the release and health check details:
 
 ![](../.gitbook/assets/image%20%287%29.png)
 

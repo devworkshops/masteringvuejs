@@ -1,7 +1,3 @@
----
-description: The relevant resources for this module.
----
-
 # Resources
 
 {% embed url="https://code.visualstudio.com/" %}

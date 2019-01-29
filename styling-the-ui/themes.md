@@ -1,6 +1,6 @@
 ---
 description: >-
-  In this section you will use a number of techniques to customise the theme of
+  In this section you will use numerous techniques to customise the theme of
   your application.
 ---
 

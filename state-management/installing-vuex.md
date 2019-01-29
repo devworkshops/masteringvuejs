@@ -22,7 +22,7 @@ Click **Add vuex** at the top of the **Project plugins** page:
 
 ![](../.gitbook/assets/image%20%285%29.png)
 
-When prompted, click **Continue** and wait for the installation process to complete:  
+When prompted, click **Continue** and wait for the installation process to complete:
 
 ![](../.gitbook/assets/image%20%286%29.png)
 

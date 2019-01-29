@@ -29,8 +29,7 @@ The first option is by using **.env** files and modes. By default, Vue.js has 3 
     </tr>
   </thead>
   <tbody></tbody>
-</table>* .env.local
-* .env.\[mode\]
+</table>* .env.\[mode\]
 * .env.\[mode\].local
 
 All the **.local** files will be ignored by git.

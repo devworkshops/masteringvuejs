@@ -22,15 +22,11 @@ The site navigation will look great if we add some eye catching icons. Open the 
 {% code-tabs-item title="NavBar.vue" %}
 ```javascript
 ...
-<script>
 import VueFeather from 'vue-feather'
-
-export default {
-    components: {
-        VueFeather
-    }
+...
+components: {
+    VueFeather
 }
-</script>
 ...
 ```
 {% endcode-tabs-item %}

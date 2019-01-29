@@ -473,13 +473,13 @@ When a category is deleted return a success notification, or an error notificati
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
 ...
-CategoriesService.delete(this.categoryToDelete.id)
+CategoriesService.delete(id)
     .then(() => {
-        this.categories = this.categories.filter(c => c.id !== this.categoryToDelete.id)
-        this.raiseSuccessNotification(`The category '${this.categoryToDelete.name}' was successfully deleted.`)
+        this.categories = this.categories.filter(c => c.id !== id)
+        this.raiseSuccessNotification(`The category was successfully deleted.`)
     })
     .catch(() => {
-        this.raiseErrorNotification(`A server error occurred attempting to delete the category '${this.categoryToDelete.name}'.`)
+        this.raiseErrorNotification(`A server error occurred attempting to delete the category '${ this.categoryToDelete.name }'.`)
     })
 ...
 ```
@@ -495,6 +495,7 @@ Add success and error notifications when creating a new category:
 CategoriesService.create(this.addingCategory)
     .then(() => {
         this.raiseSuccessNotification(`The category '${this.addingCategory.name}' was successfully created.`)
+        this.fetchAll()
         this.resetAdd()
     })
     .catch(() => {

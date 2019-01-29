@@ -78,4 +78,5 @@
 * [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
 * [URL Rewrite](packaging-and-deploying/url-rewrite.md)
 * [Challenges](packaging-and-deploying/challenges.md)
+* [Resources](packaging-and-deploying/resources.md)
 

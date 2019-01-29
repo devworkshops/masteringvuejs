@@ -4,6 +4,8 @@ description: Use the following challenges to test and build your skills.
 
 # Challenges
 
-1. There is something wrong with the implementation of the **Dismiss notification** capability. Do you know what the problem is? Fix it! Hint: It doesn't impact functionality but is a best practice.
-2. Add a **Dismiss all notifications** feature. This feature should leverage appropriate mutations and actions.
+1. Add a **Dismiss all notifications** feature. This feature should leverage appropriate mutations and actions.
+2. The new notifications feature is great, but there is a lot of boilerplate code to catch and raise notifications. Combine what you have learned about Axios interceptors and Vuex state management to create a global solution for handling errors in HTTP requests.
+
+
 

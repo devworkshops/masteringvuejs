@@ -6,3 +6,5 @@ description: The relevant resources for this module.
 
 {% embed url="https://www.npmjs.com/package/axios" %}
 
+{% embed url="https://www.npmjs.com/package/json-server" %}
+

@@ -8,6 +8,10 @@ description: The relevant resources for this module.
 
 {% embed url="https://bootstrap-vue.js.org/" %}
 
+{% embed url="https://tiptap.scrumpy.io" %}
+
+
+
 {% embed url="https://github.com/fengyuanchen/vue-feather" %}
 
 {% embed url="https://feathericons.com/" %}

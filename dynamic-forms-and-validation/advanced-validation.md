@@ -249,7 +249,7 @@ Update the validations for `unitsOnOrder` as follows:
 ```javascript
 ...
 unitsOnOrder: {
-    integer,
+    numeric,
     minValue: minValue(0),
     reorderNotRequired
 },

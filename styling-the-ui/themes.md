@@ -52,7 +52,7 @@ Then, add a new style block to **App.vue** as follows:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Save all changes and ensure the site loads appears normally. In the following topics, you will choose a new theme and customise the sites appearance.
+Save all changes and ensure the site appears normally. In the following topics, you will choose a new theme and customise the sites appearance.
 
 ## Customising the theme
 

@@ -131,7 +131,7 @@ We're going to then update our template so we can display it. It doesn't look aw
         <td>
           <router-link
             tag="button"
-            :to="{ name: 'suppliers-edit', params: { id: supplier.id } }"
+            :to="{ name: 'suppliers-edit', params: { id: supplier.id.toString() } }"
             class="btn btn-primary"
             >Edit</router-link
           >
@@ -173,7 +173,7 @@ You should know the drill at this point, so simply create a **SupplierEdit.vue**
 <script>
 export default {
     props: {
-        id: Number | String,
+        id: String,
         supplier: Object
     },
     data() {

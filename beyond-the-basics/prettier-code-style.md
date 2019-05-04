@@ -31,5 +31,5 @@ module.exports = {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Now if you type `CTRL+SHIFT+F` when focused on any JavaScript file, it will auto format based on the configuration above. If you want to know more about the configuration, check this [link](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+Now if you type `ALT+SHIFT+F` when focused on any JavaScript file, it will auto format based on the configuration above. If you want to know more about the configuration, check this [link](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 

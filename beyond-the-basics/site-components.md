@@ -147,7 +147,7 @@ Be sure to replace the existing styles with the new styles from the above code.
 
 Save all changes and verify that the site appears correctly:
 
-![](../.gitbook/assets/image%20%282%29.png)
+![](../.gitbook/assets/ui-after-adding-router.jpg)
 
 ## Adding a site footer
 

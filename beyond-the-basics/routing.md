@@ -22,7 +22,6 @@ import Home from "./views/Home.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
   routes: [
     {
       path: "/",
@@ -43,6 +42,8 @@ export default new Router({
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
+
+> One thing to point out here is that the history mode is not set by the default which means that the URL will have the \# when navigating to the different routes. In order to set the history mode, just add `mode: 'history'` into the Router configuration
 
 Now that we have the configuration for the routing, we need to hook it up with the application itself and that's what happened in the **main.js** file
 

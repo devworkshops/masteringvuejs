@@ -16,8 +16,9 @@ Within **CategoryList.vue**, add a new `errors` object to the `data` property:
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
 ...
-data: {
-    errors: null,
+data() {
+        return {
+            errors: null,
 ...
 ```
 {% endcode-tabs-item %}

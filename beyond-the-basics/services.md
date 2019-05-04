@@ -22,10 +22,10 @@ Second we're going to create a **db.json** in the root folder of our application
 
 {% file src="../.gitbook/assets/db \(1\).json" caption="db.json" %}
 
-We're going to update the **project.json** file to include a new script
+We're going to update the **package.json** file to include a new script
 
 {% code-tabs %}
-{% code-tabs-item title="project.json" %}
+{% code-tabs-item title="package.json" %}
 ```javascript
 ...
 "mock-api": "json-server db.json --watch"

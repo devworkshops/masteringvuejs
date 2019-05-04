@@ -112,6 +112,7 @@ We're going to then update our template so we can display it. It doesn't look aw
 {% code-tabs %}
 {% code-tabs-item title="SupplierList.vue" %}
 ```markup
+...
 <template>
   <div>
     <h1>Suppliers</h1>
@@ -129,17 +130,20 @@ We're going to then update our template so we can display it. It doesn't look aw
         <td>{{ supplier.contactTitle }}</td>
         <td>{{ supplier.address.city }}</td>
         <td>
-          <router-link
-            tag="button"
-            :to="{ name: 'suppliers-edit', params: { id: supplier.id.toString() } }"
-            class="btn btn-primary"
-            >Edit</router-link
-          >
+          <div class="btn-group" role="group">
+            <router-link
+              tag="button"
+              :to="{ name: 'suppliers-edit', params: { id: supplier.id.toString(), supplier: supplier } }"
+              class="btn btn-secondary"
+            >Edit</router-link>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
         </td>
       </tr>
     </table>
   </div>
 </template>
+...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

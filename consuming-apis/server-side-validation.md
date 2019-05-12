@@ -62,7 +62,7 @@ Then in our template, we display the error message according to the field we're 
 {% code-tabs %}
 {% code-tabs-item title="SupplierEdit.vue" %}
 ```markup
-<div class="form-group row">
+<div class="form-group">
     <label class="col-form-label">Company Name</label>
     <input type="text" class="form-control" 
         id="companyNameField" 

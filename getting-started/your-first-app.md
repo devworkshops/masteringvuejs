@@ -144,7 +144,7 @@ Save all changes and verify that the todo items display correctly.
 
 ### Create new todo items
 
-Next, you will add support for creating todo items. First add two new properties to local state:
+Next, you will add support for creating todo items. First add two new properties to local state \(within the data property\):
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -197,7 +197,7 @@ Save all changes and verify that you can now add new todo items.
 
 ### Filter todo items
 
-Next you will add support for filtering todo items. The supported filters are **All**, **Todo**, and **Done**. Add the list of valid filters and active filter to local state as follows:
+Next you will add support for filtering todo items. The supported filters are **All**, **Todo**, and **Done**. Add the list of valid filters and active filter to local state \(within the data property\) as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}

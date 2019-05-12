@@ -168,7 +168,7 @@ Back within **App.vue**, update `failedHealthCheckCount` to reference the new ge
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-When a component needs to make use of numerous getters, we can leverage the `mapGetters` helper to for a simplified approach.
+When a component needs to make use of numerous getters, we can leverage the `mapGetters` helper for a simplified approach.
 
 > The `mapGetters` helper simply maps store getters to local computed properties.
 

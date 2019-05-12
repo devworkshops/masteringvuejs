@@ -4,50 +4,51 @@ In the presentation, we've mentioned a lot CI and CD tools available, but for th
 
 They have a great UI for you to create your pipelines, but we're going use YAML because it's super simple to make change to it and to share with other people instead of relying on specific people with enough privileges to make changes.
 
-To start with, we're going to create an **azure-pipelines.yml** file in the root of your repository and we're going to paste this script to it.
+To start with, we're going to create an **azure-pipelines.yml** file in the root of your repository and we're going to paste this script to it. In this example, our Vue.js app in under the northwind-traders folder, if your app is in the root or in a different directory, you'll have to update it or remove it
 
 {% code-tabs %}
 {% code-tabs-item title="azure-pipelines.yml" %}
 ```yaml
-queue:
+pool:
   name: Hosted VS2017
   demands: npm
 
-trigger:
-  - master
-
 steps:
-  - task: Npm@1
-    displayName: "npm install"
-    inputs:
-      verbose: false
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    workingDir: 'northwind-traders'
+    verbose: false
 
-  - task: Npm@1
-    displayName: "unit testing"
-    inputs:
-      command: custom
-      verbose: false
-      customCommand: "run test:unit"
+- task: Npm@1
+  displayName: 'unit test'
+  inputs:
+    command: custom
+    workingDir: 'northwind-traders'
+    verbose: false
+    customCommand: 'run test:unit'
 
-  - task: Npm@1
-    displayName: "e2e testing"
-    inputs:
-      command: custom
-      verbose: false
-      customCommand: "run test:e2e:ci"
+- task: Npm@1
+  displayName: 'e2e test'
+  inputs:
+    command: custom
+    workingDir: 'northwind-traders'
+    verbose: false
+    customCommand: 'run test:e2e:ci'
 
-  - task: Npm@1
-    displayName: "build"
-    inputs:
-      command: custom
-      verbose: false
-      customCommand: "run build"
+- task: Npm@1
+  displayName: build
+  inputs:
+    command: custom
+    workingDir: 'northwind-traders'
+    verbose: false
+    customCommand: 'run build'
 
-  - task: PublishBuildArtifacts@1
-    displayName: "Publish Artifact: frontend"
-    inputs:
-      PathtoPublish: "dist"
-      ArtifactName: frontend
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: 'northwind-traders/dist'
+
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

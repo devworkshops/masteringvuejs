@@ -62,7 +62,7 @@ We're now going to create a very basic login view for the user to enter the user
       </div>
       <div class="form-group row">
         <label class="col-form-label">Password</label>
-        <input type="text" class="form-control" v-model="model.password">
+        <input type="password" class="form-control" v-model="model.password">
       </div>
       <div class="row">
         <button class="btn btn-primary" @click.prevent="login()">Login</button>
@@ -118,6 +118,8 @@ We're also going to use the interceptor to redirect users to an unauthenticated 
 {% code-tabs-item title="Northwind.js" %}
 ```javascript
 ...
+import router from '../router.js'
+...
 apiClient.interceptors.response.use(
     config => {
         NProgress.done()
@@ -163,7 +165,6 @@ import Login from './views/Login.vue'
     component: Unauthorized
 },
 ...
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

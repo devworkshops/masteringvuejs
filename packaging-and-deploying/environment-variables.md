@@ -29,8 +29,7 @@ The first option is by using **.env** files and modes. By default, Vue.js has 3 
     </tr>
   </thead>
   <tbody></tbody>
-</table>* .env.\[mode\]
-* .env.\[mode\].local
+</table>* .env.\[mode\].local
 
 All the **.local** files will be ignored by git.
 
@@ -56,11 +55,31 @@ VUE_APP_TITLE="Northwind Traders (dev)"
 
 Now whenever we run `npm run serve` the value coming from this variable is the development one.
 
-When you need to use this value somewhere across the application you can simply use this
+Now, as an example, we're going to add a new computed property in the **NavBar.vue** component to bring the **App Title**
 
+{% code-tabs %}
+{% code-tabs-item title="NavBar.vue" %}
 ```javascript
-console.log(process.env.VUE_APP_TITLE)
+...
+appTitle() {
+  return process.env.VUE_APP_TITLE
+}
+...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+And update the nav brand to replace the title by the computed property
+
+{% code-tabs %}
+{% code-tabs-item title="NavBar.vue" %}
+```markup
+...
+<a class="navbar-brand" href="#">{{appTitle}}</a>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The disadvantage of this approach for me is that your build pipeline will need to run for each environment. Personally I prefer to build once and deploy multiple times and replace variable at deployment time.
 

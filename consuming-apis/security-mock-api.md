@@ -1,6 +1,6 @@
 # Secured Mock API
 
-Obviously, if you already have a secure API to talk to, this step could be disregarded. We're going to continue using **json-server** in conjunction to a middle ware called **jsonwebtoken**.
+Obviously, if you already have a secure API to talk to, this step could be disregarded. We're going to continue using **json-server** in conjunction to a middle ware called **jsonwebtoken**, so let's installing it by calling `npm i jsonwebtoken`
 
 First we're going to create a file to store the mock usernames and passwords which we're calling **users.json**
 

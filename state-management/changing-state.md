@@ -479,7 +479,7 @@ CategoriesService.delete(id)
         this.raiseSuccessNotification(`The category was successfully deleted.`)
     })
     .catch(() => {
-        this.raiseErrorNotification(`A server error occurred attempting to delete the category '${ this.categoryToDelete.name }'.`)
+        this.raiseErrorNotification(`A server error occurred attempting to delete the category.`)    
     })
 ...
 ```

@@ -21,5 +21,7 @@ created(){
 ...
 ```
 
+In the future, we can update the created lifecycle hook to talk to an API and bring data from the server.
+
 For more information about the lifecycle hooks, you can check the [Vue.js documentation](https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks).
 

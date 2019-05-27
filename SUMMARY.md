@@ -10,6 +10,7 @@
 * [Components](getting-started/components.md)
 * [Filters](getting-started/filters.md)
 * [Lifecycles](getting-started/lifecycles.md)
+* [Animation](getting-started/animation.md)
 * [Challenges](getting-started/challenges.md)
 * [Resources](getting-started/resources.md)
 

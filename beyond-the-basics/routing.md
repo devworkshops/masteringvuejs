@@ -1,8 +1,8 @@
 # Routing
 
-## Installation
+### Installation
 
-The easiest way is going to the `vue ui` and add it as a plugin. This will not only install the dependencies but also wire up all you need for you route to work.
+The easiest way to getting started with routing in an existing `vue-cli` application is by installing the router plugin. This will not only install the dependencies but also adding some sample code. To install the plugin, you can go to the `vue ui` and add it as below. An alternative is simple running in the command line `vue add router`.
 
 ![](../.gitbook/assets/adding-routing.jpg)
 

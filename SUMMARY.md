@@ -8,6 +8,7 @@
 * [Hello, World!](getting-started/overview.md)
 * [Your First App](getting-started/your-first-app.md)
 * [Components](getting-started/components.md)
+* [Slots](getting-started/slots.md)
 * [Filters](getting-started/filters.md)
 * [Lifecycles](getting-started/lifecycles.md)
 * [Animation](getting-started/animation.md)

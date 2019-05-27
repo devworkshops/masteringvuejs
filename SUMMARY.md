@@ -20,7 +20,7 @@
 * [Overview](beyond-the-basics/overview.md)
 * [Your First CLI App](beyond-the-basics/creating-our-first-cli-application.md)
 * [Routing](beyond-the-basics/routing.md)
-* [Site Components](beyond-the-basics/site-components.md)
+* [Basic Layout](beyond-the-basics/site-components.md)
 * [Components: Suppliers](beyond-the-basics/components-suppliers.md)
 * [Services](beyond-the-basics/services.md)
 * [404: Route Not Found?](beyond-the-basics/404-route-not-found.md)

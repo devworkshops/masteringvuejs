@@ -4,7 +4,7 @@ description: >-
   site footer.
 ---
 
-# Site Components
+# Basic Layout
 
 ## Update the site layout
 

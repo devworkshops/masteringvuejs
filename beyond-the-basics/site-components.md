@@ -20,13 +20,14 @@ Set the site's title to _Northwind Traders_. Within the **public** folder, open 
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-We're going to use the Bootstrap UI framework and to do so, we need first to install some dependencies with the command `npm i vue bootstrap-vue bootstrap` , next we'll update the **main.js** file to include these lines just after the last import
+We're going to use the Bootstrap UI framework in conjunction to FontAwesome and to do so, we need first to install some dependencies with the command `npm i vue bootstrap-vue bootstrap @fortawesome/fontawesome-free`  , next we'll update the **main.js** file to include these lines just after the last import
 
 ```javascript
 import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 Vue.use(BootstrapVue)
 ```

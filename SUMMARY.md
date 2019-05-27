@@ -9,6 +9,7 @@
 * [Your First App](getting-started/your-first-app.md)
 * [Components](getting-started/components.md)
 * [Filters](getting-started/filters.md)
+* [Lifecycles](getting-started/lifecycles.md)
 * [Challenges](getting-started/challenges.md)
 * [Resources](getting-started/resources.md)
 

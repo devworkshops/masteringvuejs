@@ -51,31 +51,31 @@ Let's now create a **services** folder under **src** and create **NorthwindServi
 {% code-tabs %}
 {% code-tabs-item title="NorthwindService.js" %}
 ```javascript
-import axios from "axios";
+import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: `//localhost:3000`,
-  withCredentials: false, // This is the default
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  }
-});
+    baseURL: `//localhost:3000`,
+    withCredentials: false, // This is the default
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    }
+})
 
 export const SuppliersService = {
-  getAll() {
-    return apiClient.get("/suppliers");
-  },
-  get(id) {
-    return apiClient.get("/suppliers/" + id);
-  },
-  update(supplier) {
-    return apiClient.put("/suppliers/" + supplier.id, supplier);
-  },
-  create(supplier) {
-    return apiClient.post("/suppliers", supplier);
-  }
-};
+    getAll() {
+        return apiClient.get('/suppliers')
+    },
+    get(id) {
+        return apiClient.get('/suppliers/' + id)
+    },
+    update(supplier) {
+        return apiClient.put('/suppliers/' + supplier.id, supplier)
+    },
+    create(supplier) {
+        return apiClient.post('/suppliers', supplier)
+    }
+}
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -88,24 +88,21 @@ Let's update the **SupplierList.vue** to get the suppliers from the API instead 
 {% code-tabs-item title="SupplierList.vue" %}
 ```markup
 <script>
-// importing the newly created service
-import { SuppliersService } from "@/services/NorthwindService.js";
+import { SuppliersService } from '@/services/NorthwindService.js'
 
 export default {
-  data() {
-    return {
-      // this array is now empty until we get the result back from the api
-      suppliers: []
-    };
-  },
-  // this is one of the component's lifecycle hooks
-  // that's going to trigger as soon as the component is created
-  created() {
-    SuppliersService.getAll()
-      .then(r => (this.suppliers = r.data))
-      .catch(err => console.error(err));
-  }
-};
+    data() {
+        return {
+            fields: ['companyName', 'contactName', 'contactTitle', 'actions'],
+            suppliers: []
+        }
+    },
+    created() {
+        SuppliersService.getAll()
+            .then(r => (this.suppliers = r.data))
+            .catch(err => console.error(err))
+    }
+}
 </script>
 ```
 {% endcode-tabs-item %}
@@ -113,7 +110,7 @@ export default {
 
 The list of suppliers looks way more realistic now.
 
-![](../.gitbook/assets/suppliers-list-axios.png)
+![](../.gitbook/assets/2019-05-28_0-23-02.jpg)
 
 ## Updating SupplierEdit.vue
 
@@ -133,40 +130,40 @@ In our **SupplierEdit** component, we're going to make a few changes. We're goin
 {% code-tabs-item title="SupplierEdit.vue" %}
 ```markup
 <script>
-import { SuppliersService } from "@/services/NorthwindService.js";
-
+import { SuppliersService } from '@/services/NorthwindService.js'
 export default {
-  name: "SupplierEdit",
-  props: {
-    id: String,
-    supplier: Object
-  },
-  data() {
-    return {
-      model: { address: {} }
-    };
-  },
-  created() {
-    if (this.id) {
-      SuppliersService.get(this.id).then(r => (this.model = r.data));
-    }
-  },
-  mounted() {
-    if (this.supplier) {
-      this.model = this.supplier;
-    }
-  },
-  methods: {
-    save() {
-        SuppliersService.update(this.model)
-          .then(r => this.navigateBack())
-          .catch(err => console.error(err));
+    props: {
+        id: String,
+        supplier: Object
     },
-    navigateBack() {
-      this.$router.push("/suppliers");
+    data() {
+        return {
+            model: Object
+        }
+    },
+    created() {
+        this.model = this.supplier || {}
+        if (this.id && !this.supplier) {
+            SuppliersService.get(this.id).then(r => (this.model = r.data))
+        }
+    },
+    methods: {
+        save() {
+            if (this.id) {
+                SuppliersService.update(this.model)
+                    .then(r => this.navigateBack())
+                    .catch(err => console.error(err))
+            } else {
+                SuppliersService.create(this.model)
+                    .then(r => this.navigateBack())
+                    .catch(err => console.error(err))
+            }
+        },
+        navigateBack() {
+            this.$router.push('/suppliers')
+        }
     }
-  }
-};
+}
 </script>
 ```
 {% endcode-tabs-item %}

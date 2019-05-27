@@ -208,7 +208,7 @@ export default {
         }
     },
     created() {
-        this.model = this.supplier || {}
+        this.model = this.supplier || {address:{}}
     }
 }
 </script>
@@ -247,6 +247,30 @@ The template at this point will be super simple, just to display the data.
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
+
+## Update list to include add button
+
+We're going to update the header of supplier list to now include an add button as below
+
+```markup
+<div class="clearfix">
+  <h1 class="float-left">Suppliers</h1>
+  <router-link tag="button" class="btn btn-primary float-right" 
+    :to="{ name: 'suppliers-new' }">
+    <i class="fas fa-plus"></i>
+  </router-link>
+</div>
+```
+
+You might have noticed that the new route doesn't exist yet, so let's create it in the **router.js** file. This new route needs to sit before the supplier-edit route otherwise the supplier-edit route will takeover.
+
+```javascript
+{
+    path: '/suppliers/new',
+    name: 'suppliers-new',
+    component: () => import('./views/Suppliers/SupplierEdit.vue')
+},
+```
 
 In the next section we're going to update this component so we can update a supplier, but for that we're going to introduce the concept of service and API calls.
 

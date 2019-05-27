@@ -107,7 +107,7 @@ export default {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-We're going to then update our template so we can display it. It doesn't look awesome yet because we're going to cover styling a little bit later. Also the **edit** link is not going to work right now as we haven't create the edit view yet, that's what we're doing next
+We're going to then update our template so we can display it. For this we're going to leverage BootstrapVue's table component as below:
 
 {% code-tabs %}
 {% code-tabs-item title="SupplierList.vue" %}
@@ -116,31 +116,7 @@ We're going to then update our template so we can display it. It doesn't look aw
 <template>
   <div>
     <h1>Suppliers</h1>
-    <table class="table" v-if="suppliers.length > 0">
-      <tr>
-        <th>Company Name</th>
-        <th>Contact Name</th>
-        <th>Contact Title</th>
-        <th>Address City</th>
-        <th>Actions</th>
-      </tr>
-      <tr v-for="supplier in suppliers" :key="supplier.id">
-        <td>{{ supplier.companyName }}</td>
-        <td>{{ supplier.contactName }}</td>
-        <td>{{ supplier.contactTitle }}</td>
-        <td>{{ supplier.address.city }}</td>
-        <td>
-          <div class="btn-group" role="group">
-            <router-link
-              tag="button"
-              :to="{ name: 'suppliers-edit', params: { id: supplier.id.toString(), supplier: supplier } }"
-              class="btn btn-secondary"
-            >Edit</router-link>
-            <button type="button" class="btn btn-danger">Delete</button>
-          </div>
-        </td>
-      </tr>
-    </table>
+    <b-table striped hover :items="suppliers"></b-table>
   </div>
 </template>
 ...
@@ -148,7 +124,36 @@ We're going to then update our template so we can display it. It doesn't look aw
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-![](../.gitbook/assets/suppliers-list.png)
+It doesn't look amazing yet, but how awesome is it to generate a full grid with one line of code?
+
+![](../.gitbook/assets/2019-05-27_23-31-25.jpg)
+
+There are few fields that we don't necessarily want to display in the grid, so let's make some changes here. We're going to add a new fields property in the data section to list all fields we want to display in the grid.
+
+```javascript
+...
+data() {
+    return {
+        fields: ['companyName', 'contactName', 'contactTitle', 'actions'],
+        ...
+    }
+}
+...
+```
+
+And in the template, we're going to reference this property in the table
+
+```markup
+<b-table striped hover :items="suppliers" :fields="fields"></b-table>
+```
+
+That's how it should be looking like now
+
+![](../.gitbook/assets/2019-05-27_23-35-32.jpg)
+
+You might be wondering what the actions field for since it doesn't map to any property in the supplier object. We're going to use this column to add a few action buttons. To start with, we're going to add an edit button and redirect the user to a new route.
+
+
 
 ## Creating edit route
 

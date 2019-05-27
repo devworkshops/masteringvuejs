@@ -2,7 +2,7 @@
 
 ## Installation
 
-The easiest way by far is going to the `vue ui` and add it as a plugin. This will not only install the dependencies but also wire up all you need for you route to work.
+The easiest way is going to the `vue ui` and add it as a plugin. This will not only install the dependencies but also wire up all you need for you route to work.
 
 ![](../.gitbook/assets/adding-routing.jpg)
 

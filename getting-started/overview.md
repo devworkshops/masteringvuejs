@@ -43,7 +43,7 @@ Then, add a `div` element to contain a simple message:
 ```markup
 ...
 <div id="app">
-    {{ message }}
+    <h1>{{ title }}</h1>    
 </div>
 ...
 ```
@@ -60,7 +60,7 @@ Finally, add a script block to contain the root **Vue** instance. It's important
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Hello, World!'
+            title: 'Hello, World!'
         }
     })
 </script>

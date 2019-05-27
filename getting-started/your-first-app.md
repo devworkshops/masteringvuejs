@@ -5,7 +5,7 @@
 Create a new file named **main.js** and move the contents of the script block into the new file:
 
 {% code-tabs %}
-{% code-tabs-item title="main.js" %}
+{% code-tabs-item title="	" %}
 ```javascript
 var app = new Vue({
   el: "#app",
@@ -31,7 +31,7 @@ Within **index.html**, remove the script block \(if you haven't already\) and th
 
 The above reference should appear just before the closing `body` tag. 
 
-Next, inside the `head` element, add a reference to Bootstrap from the CDN:
+Next, inside the `head` element, add a reference to Bootstrap from the CDN. This is step is not mandatory but it will make the UI look way better just out of the box.
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -43,20 +43,13 @@ Next, inside the `head` element, add a reference to Bootstrap from the CDN:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Replace the existing root element \(has an id equal to 'app'\) with the following content:
+Inside the container, we're going to new list as below with some static content:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
 ```markup
 ...
-<div id="app" class="container">
-    <h1>Vue Todo</h1>
-
-    <nav class="nav nav-pills mb-2">
-    <a class="nav-link active" href="#">All</a> <a class="nav-link" href="#">Todo</a> <a class="nav-link" href="#">Done</a>
-    </nav>
-
-    <ul class="list-group mb-2">
+<ul class="list-group mb-2">
     <li class="list-group-item">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="todo1" />
@@ -75,18 +68,13 @@ Replace the existing root element \(has an id equal to 'app'\) with the followin
             <label class="form-check-label done" for="todo3">This thing is done.</label>
         </div>
     </li>
-    </ul>
-
-    <form class="mb-2"><input class="form-control" placeholder="Add todo..." /></form>
-
-    <p>2 item(s) remaining.</p>
-</div>
+</ul>
 ...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Create a new file named **main.css** and add the following style:
+Create a new file named **main.css** and add the following style. This will be used to add the strike through for done tasks.
 
 {% code-tabs %}
 {% code-tabs-item title="main.css" %}
@@ -100,30 +88,28 @@ Create a new file named **main.css** and add the following style:
 
 Save all changes and view **index.html** in your browser. Your app should display the following:
 
-![](../.gitbook/assets/your-first-app-figure-1.png)
+![](../.gitbook/assets/2019-05-27_16-57-18.jpg)
 
 ### Store and display todo items
 
-Store the todo items data in the root Vue instances local state. The local state is stored within the data property. Update **main.js** as follows:
+Store the todo items data in the root Vue instances local state. The local state is stored within the data property. Add the new todos array into the data property in the **main.js** as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
 ```javascript
 ...
-data: {
-  todos: [
-    { id: 1, title: "Do this thing.", done: false },
-    { id: 2, title: "Do another thing.", done: false },
-    { id: 3, title: "Do many, many things!", done: false },
-    { id: 4, title: "This thing is done.", done: true }
-  ]
-}
+todos: [
+    { id: 1, title: "Do this thing.", done: false, created: new Date(2019,1,1) },
+    { id: 2, title: "Do another thing.", done: false, created: new Date(2019,3,1) },
+    { id: 3, title: "Do many, many things!", done: false, created: new Date() },
+    { id: 4, title: "This thing is done.", done: true, created: new Date() }
+],
 ...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Update the template. First remove the existing static todo items, then add a dynamic list item to display the todo items:
+Update the template. First remove the existing static todo items \(`<li>`\) then add a dynamic list item to display the todo items:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -168,7 +154,8 @@ methods: {
     this.todos.push({
       id: this.nextId++,
       title: this.newTodoTitle,
-      done: false
+      done: false,
+      created: new Date()      
     });
     
     this.newTodoTitle = ''
@@ -179,7 +166,7 @@ methods: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Finally, update the form to invoke the new `addTodo` method:
+Finally, update the template to include the form to invoke the new `addTodo` method:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -210,7 +197,7 @@ activeFilter: 'All',
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-In order to filter the todo items based on the active filter you will use a computed property. Update **main.js** to include a new `filteredTodos` computed property:
+In order to filter the todo items based on the active filter you will use a computed property. Update **main.js** to include a new `filteredTodos` computed property. Keep in mind that the computed section is in the same level as the methods and data, not inside of them.
 
 {% code-tabs %}
 {% code-tabs-item title="main.js" %}
@@ -236,7 +223,7 @@ computed: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Next, replace the existing static filter links with dynamic links based on local state. Update **index.html** as follows:
+Next, include the filters on top of the list \(`<ul>`\). Update **index.html** as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
@@ -272,13 +259,21 @@ Save all changes and verify that the todo items are filtered correctly.
 
 ### Display number of remaining todo items
 
-The last step is to update the template to display the correct number of remaining items:
+The last step is to update the template to display the correct number of remaining items. You can add it after the form tag. 
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
 ```markup
 ...
-<p>{{ todos.filter(t => !t.done).length }} item(s) remaining.</p>
+<div class="alert alert-danger" v-if="todos.filter(t => !t.done).length>10">
+You've got a long day ahead of you!!!
+</div>
+<div class="alert alert-secondary" v-else-if="todos.filter(t => !t.done).length>0">
+{{ todos.filter(t => !t.done).length }} item(s) remaining.
+</div>
+<div class="alert alert-success" v-else>
+Hooray!!! You're all done, go to the beach!!!
+</div>
 ...
 ```
 {% endcode-tabs-item %}

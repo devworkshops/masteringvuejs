@@ -128,7 +128,7 @@ It doesn't look amazing yet, but how awesome is it to generate a full grid with 
 
 ![](../.gitbook/assets/2019-05-27_23-31-25.jpg)
 
-There are few fields that we don't necessarily want to display in the grid, so let's make some changes here. We're going to add a new fields property in the data section to list all fields we want to display in the grid.
+There are few fields that we don't necessarily want to display in the grid, so let's make some changes here. We're going to add a new fields property in the data section to list all fields we want to display in the grid. There are a lot more options to the fields you can set, like label, sorting, styling. For more information, check this [link](https://bootstrap-vue.js.org/docs/components/table).
 
 ```javascript
 ...

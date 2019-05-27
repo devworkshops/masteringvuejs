@@ -17,8 +17,6 @@
 
 * [Overview](beyond-the-basics/overview.md)
 * [Your First CLI App](beyond-the-basics/creating-our-first-cli-application.md)
-* [Project Structure](beyond-the-basics/project-structure-and-components.md)
-* [Prettier: Code Style](beyond-the-basics/prettier-code-style.md)
 * [Routing](beyond-the-basics/routing.md)
 * [Site Components](beyond-the-basics/site-components.md)
 * [Components: Suppliers](beyond-the-basics/components-suppliers.md)

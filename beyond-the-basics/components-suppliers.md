@@ -153,7 +153,24 @@ That's how it should be looking like now
 
 You might be wondering what the actions field for since it doesn't map to any property in the supplier object. We're going to use this column to add a few action buttons. To start with, we're going to add an edit button and redirect the user to a new route.
 
+```markup
+...
+<b-table striped hover :items="suppliers" :fields="fields">
+  <template slot="actions" slot-scope="data">
+    <router-link
+      tag="button"
+      :to="{ name: 'suppliers-edit', params: { id: data.item.id.toString(), supplier: data.item } }"
+      class="btn btn-secondary btn-sm">
+      <i class="fas fa-edit"></i>
+    </router-link>
+  </template>
+</b-table>
+...
+```
 
+With these updates, the suppliers list should be looking like this.
+
+![](../.gitbook/assets/2019-05-27_23-57-41.jpg)
 
 ## Creating edit route
 

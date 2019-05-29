@@ -111,6 +111,7 @@ import { CategoriesService } from '@/services/NorthwindService.js'
 export default {
     data() {
         return {
+            fields: ['name', 'description', 'actions'],
             categories: []
         }
     },
@@ -139,25 +140,7 @@ Then update the template as follows:
 <template>
     <div>
         <h1>Categories</h1>
-        <table class="table">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-            <tr v-for="category in categories" :key="category.id">
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.description }}</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-secondary">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <b-table striped hover :items="categories" :fields="fields"></b-table>
     </div>
 </template>
 ...
@@ -167,7 +150,7 @@ Then update the template as follows:
 
 Save all changes and refresh the site. Ensure that you can view a list of categories:
 
-![](../.gitbook/assets/image%20%289%29.png)
+![](../.gitbook/assets/2019-05-30_9-15-01.jpg)
 
 ## Add support for inline editing and deleting
 
@@ -179,42 +162,34 @@ Start by modifying the table to support the two states as follows:
 {% code-tabs-item title="CategoryList.vue" %}
 ```markup
 ...
-<table class="table">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
-    </tr>
-    <template v-for="(category, index) in categories">
-        <tr :key="category.id" v-if="category.id === editingCategory.id">
-            <td>{{ category.id }}</td>
-            <td>
-                <input type="text" v-model="editingCategory.name" class="form-control">
-            </td>
-            <td>
-                <input type="text" v-model="editingCategory.description" class="form-control">
-            </td>
-            <td>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary" @click="update()">Update</button>
-                    <button type="button" class="btn btn-warning" @click="cancelUpdate()" >Cancel</button>
-                </div>
-            </td>
-        </tr>
-        <tr :key="category.id" v-else>
-            <td>{{ category.id }}</td>
-            <td>{{ category.name }}</td>
-            <td>{{ category.description }}</td>
-            <td>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary" @click="edit(category, index)">Edit</button>
-                    <button type="button" class="btn btn-danger" @click="remove(category.id)">Delete</button>
-                </div>
-            </td>
-        </tr>
+<b-table striped hover :items="categories" :fields="fields">
+  <template slot="actions" slot-scope="data">
+    <div v-if="editingCategory.id!=data.item.id">
+      <button class="btn btn-secondary btn-sm" @click="edit(data.item, data.index)">
+        <i class="fas fa-edit"></i></button>
+      <button class="btn btn-danger btn-sm" @click="remove(data.item.id)">
+        <i class="fas fa-trash-alt"></i></button>
+    </div>
+    <div v-else>
+      <button class="btn btn-primary btn-sm" @click="update()">
+        <i class="fas fa-save"></i></button>
+      <button class="btn btn-default btn-sm" @click="cancelUpdate()">
+        <i class="fas fa-times"></i></button>
+    </div>
+  </template>
+  <template slot="name" slot-scope="data">
+    <template v-if="editingCategory.id!=data.item.id">{{data.value}}</template>
+    <template v-else>
+      <input type="text" class="form-control" v-model="editingCategory.name">
     </template>
-</table>
+  </template>
+  <template slot="description" slot-scope="data">
+    <template v-if="editingCategory.id!=data.item.id">{{data.value}}</template>
+    <template v-else>
+      <input type="text" class="form-control" v-model="editingCategory.description">
+    </template>
+  </template>
+</b-table>
 ...
 ```
 {% endcode-tabs-item %}
@@ -246,8 +221,8 @@ edit(category, index) {
 update() {
     CategoriesService.update(this.editingCategory)
         .then(() => {
-            this.categories[this.editingIndex] = this.editingCategory
             this.editingCategory = {}
+            this.fetchAll()
         })
         .catch(error => console.error(error))
 },
@@ -279,27 +254,30 @@ Save changes and verify that you can now edit, update, and delete categories. In
 
 ## Include support for inline adding
 
-This component would not be complete without the ability to add new categories. Start by updating the template, add the following table row just before the table's closing tag:
+This component would not be complete without the ability to add new categories. Start by updating the template, add the following table row just before the `b-table`'s closing tag:
 
 {% code-tabs %}
 {% code-tabs-item title="CategoryList.vue" %}
 ```markup
 ...
-<tr>
-    <td>New</td>
-    <td>
-        <input type="text" v-model="addingCategory.name" placeholder="Name..." class="form-control">
-    </td>
-    <td>
-        <input type="text" v-model="addingCategory.description" placeholder="Description..." class="form-control">
-    </td>
-    <td>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary" @click="add()">Add</button>
-            <button type="button" class="btn btn-warning" @click="resetAdd()">Cancel</button>
-        </div>
-    </td>
-</tr>
+<template slot="bottom-row">
+  <td>
+    <input type="text" v-model="addingCategory.name" placeholder="Name..." class="form-control">
+  </td>
+  <td>
+    <input type="text" v-model="addingCategory.description" placeholder="Description..." class="form-control">
+  </td>
+  <td>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-sm" @click="add()">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button type="button" class="btn btn-default btn-sm" @click="resetAdd()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </td>
+</template>
 ...
 ```
 {% endcode-tabs-item %}
@@ -344,5 +322,5 @@ resetAdd() {
 
 All done, you should now be able to add new categories. Take a moment to verify all functionality before moving to the next section.
 
-![](../.gitbook/assets/basic-forms-animation-1.png.gif)
+![](../.gitbook/assets/2019-05-30_9-35-16.gif)
 

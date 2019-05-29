@@ -53,12 +53,12 @@ Every site needs a navbar. Within the **components** folder, create a new file *
 
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link to="/" :exact="true" class="nav-link">Home</router-link>
-          </li>
-          <li class="nav-item">              
-            <router-link to="/about" :exact="true" class="nav-link">About</router-link>
-          </li>
+          <router-link to="/" tag="li" :exact="true" class="nav-item" active-class="active">
+            <a class="nav-link">Home</a>
+          </router-link>
+          <router-link to="/about" tag="li" class="nav-item" active-class="active">
+            <a class="nav-link">About</a>
+          </router-link>
         </ul>
       </div>
     </div>

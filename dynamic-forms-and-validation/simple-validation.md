@@ -75,18 +75,23 @@ With validation checks completed, you simply need to update the template to disp
 {% code-tabs-item title="CategoryList.vue" %}
 ```markup
 ...
-<tr>
-    <td>New</td>
-    <td>
-        <input type="text" v-model="addingCategory.name" placeholder="Name..." 
-            class="form-control" :class="{ 'is-invalid': errors && errors.name }">
-        <div class="invalid-feedback" v-if="errors && errors.name">{{ errors.name }}</div>
-    </td>
-    <td>
-        <input type="text" v-model="addingCategory.description" placeholder="Description..." 
-            class="form-control" :class="{ 'is-invalid': errors && errors.description }">
-        <div class="invalid-feedback" v-if="errors && errors.description">{{ errors.description }}</div>
-    </td>
+<template slot="bottom-row">
+  <td>
+    <input type="text" v-model="addingCategory.name" 
+      placeholder="Name..." class="form-control"
+      :class="{ 'is-invalid': errors && errors.name }">
+    <div class="invalid-feedback" v-if="errors && errors.name">
+      {{ errors.name }}
+    </div>
+  </td>
+  <td>
+    <input type="text" v-model="addingCategory.description" 
+      placeholder="Description..." class="form-control"
+      :class="{ 'is-invalid': errors && errors.description }">
+    <div class="invalid-feedback" v-if="errors && errors.description">
+      {{ errors.description }}
+    </div>
+  </td>
 ...
 ```
 {% endcode-tabs-item %}
@@ -94,5 +99,5 @@ With validation checks completed, you simply need to update the template to disp
 
 Save changes and verify that invalid categories cannot be added to the list:
 
-![](../.gitbook/assets/simple-validation-animation-1.gif)
+![](../.gitbook/assets/2019-05-30_9-54-37.gif)
 

@@ -4,7 +4,7 @@ We know, as a developer, testing is not always the most exciting part of buildin
 
 ## Installation
 
-For this section we're going to use [Jest](https://jestjs.io/) for unit testing and [Cypress](https://www.cypress.io/) for end-to-end testing. Again, the simplest way to install them is by using the UI.
+For this section we're going to use [Jest](https://jestjs.io/) for unit testing and [Cypress](https://www.cypress.io/) for end-to-end testing. Again, one way to install them is by using the UI, the other way is by running in the command line `vue add @vue/cli-plugin-unit-jest` and `vue add @vue/cli-plugin-e2e-cypress`
 
 ![Installing jest](../.gitbook/assets/installing-jest.jpg)
 

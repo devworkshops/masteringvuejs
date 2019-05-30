@@ -99,6 +99,7 @@ First one is going to be the **InvalidFeedback**. Let's create a file called **I
 ```markup
 <template>
   <div class="invalid-feedback">
+    <div v-if="containsKey('isUnique') && !model.isUnique">{{field}} already exists.</div>
     <div v-if="containsKey('required') && !model.required">{{field}} is a required field.</div>
     <div v-if="containsKey('decimal') && !model.decimal">{{field}} is of type decimal.</div>
     <div v-if="containsKey('numeric') && !model.numeric">{{field}} is of type numeric.</div>
@@ -350,7 +351,6 @@ name: {
     maxLength: maxLength(40),
     isUnique(value) {
         if (value === '') return true
-
         return ProductsService.isUniqueProductName(value)
     }
 },
@@ -359,21 +359,17 @@ name: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Finally, update the form group for product name. Note the addition of the lazy modifier on the v-model binding.
+Finally, add the content below inside the `base-input` for product name, this will replace the default input inside the base-input component. Note the addition of the lazy modifier on the v-model binding.
 
 {% code-tabs %}
 {% code-tabs-item title="ProductEdit.vue" %}
 ```markup
 ...
-<input type="text" class="form-control"
-    v-model.trim.lazy="$v.product.name.$model"
-    :class="{ 'is-invalid': $v.product.name.$error }">
-
-...
-
-<div class="invalid-feedback" v-if="!$v.product.name.isUnique">
-    This product name already exists.
-</div>
+<input
+    type="text"
+    class="form-control"
+    v-model.trim.lazy="$v.model.name.$model"
+    :class="{ 'is-invalid': $v.model.name.$error }">
 ...
 ```
 {% endcode-tabs-item %}

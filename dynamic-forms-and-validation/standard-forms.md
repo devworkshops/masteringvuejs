@@ -222,13 +222,13 @@ Next, initialise all required data with default values. Note that `product` is i
 
 {% code-tabs %}
 {% code-tabs-item title="ProductEdit.vue" %}
-```markup
+```javascript
 ...
 data() {
     return {
         categories: [],
         suppliers: [],
-        product: {
+        model: {
             id: 0,
             supplierID: null,
             categoryID: null,
@@ -258,16 +258,15 @@ created() {
         result => (this.categories = result.data)
     )
 
-    SuppliersService.getAll().then(
-        result => (this.suppliers = result.data)
-    )
+    SuppliersService.getAll().then(result => (this.suppliers = result.data))
 
-    if (this.id !== 0) {
+    this.model = this.product || this.model
+    if (this.id && !this.product) {
         ProductsService.get(this.id).then(
-            result => (this.product = result.data)
+            result => (this.model = result.data)
         )
     }
-},
+}
 ...
 ```
 {% endcode-tabs-item %}
@@ -281,20 +280,24 @@ Now add methods to support saving changes \(either creating or updating\) and na
 ...
 methods: {
     save() {
-        if (this.id === 0) {
-            ProductsService.create(this.product)
+        if (this.id) {
+            ProductsService.update(this.model)
                 .then(() => this.navigateBack())
-                .catch(error => { console.error(error) })
+                .catch(error => {
+                    console.error(error)
+                })
         } else {
-            ProductsService.update(this.product)
+            ProductsService.create(this.model)
                 .then(() => this.navigateBack())
-                .catch(error => { console.error(error) })
+                .catch(error => {
+                    console.error(error)
+                })
         }
     },
     navigateBack() {
         this.$router.push('/products')
     }
-},
+}
 ...
 ```
 {% endcode-tabs-item %}
@@ -308,72 +311,72 @@ Finally, add the template to add or edit a product:
 ...
 <template>
     <div>
-        <h1>{{ this.id === 0 ? 'Add' : 'Edit' }} Product</h1>
+        <h1>{{id?`Product #${id}`:'New Product'}}</h1>
 
         <form @submit.prevent="save()">
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" v-model="product.name">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" v-model="model.name">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" v-model.number="model.categoryID">
+              <option
+                v-for="category in categories"
+                :key="category.id"
+                :value="category.id"
+              >{{ category.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Supplier</label>
+            <select class="form-control" v-model.number="model.supplierID">
+              <option
+                v-for="supplier in suppliers"
+                :key="supplier.id"
+                :value="supplier.id"
+              >{{ supplier.companyName }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity Per Unit</label>
+            <input type="text" class="form-control" v-model="model.quantityPerUnit">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Unit Price</label>
+              <input type="number" class="form-control" v-model="model.unitPrice">
             </div>
-            <div class="form-group">
-                <label>Category</label>
-                <select class="form-control" v-model.number="product.categoryID">
-                    <option
-                        v-for="category in categories"
-                        :key="category.id"
-                        :value="category.id"
-                    >{{ category.name }}</option>
-                </select>
+            <div class="form-group col-md-4">
+              <label>Units In Stock</label>
+              <input type="number" class="form-control" v-model="model.unitsInStock">
             </div>
-            <div class="form-group">
-                <label>Supplier</label>
-                <select class="form-control" v-model.number="product.supplierID">
-                    <option
-                        v-for="supplier in suppliers"
-                        :key="supplier.id"
-                        :value="supplier.id"
-                    >{{ supplier.companyName }}</option>
-                </select>
+            <div class="form-group col-md-4">
+              <label>Units On Order</label>
+              <input type="number" class="form-control" v-model="model.unitsOnOrder">
             </div>
-            <div class="form-group">
-                <label>Quantity Per Unit</label>
-                <input type="text" class="form-control" v-model="product.quantityPerUnit">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Reorder Level</label>
+              <input type="number" class="form-control" v-model="model.reorderLevel">
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label>Unit Price</label>
-                    <input type="number" class="form-control" v-model="product.unitPrice">
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Units In Stock</label>
-                    <input type="number" class="form-control" v-model="product.unitsInStock">
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Units On Order</label>
-                    <input type="number" class="form-control" v-model="product.unitsOnOrder">
-                </div>
+            <div class="form-group col-md-4">
+              <label>Status</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="discontinuedCheckbox"
+                  v-model="model.discontinued"
+                >
+                <label class="form-check-label" for="discontinuedCheckbox">Discontinued</label>
+              </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label>Reorder Level</label>
-                    <input type="number" class="form-control" v-model="product.reorderLevel">
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Status</label>
-                    <div class="form-check">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="discontinuedCheckbox"
-                            v-model="product.discontinued"
-                        >
-                        <label class="form-check-label" for="discontinuedCheckbox">Discontinued</label>
-                    </div>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button @click="navigateBack()" class="btn btn-default">Cancel</button>
+          </div>
+    
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button @click="navigateBack()" class="btn btn-default">Cancel</button>
         </form>
     </div>
 </template>
@@ -382,20 +385,18 @@ Finally, add the template to add or edit a product:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-That completes adding and editing products. Ensure that this feature is behaving as expected:
-
-![](../.gitbook/assets/standard-forms-animation-2%20%281%29.gif)
-
 ## Deleting products
 
-The delete button is not working. You can fix that now. Update **ProductList.vue** as follows.  
-First add a click event on the delete button:
+We still don't have a delete button. You can fix that now. Update **ProductList.vue** as follows.  
+Let's add the button below inside the actions template:
 
 {% code-tabs %}
 {% code-tabs-item title="ProductList.vue" %}
 ```markup
 ...
-<button type="button" class="btn btn-danger" @click="remove(product.id)">Delete</button>
+<button class="btn btn-danger btn-sm" @click="remove(data.item.id)">
+    <i class="fas fa-trash-alt"></i>
+</button>
 ...
 ```
 {% endcode-tabs-item %}
@@ -418,4 +419,6 @@ remove(id) {
 {% endcode-tabs %}
 
 Before moving on to the next section, take a moment to ensure that delete behaves as expected.
+
+![](../.gitbook/assets/2019-05-30_12-06-15.gif)
 

@@ -7,6 +7,8 @@ description: >-
 
 # Inline Forms
 
+## 
+
 ## Creating the list component
 
 Start by creating a component to display a list of categories. Within the **views** folder, create a new folder named **Categories**. Then, within the new folder, create a new component named **CategoryList.vue** as follows:
@@ -167,7 +169,7 @@ Start by modifying the table to support the two states as follows:
     <div v-if="editingCategory.id!=data.item.id">
       <button class="btn btn-secondary btn-sm" @click="edit(data.item, data.index)">
         <i class="fas fa-edit"></i></button>
-      <button class="btn btn-danger btn-sm" @click="remove(data.item.id)">
+      <button class="btn btn-danger btn-sm" @click="remove(data.item, data.item.id)">
         <i class="fas fa-trash-alt"></i></button>
     </div>
     <div v-else>
@@ -240,7 +242,7 @@ Now add support for deleting categories. First add the following method:
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
 ...
-remove(id) {
+remove(cat, id) {
     CategoriesService.delete(id)
         .then(() => this.fetchAll())
         .catch(error => console.error(error))
@@ -323,4 +325,44 @@ resetAdd() {
 All done, you should now be able to add new categories. Take a moment to verify all functionality before moving to the next section.
 
 ![](../.gitbook/assets/2019-05-30_9-35-16.gif)
+
+## Deletion confirmation
+
+Everything is working really nicely but one thing is not quite right. The user can accidentally click on the delete button and the item will be gone. It's good practice to prompt the user to confirm either he/she really wants to delete an item. 
+
+We're going to update the remove method to prompt the user to confirm the deletion and for that we're going to use the **b-modal**, if you want to check some other options for this component, check this [link](https://bootstrap-vue.js.org/docs/components/modal/). 
+
+```javascript
+...
+remove(cat, id) {
+    this.$bvModal
+        .msgBoxConfirm(
+            `Please confirm that you want to delete '${cat.name}'.`,
+            {
+                title: 'Please Confirm',
+                size: 'sm',
+                buttonSize: 'sm',
+                okVariant: 'danger',
+                okTitle: 'Delete',
+                cancelVariant: 'default',
+                cancelTitle: 'Cancel',
+                footerClass: 'p-2',
+                hideHeaderClose: false,
+                centered: true
+            }
+        )
+        .then(value => {
+            if (value) {
+                CategoriesService
+                  .delete(id)
+                  .then(r =>(this.categories = this.categories.filter(d => d.id != id)))
+            }
+        })
+}
+...
+```
+
+When the user now tries to delete an item, that's what he/she is going to see
+
+![](../.gitbook/assets/2019-05-30_12-40-09.gif)
 

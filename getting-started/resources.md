@@ -14,5 +14,5 @@ description: The relevant resources for this module.
 
 {% embed url="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en" %}
 
-
+{% embed url="https://bootstrap-vue.js.org" %}
 

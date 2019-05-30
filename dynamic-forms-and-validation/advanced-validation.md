@@ -351,6 +351,7 @@ name: {
     maxLength: maxLength(40),
     isUnique(value) {
         if (value === '') return true
+        if (this.id) return true
         return ProductsService.isUniqueProductName(value)
     }
 },

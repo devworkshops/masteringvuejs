@@ -67,24 +67,19 @@ Next, create a component to support adding and editing components. Within the **
 {% code-tabs-item title="ProductEdit.vue" %}
 ```markup
 <template>
-    <div>
-        <h1>{{ this.id === 0 ? 'Add' : 'Edit' }} Product</h1>
-    </div>
+  <div>
+    <h1>{{id?`Product #${id}`:'New Product'}}</h1>
+  </div>
 </template>
 
 <script>
 export default {
     props: {
-        id: {
-            type: Number,
-            required: true
-        }
+        id: String,
+        product: Object
     }
 }
 </script>
-
-<style scoped>
-</style>
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -97,11 +92,9 @@ Add a Products menu item to the site navigation bar. Open **NavBar.vue** and upd
 {% code-tabs-item title="NavBar.vue" %}
 ```markup
 ...
-<li class="nav-item">
-    <router-link to="/products" :exact="true" class="nav-link">
-        Products
-    </router-link>
-</li>
+<router-link to="/products" tag="li" class="nav-item" active-class="active">
+    <a class="nav-link">Products</a>
+</router-link>
 ...
 ```
 {% endcode-tabs-item %}
@@ -117,6 +110,11 @@ Next add routes to support the new components within **router.js**:
     path: '/products',
     name: 'products',
     component: () => import('./views/Products/ProductList.vue')
+},
+{
+    path: '/products/new',
+    name: 'products-new',
+    component: () => import('./views/Products/ProductEdit.vue')
 },
 {
     path: '/products/:id',
@@ -144,6 +142,12 @@ import { ProductsService } from '@/services/NorthwindService.js'
 export default {
     data() {
         return {
+            fields: {
+                name: { sortable: true },
+                unitPrice: { label: 'Price' },
+                unitsInStock: { label: 'Stock' },
+                actions: {}
+            },
             products: []
         }
     },
@@ -170,44 +174,29 @@ Then update the template as follows:
 ```markup
 ...
 <template>
-    <div>
-        <div class="clearfix">
-            <h1 class="float-left">Products</h1>
-            <router-link tag="button" class="btn btn-primary float-right"
-                :to="{ name: 'products-edit', params: { id: 0 } }">Add</router-link>
-        </div>
-        <table class="table">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Actions</th>
-            </tr>
-            <tr v-for="product in products" :key="product.id">
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.unitPrice }}</td>
-                <td>{{ product.unitsInStock }}</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <router-link tag="button" 
-                            :to="{name:'products-edit',params:{id:product.id}}" class="btn btn-secondary">Edit</router-link>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
+  <div>
+    <div class="clearfix">
+      <h1 class="float-left">Products</h1>
+      <router-link tag="button" class="btn btn-primary float-right" :to="{ name: 'products-new' }">
+        <i class="fas fa-plus"></i>
+      </router-link>
     </div>
+    <b-table striped hover :items="products" :fields="fields">
+      <template slot="actions" slot-scope="data">
+        <router-link tag="button" :to="{ name: 'products-edit', params: { id: data.item.id.toString(), product: data.item } }"
+          class="btn btn-secondary btn-sm">
+          <i class="fas fa-edit"></i>
+        </router-link>
+      </template>
+    </b-table>
+  </div>
 </template>
 ...
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Save all changes and refresh the site. Ensure that you can view a list of categories and that the Add and Edit buttons are wired up correctly:
-
-![](../.gitbook/assets/standard-forms-animation-1.gif)
+Save all changes and refresh the site. Ensure that you can view a list of products and that the Add and Edit buttons are wired up correctly
 
 ## Adding and editing products
 

@@ -154,3 +154,39 @@ Now meeting all the requirements and running the unit tests again, we'll have al
 
 ![](../.gitbook/assets/test-unit-run-pass.jpg)
 
+## Creating a unit test for an existing component
+
+Early on we created a reusable component called **InvalidFeedback.vue** to show error messages when whenever there's a validation error. Let's create a quick unit test for it. First we create a new file under tests/unit called **invalid-feedback.spec.js** and add the content below.
+
+```javascript
+import { shallowMount } from '@vue/test-utils'
+import InvalidFeedback from '@/components/InvalidFeedback.vue'
+
+describe('InvalidFeedback.vue', () => {
+    it('Failed IsUnique shows message', () => {
+        const wrapper = shallowMount(InvalidFeedback, {
+            propsData: {
+                model: {
+                    isUnique: false
+                }
+            }
+        })
+        expect(wrapper.text()).toMatch('already exists')
+    })
+    it('Failed MinValue shows message', () => {
+        const wrapper = shallowMount(InvalidFeedback, {
+            propsData: {
+                field: 'Name',
+                model: {
+                    minValue: false,
+                    $params: { minValue: { min: 10 } }
+                }
+            }
+        })
+        expect(wrapper.text()).toMatch('Name must be equal or greater than 10.')
+    })
+})
+```
+
+This is a very simple test, it's basically only testing for the `IsUnique` and  `MinValue` exceptions. We should definitely go and add all exception handling here but for now that will suffice. 
+

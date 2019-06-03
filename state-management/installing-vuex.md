@@ -8,7 +8,7 @@ The first step is to install Vuex.
 
 > Vuex is the official centralised state management solution for large-scale apps. Very useful if multiple components need to access the same data.
 
-There are numerous methods to install Vuex including direct download, CDN, NPM and Yarn. Using one of these options you also need to configure Vuex after installation. However the quickest approach is to use the Vue UI, as it completely automates the installation and configuration for you.
+There are numerous methods to install Vuex including direct download, CDN, NPM and Yarn. Using one of these options you also need to configure Vuex after installation. However the quickest approach is to use the Vue UI or running `vue add vuex` in the command line, as it completely automates the installation and configuration for you.
 
 The following steps outline the procedure to add Vuex to an existing application with the Vue UI. First, launch **Vue UI** from the command-line by running the command:
 

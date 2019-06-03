@@ -63,14 +63,6 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.feather {
-    height: 28px;
-    width: 28px;
-    color: #999;
-}
-</style>
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

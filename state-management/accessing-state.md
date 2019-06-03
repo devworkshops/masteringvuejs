@@ -38,7 +38,7 @@ Next open **App.vue** and update the footer as follows:
  <footer class="footer mt-auto py-3">
      <div class="container">
          <span class="text-muted">
-             Northwind Traders &copy; {{new Date()|date('YYYY')}}
+             Northwind Traders &copy; 2019
              - Build: {{ $store.state.release.build }}
              - Environment: {{ $store.state.release.environment }}
              - Failed Health Checks: {{ $store.state.healthChecks.filter(hc => !hc.passed).length }}

@@ -44,16 +44,21 @@ Now let's test some CRUD operations under **Suppliers**. This will a bit more co
 {% code-tabs-item title="suppliers.js" %}
 ```javascript
 describe('Suppliers', () => {
-    it('Should open list of suppliers', () => {
+    beforeEach(() => {
         cy.visit('/suppliers')
         cy.contains('h1', 'Suppliers')
-        cy.get('table thead th').should('have.length', 5)
+    })
+
+    it('Should open list of suppliers', () => {
+        cy.get('table thead th').should('have.length', 4)
+    })
+
+    it('Should have 29 suppliers', () => {
+        cy.get('table tbody tr').should('have.length', 29)
     })
 
     it('Should update existing supplier', () => {
-        cy.visit('/suppliers')
-        cy.contains('h1', 'Suppliers')
-        cy.get('a.suppliers-edit:first').click()
+        cy.get('table tbody tr:first button:first').click()
         cy.contains('h1', 'Supplier #')
         cy.get('input#companyNameField').type('NEW COMPANY')
         cy.get('button#saveButton').click()
@@ -64,24 +69,24 @@ describe('Suppliers', () => {
     })
 
     it('Should create new supplier', () => {
-        cy.visit('/suppliers/new')
+        cy.get('button#addSupplier').click()
         cy.get('input#companyNameField').type('NEW COMPANY')
         cy.get('input#contactNameField').type('NEW CONTACT')
         cy.get('input#contactTitleField').type('CONTACT TITLE')
-        cy.get('input#contactNameField').type('.')
         cy.get('button#saveButton').click()
         cy.get('table tbody tr:last td:first').should($td => {
             expect($td).to.contain('NEW COMPANY')
         })
     })
 })
+
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
 Once this is created we can run it using the command `npm run test:e2e2`
 
-![](../.gitbook/assets/e2e-testing-run.gif)
+![](../.gitbook/assets/2019-06-03_20-16-33.gif)
 
 For more information about the integration test API, check their [documentation](https://docs.cypress.io/api/introduction/api.html)
 
@@ -101,7 +106,7 @@ While opening the UI looks great, that's not ideal for automation. We want every
 
 By using the flag `--headless`, Cypress is not going to open the whole UI, but run everything in the console like below:
 
-![](../.gitbook/assets/cypress-headless.png)
+![](../.gitbook/assets/2019-06-03_20-21-37.jpg)
 
 Cool, that's a step forward. But you might now at this point that for the end-to-end tests to work, we need **json-server** to be running. It's alright to run json-server separately when it comes to running tests locally, but if you want to run the tests in an automated way in a continuous integration pipeline, you also need this to be kick off automatically.
 

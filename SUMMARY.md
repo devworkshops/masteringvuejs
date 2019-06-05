@@ -61,6 +61,7 @@
 * [Accessing State](state-management/accessing-state.md)
 * [Changing State](state-management/changing-state.md)
 * [Modules](state-management/modules.md)
+* [Keeping State in Local Storage](state-management/keeping-state-in-local-storage.md)
 * [Challenges](state-management/challenges.md)
 * [Resources](state-management/resources.md)
 

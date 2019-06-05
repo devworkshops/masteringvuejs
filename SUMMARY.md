@@ -60,6 +60,7 @@
 * [Installing Vuex](state-management/installing-vuex.md)
 * [Accessing State](state-management/accessing-state.md)
 * [Changing State](state-management/changing-state.md)
+* [Modules](state-management/modules.md)
 * [Challenges](state-management/challenges.md)
 * [Resources](state-management/resources.md)
 

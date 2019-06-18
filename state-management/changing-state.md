@@ -140,30 +140,17 @@ Open **NavBar.vue** and update the template as follows:
 ...
 <b-collapse is-nav id="navbarCollapse">
     <b-navbar-nav class="mr-auto" v-if="isLoggedIn">
-        <b-nav-item to="/" :exact="true">
-            <vue-feather type="home"></vue-feather>Home
-        </b-nav-item>
-        <b-nav-item to="/suppliers">
-            <vue-feather type="shopping-cart"></vue-feather>Suppliers
-        </b-nav-item>
-        <b-nav-item to="/categories">
-            <vue-feather type="list"></vue-feather>Categories
-        </b-nav-item>
-        <b-nav-item to="/products">
-            <vue-feather type="package"></vue-feather>Products
-        </b-nav-item>
+        <b-nav-item to="/" :exact="true">Home</b-nav-item>
+        <b-nav-item to="/suppliers">Suppliers</b-nav-item>
+        <b-nav-item to="/categories">Categories</b-nav-item>
+        <b-nav-item to="/products">Products</b-nav-item>
     </b-navbar-nav>
     <b-navbar-nav>
-        <b-nav-item to="/login" v-if="!isLoggedIn">
-            <vue-feather type="log-in"></vue-feather>Login
-        </b-nav-item>
-        <b-nav-item @click="logout()" v-if="isLoggedIn">
-            <vue-feather type="log-out"></vue-feather>Logout
-        </b-nav-item>
+        <b-nav-item to="/login" v-if="!isLoggedIn">Login</b-nav-item>
+        <b-nav-item @click="logout()" v-if="isLoggedIn">Logout</b-nav-item>
         <b-nav-item
             v-if="isLoggedIn"
-            v-b-toggle.collapseNotifications>
-            <vue-feather type="bell"></vue-feather>Notifications
+            v-b-toggle.collapseNotifications>Notifications
             <b-badge>2</b-badge>
         </b-nav-item>
     </b-navbar-nav>

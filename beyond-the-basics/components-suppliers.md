@@ -47,9 +47,9 @@ Next update the **NavBar.vue** component to include a new **Categories** menu it
 {% code-tabs %}
 {% code-tabs-item title="NavBar.vue" %}
 ```markup
-<li class="nav-item">
-    <router-link to="/suppliers" :exact="true" class="nav-link">Suppliers</router-link>
-</li>
+<router-link to="/suppliers" tag="li" class="nav-item" active-class="active">
+    <a class="nav-link">Suppliers</a>
+</router-link>
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

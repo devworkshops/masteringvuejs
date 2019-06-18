@@ -40,29 +40,21 @@ Every site needs a navbar. Within the **components** folder, create a new file *
 {% code-tabs-item title="NavBar.vue" %}
 ```markup
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Northwind Traders</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar-brand href="#">Northwind Traders</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <router-link to="/" tag="li" :exact="true" class="nav-item" active-class="active">
-            <a class="nav-link">Home</a>
-          </router-link>
-          <router-link to="/about" tag="li" class="nav-item" active-class="active">
-            <a class="nav-link">About</a>
-          </router-link>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <router-link to="/" tag="li" :exact="true" class="nav-item" active-class="active">
+          <a class="nav-link">Home</a>
+        </router-link>
+        <router-link to="/about" tag="li" class="nav-item" active-class="active">
+          <a class="nav-link">About</a>
+        </router-link>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
 
 <script>

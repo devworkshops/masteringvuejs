@@ -1,9 +1,15 @@
+---
+description: This section introduces Vue instance lifecycle hooks.
+---
+
 # Lifecycles
 
-Vue.js has many lifecycle hooks that we can bind to and they are really useful when it comes to load data dynamically or clean up variables when no longer needed. We're going to make a tiny change to our app which is not going to add any functionality but in the future it's going to be used a lot.
+Vue.js has many lifecycle hooks that we can bind to and they are really useful when it comes to loading data dynamically or cleaning up variables when no longer needed. We're going to make a tiny change to our app which is not going to change behaviour but in the future will be used a lot.
 
-Instead of populating the todos array in the data property, we going to do it in the created lifecycle hook.
+Instead of populating the todos array in the data property, we going to do it in the created lifecycle hook. Update as **main.js** as displayed below:
 
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
 ```javascript
 ...
 data: {
@@ -20,8 +26,10 @@ created(){
 }
 ...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-In the future, we can update the created lifecycle hook to talk to an API and bring data from the server.
+In a later module, we will update the created lifecycle hook to invoke an API and retrieve data from the server.
 
-For more information about the lifecycle hooks, you can check the [Vue.js documentation](https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks).
+For more information about lifecycle hooks, you can check the [Vue.js documentation](https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks).
 

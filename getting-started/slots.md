@@ -1,7 +1,16 @@
+---
+description: >-
+  Slots add distribution outlets for components. Useful to supply content from
+  your template to a child component. Slows can contain any template code,
+  including HTML.
+---
+
 # Slots
 
-Slots are really handy when you want to replace an entire section of your component. In our example, we're going to update the `remaining-items` component and introduce slots. We're just replace the content of the success message by `<slot></slot>`
+Slots are really handy when you want to replace an entire section of your component. In our example, we're going to update the `remaining-items` component and introduce slots. We will replace the contents of the success message using`<slot></slot>`
 
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
 ```javascript
 ...
 Vue.component("remaining-items", {
@@ -19,17 +28,27 @@ Vue.component("remaining-items", {
 });
 ...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-And we can use by simple adding the content inside the component tag as below:
+Now, to define our success message, we can simply add content inside the component tag as follows:
 
+{% code-tabs %}
+{% code-tabs-item title="index.html" %}
 ```markup
+...
 <remaining-items :remaining="todos.filter(t => !t.done).length">
-Hooray!!! You're all done, go to the beach!!!
+    Hooray!!! You're all done, go to the beach!!!
 </remaining-items>
+...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-There will be cases where you'll want to replace the content of the slot just in edge case scenarios, hence a need of a default value if the content is not provided. To achieve that you can simply add the default content inside the slot itself as below. The content of the slot will only be replaced if the content is provided when using the component
+You can also provide a default value for the content of the slot. To achieve this, simply add content inside of the slot area as shown below. The default content will only be replaced if content is provided when using the component.
 
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
 ```javascript
 ...
 Vue.component("remaining-items", {
@@ -38,15 +57,20 @@ Vue.component("remaining-items", {
     ...
     <div class="alert alert-success" v-else>
       <slot>Hooray!!! You're all done, go to the beach!!!</slot>
-    </div>
-    `
+    </div>`
 });
 ...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 There will also be times when you want multiple slots in a single component. This can be achieved by adding a named slot as below:
 
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
 ```javascript
+
+...
 Vue.component("remaining-items", {
   props: ["remaining"],
   template: `
@@ -60,14 +84,26 @@ Vue.component("remaining-items", {
       <slot name='success'>Hooray!!! You're all done, go to the beach!!!</slot>
     </div>`
 });
+...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-Now I have the option to pass both success and danger messages as below
+Now you have the option to pass both success and danger messages as shown below
 
+{% code-tabs %}
+{% code-tabs-item title="index.html" %}
 ```markup
+...
 <remaining-items :remaining="todos.filter(t => !t.done).length">
   <template v-slot:success>Excellent!!! Enjoy your day!!!</template>
   <template v-slot:danger>Run run run</template>
 </remaining-items>
+...
+
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Save the your changes and verify that number of remaining items is correct, and updates when items are added or marked as done.
 

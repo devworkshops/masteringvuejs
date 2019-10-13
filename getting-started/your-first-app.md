@@ -10,7 +10,7 @@ Create a new file named **main.js** and move the contents of the script block in
 var app = new Vue({
   el: "#app",
   data: {
-    message: "Hello, World!"
+    title: "Hello, World!"
   }
 });
 ```
@@ -43,32 +43,35 @@ Next, inside the `head` element, add a reference to Bootstrap from the CDN. This
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Inside the container, we're going to new list as below with some static content:
+Within **index.html**, replace the existing `div` element with an updated version as follows:
 
 {% code-tabs %}
 {% code-tabs-item title="index.html" %}
 ```markup
 ...
-<ul class="list-group mb-2">
-    <li class="list-group-item">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="todo1" />
-            <label class="form-check-label" for="todo1">Do this thing.</label>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="todo2" /> 
-            <label class="form-check-label" for="todo2">Do more things.</label>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="todo3" />
-            <label class="form-check-label done" for="todo3">This thing is done.</label>
-        </div>
-    </li>
-</ul>
+<div id="app" class="container">
+    <h1>{{ title }}</h1>
+    <ul class="list-group mb-2">
+        <li class="list-group-item">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="todo1" />
+                <label class="form-check-label" for="todo1">Do this thing.</label>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="todo2" /> 
+                <label class="form-check-label" for="todo2">Do more things.</label>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="todo3" />
+                <label class="form-check-label done" for="todo3">This thing is done.</label>
+            </div>
+        </li>
+    </ul>
+</div>
 ...
 ```
 {% endcode-tabs-item %}
@@ -154,8 +157,8 @@ methods: {
     this.todos.push({
       id: this.nextId++,
       title: this.newTodoTitle,
-      done: false,
-      created: new Date()      
+      created: new Date(),
+      done: false
     });
     
     this.newTodoTitle = ''

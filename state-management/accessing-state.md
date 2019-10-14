@@ -91,7 +91,7 @@ Next update the footer with these changes:
  <footer class="footer mt-auto py-3">
      <div class="container">
          <span class="text-muted">
-             Northwind Traders &copy; {{new Date()|date('YYYY')}}
+             Northwind Traders &copy; 2019
              - Build: {{ release.build }}
              - Environment: {{ release.environment }}
              - Failed Health Checks: {{ failedHealthCheckCount }}
@@ -136,7 +136,7 @@ computed: {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-In the case of the `failedHealthCheckCount` computed property, this approach works well within the context of this component. However, what if the same derived state was required in other components? You can achieve this flexibility by moving the computed property to the store. Using Getters,
+In the case of the `failedHealthCheckCount` computed property, this approach works well within the context of this component. However, what if the same derived state was required in other components? You can achieve this flexibility by moving the computed property to the store.
 
 Open **store.js** and add a new **getters** property:
 

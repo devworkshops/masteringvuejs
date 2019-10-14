@@ -424,7 +424,8 @@ Then within methods:
 {% code-tabs-item title="CategoryList.vue" %}
 ```javascript
 ...
-...mapActions(['raiseSuccessNotification', 'raiseErrorNotification'])
+methods: {
+  ...mapActions(['raiseSuccessNotification', 'raiseErrorNotification']),
 ...
 ```
 {% endcode-tabs-item %}

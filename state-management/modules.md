@@ -2,10 +2,12 @@
 
 In this section, we're going one step further in the **vuex** story and separate areas/domains of the system into modules to make it more maintainable.
 
-First thing we're going to do is to create **store** folder, move the **store.js** file inside and rename it to **index.js**.
+First create a **store** folder, moving **store.js** inside, and renaming it to **index.js**.
 
-Let's now create a new file inside the **store** folder called **supplier.js** with the content below. This file is going to contain anything related to suppliers.
+Next, create a new file inside the **store** folder called **supplier.js** with the content below. This file is going to contain anything related to suppliers.
 
+{% code-tabs %}
+{% code-tabs-item title="supplier.js" %}
 ```javascript
 export default {
     state: {},
@@ -14,13 +16,16 @@ export default {
     getters: {}
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-In the **index.js** file, we're going to declare the new module as below:
+In the **index.js** file, declare the new module as shown below:
 
+{% code-tabs %}
+{% code-tabs-item title="index.js" %}
 ```javascript
 ...
 import supplier from './supplier'
-...
 
 export default new Vuex.Store({
     modules: { supplier },
@@ -28,9 +33,13 @@ export default new Vuex.Store({
 })
 
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-We're not going to update the supplier module to include an action to fetch the suppliers and store in the state as below:
+Next, update the supplier module to include an action to fetch the suppliers and store in the state:
 
+{% code-tabs %}
+{% code-tabs-item title="supplier.js" %}
 ```javascript
 import { SuppliersService } from '@/services/NorthwindService.js'
 
@@ -52,9 +61,13 @@ export default {
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-Let's leverage the new module in the **SupplierList.vue** component and instead of calling the API directly, we're going to dispatch an action to do it as below:
+Now, instead of calling the API directly, dispatch an action to fetch the suppliers:
 
+{% code-tabs %}
+{% code-tabs-item title="SupplierList.vue" %}
 ```markup
 <template>
   <div>
@@ -78,8 +91,10 @@ export default {
 }
 </script>
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-Now that we have suppliers in the store, we can implement some nice functionalities. For example, to only hit the API if the suppliers are not in the state yet. Let's update the **fetchSuppliers** action to include the below
+Now that suppliers are in the store, you can implement some nice features. For example, to only hit the API if the suppliers are not in the state yet. Let's update the **fetchSuppliers** action to include the below:
 
 {% code-tabs %}
 {% code-tabs-item title="supplier.js" %}
@@ -96,5 +111,5 @@ fetchSuppliers({ state, commit }, force) {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-With this implemented, you see the application hitting the API only the first time you navigate to the suppliers page, the following time it will bring straight from the store.
+With this implemented, only a single API request will be made \(the first time you navigate to the suppliers page\) and following requests will retrieve suppliers directly from the store.
 

@@ -68,7 +68,7 @@ Next, create a component to support adding and editing components. Within the **
 ```markup
 <template>
   <div>
-    <h1>{{id?`Product #${id}`:'New Product'}}</h1>
+    <h1>{{ id ? `Product #${id}` : 'New Product' }}</h1>
   </div>
 </template>
 
@@ -142,12 +142,12 @@ import { ProductsService } from '@/services/NorthwindService.js'
 export default {
     data() {
         return {
-            fields: {
-                name: { sortable: true },
-                unitPrice: { label: 'Price' },
-                unitsInStock: { label: 'Stock' },
-                actions: {}
-            },
+            fields: [
+                { key: 'name', sortable: true },
+                { key: 'unitPrice', label: 'Price' },
+                { key: 'unitsInStock', label: 'Stock' },
+                { key: 'actions' }
+            ],
             products: []
         }
     },
@@ -157,7 +157,7 @@ export default {
     methods: {
         fetchAll() {
             ProductsService.getAll()
-                .then(result => (this.products= result.data))
+                .then(result => (this.products = result.data))
                 .catch(error => console.error(error))
         }
     }
@@ -182,7 +182,7 @@ Then update the template as follows:
       </router-link>
     </div>
     <b-table striped hover :items="products" :fields="fields">
-      <template slot="actions" slot-scope="data">
+      <template v-slot:cell(actions)="data">
         <router-link tag="button" :to="{ name: 'products-edit', params: { id: data.item.id.toString(), product: data.item } }"
           class="btn btn-secondary btn-sm">
           <i class="fas fa-edit"></i>
@@ -196,7 +196,7 @@ Then update the template as follows:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Save all changes and refresh the site. Ensure that you can view a list of products and that the Add and Edit buttons are wired up correctly
+Save all changes and refresh the site. Ensure that you can view a list of products and that the Add and Edit buttons are wired up correctly.
 
 ## Adding and editing products
 

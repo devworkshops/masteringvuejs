@@ -163,7 +163,7 @@ Start by modifying the table to support the two states as follows:
 ```markup
 ...
 <b-table striped hover :items="categories" :fields="fields">
-  <template slot="actions" slot-scope="data">
+  <template v-slot:cell(actions)="data">
     <div v-if="editingCategory.id!=data.item.id">
       <button class="btn btn-secondary btn-sm" @click="edit(data.item, data.index)">
         <i class="fas fa-edit"></i></button>
@@ -177,13 +177,13 @@ Start by modifying the table to support the two states as follows:
         <i class="fas fa-times"></i></button>
     </div>
   </template>
-  <template slot="name" slot-scope="data">
+  <template v-slot:cell(name)="data">
     <template v-if="editingCategory.id!=data.item.id">{{data.value}}</template>
     <template v-else>
       <input type="text" class="form-control" v-model="editingCategory.name">
     </template>
   </template>
-  <template slot="description" slot-scope="data">
+  <template v-slot:cell(description)="data">
     <template v-if="editingCategory.id!=data.item.id">{{data.value}}</template>
     <template v-else>
       <input type="text" class="form-control" v-model="editingCategory.description">
@@ -326,9 +326,9 @@ All done, you should now be able to add new categories. Take a moment to verify 
 
 ## Deletion confirmation
 
-Everything is working really nicely but one thing is not quite right. The user can accidentally click on the delete button and the item will be gone. It's good practice to prompt the user to confirm either he/she really wants to delete an item. 
+Everything is working really nicely but one thing is not quite right. The user can accidentally click on the delete button and the item will be gone. It's good practice to prompt the user to confirm the deletion of an item. 
 
-We're going to update the remove method to prompt the user to confirm the deletion and for that we're going to use the **b-modal**, if you want to check some other options for this component, check this [link](https://bootstrap-vue.js.org/docs/components/modal/). 
+We're going to update the remove method to prompt the user to confirm the deletion and for that we will use the **b-modal**. If you want to learn more about the **b-model** component, check this [link](https://bootstrap-vue.js.org/docs/components/modal/). 
 
 ```javascript
 ...

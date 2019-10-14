@@ -96,6 +96,8 @@ Alright! You might get the idea that things will start getting really wordy! So 
 
 First one is going to be the **InvalidFeedback**. Let's create a file called **InvalidFeedback.vue** under the **components** folder with the content below. This is just a basic component that will display an error message depending on the type of validation
 
+{% code-tabs %}
+{% code-tabs-item title="InvalidFeedback.vue" %}
 ```markup
 <template>
   <div class="invalid-feedback">
@@ -136,9 +138,13 @@ export default {
 }
 </script>
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The next one is going to be the **BaseInput**. Again let's create a file called **BaseInput.vue** under the **components** folder with the content below. This component is going to basically wrap the form-group, label, input and validation in one component.
 
+{% code-tabs %}
+{% code-tabs-item title="BaseInput.vue" %}
 ```markup
 <template>
   <div class="form-group">
@@ -166,6 +172,8 @@ export default {
 }
 </script>
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 We only need to register these components and we're good to go. In the **main.js** file, after the last import, include the content below
 
@@ -179,11 +187,17 @@ Vue.component('BaseInput', BaseInput)
 ...
 ```
 
-How can we use it now? Back to the **ProductEdit.vue**, let's once more change the name field block and replace by one single line of code
+How can we use it now? Within **ProductEdit.vue**, make a final change to the name form group, replacing it with a single line of code as follows:
 
+{% code-tabs %}
+{% code-tabs-item title="ProductEdit.vue" %}
 ```markup
+...
 <base-input label="Name" :validationModel="$v.model.name"></base-input>
+...
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ## Continue: Basic validation checks
 
@@ -213,7 +227,7 @@ Then, add the necessary validations:
 ```javascript
 ...
 validations: {
-    product: {
+    model: {
 
         ...
 
@@ -287,7 +301,7 @@ Save all changes and verify that the validation behaves as expected:
 
 In this section you will add an conditional validation check. **Units On Order** must be greater than zero when **Units In Stock** is zero and **Status** is not discontinued.
 
-Just after the import states, add the following. You could get away with a simpler validator without parameters, but since we have a new component to show the invalid messages, why don't we just pass the message along and let it handle it.
+Just after the import states, add the following. You could get away with a simpler validator without parameters, but since we have a new component to show the invalid messages, why don't we just pass the message along and let the new component handle it.
 
 {% code-tabs %}
 {% code-tabs-item title="ProductEdit.vue" %}

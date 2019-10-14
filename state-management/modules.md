@@ -2,7 +2,17 @@
 
 In this section, we're going one step further in the **vuex** story and separate areas/domains of the system into modules to make it more maintainable.
 
-First create a **store** folder, moving **store.js** inside, and renaming it to **index.js**.
+First create a **store** folder, moving **store.js** inside, and renaming it to **index.js**. Then, update **main.js** as follows \(replace the existing import statement\):
+
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
+```javascript
+...
+import store from './store/index'
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 Next, create a new file inside the **store** folder called **supplier.js** with the content below. This file is going to contain anything related to suppliers.
 

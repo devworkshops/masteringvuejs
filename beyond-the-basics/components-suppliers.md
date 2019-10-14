@@ -156,7 +156,7 @@ You might be wondering what the actions field for since it doesn't map to any pr
 ```markup
 ...
 <b-table striped hover :items="suppliers" :fields="fields">
-  <template slot="actions" slot-scope="data">
+  <template v-slot:cell(actions)="data">
     <router-link
       tag="button"
       :to="{ name: 'suppliers-edit', params: { id: data.item.id.toString(), supplier: data.item } }"

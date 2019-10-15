@@ -44,6 +44,14 @@
 * [Challenges](testing/challenges.md)
 * [Resources](testing/resources.md)
 
+## Styling the UI
+
+* [Bootstrap + Vue](styling-the-ui/overview.md)
+* [Icons](styling-the-ui/icons.md)
+* [Themes](styling-the-ui/themes.md)
+* [Challenges](styling-the-ui/challenges.md)
+* [Resources](styling-the-ui/resources.md)
+
 ## Consuming APIs
 
 * [Overview](consuming-apis/overview.md)
@@ -65,3 +73,11 @@
 * [Challenges](state-management/challenges.md)
 * [Resources](state-management/resources.md)
 
+## Packaging and Deploying
+
+* [Environment variables](packaging-and-deploying/environment-variables.md)
+* [Continuous Integration](packaging-and-deploying/overview.md)
+* [Continuous Deployment](packaging-and-deploying/continuous-deployment.md)
+* [URL Rewrite](packaging-and-deploying/url-rewrite.md)
+* [Challenges](packaging-and-deploying/challenges.md)
+* [Resources](packaging-and-deploying/resources.md)
